@@ -8,6 +8,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -24,5 +27,8 @@ public class Account {
     @NonNull
     private String phoneNumber;
     private String email;
-    private double balance;
+    private BigInteger balance;
+    private LocalDateTime accountCreationDate = LocalDateTime.now();
+
+
 }
