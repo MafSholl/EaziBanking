@@ -1,17 +1,33 @@
 package com.nibss.eazibank.data.models;
 
-import lombok.Data;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-@Document
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Document("Customer")
 public class Customer {
+    @Id
+    @Indexed(unique = true)
     private String BVN;
+    @NonNull
     private String firstName;
+    @NonNull
     private String lastName;
+    @NonNull @Indexed(unique = true)
     private String phoneNumber;
+    @Indexed(unique=true)
     private String email;
-    private HashMap<String, Account> customerAccounts;
+    private LocalDateTime DOB;
+    private String mothersMaidenName;
+    private List<Account> customerAccounts;
+    private List<Transaction> transactionHistory;
 }
+
+

@@ -1,12 +1,14 @@
-package com.nibss.eazibank.dto.request;
+package com.nibss.eazibank.dto.response;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.math.BigInteger;
+
 @Data
-@AllArgsConstructor
 @RequiredArgsConstructor
-public class CreditAccountRequest {
+public class DebitAccountRequest {
 
     @NonNull
     private String accountNumber;

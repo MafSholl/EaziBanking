@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Account {
     @Id
     private String id;
-    @Indexed(unique = true) @NonNull
+    @NonNull @Indexed(unique = true)
     private String accountNumber;
     @NonNull
     private String firstName;
@@ -27,7 +27,7 @@ public class Account {
     @NonNull
     private String phoneNumber;
     private String email;
-    private BigInteger balance;
+    private BigInteger balance = BigInteger.ZERO;
     private LocalDateTime accountCreationDate = LocalDateTime.now();
 
 
