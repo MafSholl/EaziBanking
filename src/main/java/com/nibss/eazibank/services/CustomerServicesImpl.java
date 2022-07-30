@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class CustomerServicesImpl implements CustomerServices{
         customer.setMothersMaidenName(createCustomerRequest.getMothersMaidenName());
         customer.setPhoneNumber(createCustomerRequest.getPhoneNumber());
         customer.setBVN("12849939883");
-        customer.setDOB(LocalDateTime.parse("01-01-2000"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        customer.setDOB(LocalDateTime.parse(createCustomerRequest.getDOB(), formatter));
 
         RegisterAccountRequest request = new RegisterAccountRequest();
         request.setFirstName(customer.getFirstName());
@@ -51,14 +53,14 @@ public class CustomerServicesImpl implements CustomerServices{
         account.setFirstName(createdAccount.getFirstName());
         account.setLastName(createdAccount.getLastName());
         account.setAccountNumber(createdAccount.getAccountNumber());
-        account.setAccountCreationDate(LocalDateTime.parse(createdAccount.getDateCreated()));
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a");
+        account.setAccountCreationDate(LocalDateTime.parse(createdAccount.getDateCreated(), format));
 
         List<Account> customerAccounts = new ArrayList<>();
         customerAccounts.add(account);
-
         customer.setCustomerAccounts(customerAccounts);
-
         Customer createdCustomer = customerRepository.save(customer);
+
         CreateCustomerResponse response = new CreateCustomerResponse();
         response.setFirstName(createdCustomer.getFirstName());
         response.setLastName(createdCustomer.getLastName());

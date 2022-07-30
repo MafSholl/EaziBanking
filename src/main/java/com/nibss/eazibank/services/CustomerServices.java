@@ -7,7 +7,7 @@ import com.nibss.eazibank.dto.response.CustomerDepositResponse;
 
 public interface CustomerServices {
 
-    CustomerDepositResponse deposit(CustomerDepositRequest depositRequest);
-
     CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest);
+
+    CustomerDepositResponse deposit(CustomerDepositRequest depositRequest);
 }

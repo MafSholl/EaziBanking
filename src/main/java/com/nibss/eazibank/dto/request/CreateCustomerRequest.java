@@ -20,4 +20,6 @@ public class CreateCustomerRequest {
     private String email;
     @NonNull
     private String mothersMaidenName;
+    @NonNull
+    private String DOB;
 }
