@@ -26,6 +26,7 @@ public class Account {
     private String lastName;
     @NonNull
     private String phoneNumber;
+    private String BVN;
     private String email;
     private BigInteger balance = BigInteger.ZERO;
     private LocalDateTime accountCreationDate = LocalDateTime.now();

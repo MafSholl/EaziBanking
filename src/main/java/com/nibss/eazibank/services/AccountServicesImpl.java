@@ -25,8 +25,8 @@ public class AccountServicesImpl implements AccountServices {
         account.setFirstName(request.getFirstName());
         account.setLastName(request.getLastName());
         account.setPhoneNumber(request.getPhoneNumber());
-
         account.setAccountNumber(accountNumberGenerator());
+        account.setBVN(NibssImpl.bvnGenerator());
 
         Account createdAccount = accountRepository.save(account);
 
@@ -34,6 +34,7 @@ public class AccountServicesImpl implements AccountServices {
         response.setFirstName(createdAccount.getFirstName());
         response.setLastName(createdAccount.getLastName());
         response.setAccountNumber(createdAccount.getAccountNumber());
+        response.setBankVerificationNumber(createdAccount.getBVN());
         response.setDateCreated(DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a").format(createdAccount.getAccountCreationDate()));
         return response;
     }
@@ -43,15 +44,15 @@ public class AccountServicesImpl implements AccountServices {
         generatedAccountNumber.append(this.accountNumber++);
         System.out.println(this.accountNumber);
 
-        if(accountRepository.findByAccountNumber(generatedAccountNumber.toString()).isPresent())
-            generatedAccountNumber = new StringBuilder(accountNumberGenerator());
+        generatedAccountNumber = accountNumberValidator(generatedAccountNumber);
         return generatedAccountNumber.toString();
     }
 
-    private StringBuilder accountNumberValidator(StringBuilder accountNumber) {
-        if(accountRepository.findByAccountNumber(accountNumber.toString()).isPresent())
-            accountNumber = new StringBuilder(accountNumberGenerator());
-        return accountNumber;
+    private StringBuilder accountNumberValidator(StringBuilder generatedAccountNumber) {
+        if(accountRepository.findByAccountNumber(generatedAccountNumber.toString()).isPresent())
+            generatedAccountNumber = new StringBuilder(accountNumberGenerator());
+//        accountNumberValidator(generatedAccountNumber);
+        return generatedAccountNumber;
     }
 
     @Override
@@ -74,6 +75,7 @@ public class AccountServicesImpl implements AccountServices {
             creditResponse.setBalance(creditedAccount.getBalance());
             creditResponse.setFirstName(creditedAccount.getFirstName());
             creditResponse.setLastName(creditedAccount.getLastName());
+            creditResponse.setBankVerificationNumber(creditedAccount.getBVN());
         }
         return creditResponse;
     }
@@ -117,5 +119,10 @@ public class AccountServicesImpl implements AccountServices {
         response.setFirstName(accountInDatabase.get().getFirstName());
         response.setLastName(accountInDatabase.get().getLastName());
         return response;
+    }
+
+    @Override
+    public Optional<Account> findAccount(String accountNumber) {
+        return accountRepository.findByAccountNumber(accountNumber);
     }
 }

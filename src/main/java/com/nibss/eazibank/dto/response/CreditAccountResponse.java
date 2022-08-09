@@ -12,6 +12,7 @@ public class CreditAccountResponse {
     private boolean isSuccessful;
     private BigInteger balance;
     private String accountNumber;
+    private String bankVerificationNumber;
     private String firstName;
     private String lastName;
 }

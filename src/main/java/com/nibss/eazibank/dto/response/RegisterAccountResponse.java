@@ -14,4 +14,5 @@ public class RegisterAccountResponse {
     private String accountNumber;
     private BigInteger balance;
     private String dateCreated;
+    private String bankVerificationNumber;
 }

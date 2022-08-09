@@ -1,9 +1,12 @@
 package com.nibss.eazibank.services;
 
+import com.nibss.eazibank.data.models.Account;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.AccountDoesNotExistException;
+
+import java.util.Optional;
 
 public interface AccountServices {
 
@@ -14,4 +17,6 @@ public interface AccountServices {
     DebitAccountResponse debitAccount(DebitAccountRequest debitRequest);
 
     AccountBalanceResponse getBalance(AccountBalanceRequest checkBalanceRequest);
+
+    Optional<Account> findAccount(String accountNumber);
 }

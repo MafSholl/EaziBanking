@@ -26,11 +26,11 @@ class AccountServicesImplTest {
     public void accountCanBeCreatedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
                                     "01-01-1991","08101234568", "Ayoola", "Afolabi");
-//        request.setFirstName("Adeola");
-//        request.setLastName("Ololade");
-//        request.setPhoneNumber("08101234568");
-//        request.setDOB("01-01-1991");
-//        request.setMothersMaidenName("Ayoola");
+        request.setFirstName("Adeola");
+        request.setLastName("Ololade");
+        request.setPhoneNumber("08101234568");
+        request.setDOB("01-01-1991");
+        request.setMothersMaidenName("Ayoola");
 
         accountServices.createAccount(request);
         assertEquals(1, accountRepository.count());

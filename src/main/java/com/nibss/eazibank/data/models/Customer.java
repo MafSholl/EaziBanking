@@ -6,7 +6,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -26,7 +28,7 @@ public class Customer {
     private String email;
     private LocalDateTime DOB;
     private String mothersMaidenName;
-    private List<Account> customerAccounts;
+    private Map<String, Account> customerAccounts;
     private List<Transaction> transactionHistory;
 }
 
