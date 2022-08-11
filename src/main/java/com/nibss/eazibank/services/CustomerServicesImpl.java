@@ -5,6 +5,7 @@ import com.nibss.eazibank.data.models.Customer;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.dto.request.*;
 import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.exception.EaziBankExceptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,14 +42,11 @@ public class CustomerServicesImpl implements CustomerServices{
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
         customer.setBVN(createdAccount.getBankVerificationNumber());
 
-        Account account = new Account();
-        account.setFirstName(createdAccount.getFirstName());
-        account.setLastName(createdAccount.getLastName());
-        account.setAccountNumber(createdAccount.getAccountNumber());
-        account.setBVN(createdAccount.getBankVerificationNumber());
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a");
-        account.setAccountCreationDate(LocalDateTime.parse(createdAccount.getDateCreated(), format));
-
+        Optional<Account> optionalAccount = accountServices.findAccount(createdAccount.getAccountNumber());
+        if(optionalAccount.isEmpty()) throw new EaziBankExceptions("Error finding account after saving");
+        Account account = optionalAccount.get();
+//        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a");
+//        account.setAccountCreationDate(LocalDateTime.parse(createdAccount.getDateCreated(), format));
         Map<String, Account> customerAccounts = new HashMap<>();
         customerAccounts.put(account.getAccountNumber(), account);
         customer.setCustomerAccounts(customerAccounts);
@@ -65,13 +63,14 @@ public class CustomerServicesImpl implements CustomerServices{
     public CustomerDepositResponse deposit(CustomerDepositRequest depositRequest) {
         Optional<Account> repoAccount = accountServices.findAccount(depositRequest.getAccountNumber());
         CreditAccountResponse creditResponse = accountServices.creditAccount(new CreditAccountRequest(depositRequest.getAccountNumber(), depositRequest.getAmount()));
-        Account account = repoAccount.get();
+        Optional<Account> optionalCreditedAccount = accountServices.findAccount(creditResponse.getAccountNumber());
+        Account creditedAccount = optionalCreditedAccount.get();
 
-        Optional<Customer> customerInRepository = customerRepository.findByBVN(account.getBVN());
+        Optional<Customer> customerInRepository = customerRepository.findCustomerByBVN(creditedAccount.getBVN());
         Customer customer = customerInRepository.get();
-        Account customersAccount = customer.getCustomerAccounts().get(account.getAccountNumber());
-        customersAccount.setBalance(creditResponse.getBalance());
-        customer.getCustomerAccounts().replace(customersAccount.getAccountNumber(), customersAccount);
+        Map<String, Account> customersAccounts = customer.getCustomerAccounts();
+        Account tobeUpdatedAccount = customersAccounts.get(creditedAccount.getAccountNumber());
+        customer.getCustomerAccounts().replace(tobeUpdatedAccount.getAccountNumber(), creditedAccount);
         Customer creditedCustomer = customerRepository.save(customer);
 
 //        Optional<Customer> customerRepo = customerRepository.findByCustomerAccounts();
@@ -87,13 +86,12 @@ public class CustomerServicesImpl implements CustomerServices{
     @Override
     public CustomerWithdrawalResponse withdraw(CustomerWithdrawalRequest withdrawalRequest) {
         Optional<Account> repoAccount = accountServices.findAccount(withdrawalRequest.getAccountNumber());
-        Optional<Customer> optionalCustomer = customerRepository.findByBVN(repoAccount.get().getBVN());
-
         DebitAccountResponse debitResponse = accountServices.debitAccount(new DebitAccountRequest(
                 withdrawalRequest.getAccountNumber(), withdrawalRequest.getAmount()));
+
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByBVN(repoAccount.get().getBVN());
         Customer customer = optionalCustomer.get();
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
-        System.out.println(accountServices.findAccount(withdrawalRequest.getAccountNumber()).get().getBalance());
         Account account = accountServices.findAccount(withdrawalRequest.getAccountNumber()).get();
         customersAccounts.replace(withdrawalRequest.getAccountNumber(), account);
         Customer debitedCustomer = customerRepository.save(customer);
@@ -104,5 +102,30 @@ public class CustomerServicesImpl implements CustomerServices{
         withdrawalResponse.setAmount(withdrawalRequest.getAmount());
         withdrawalResponse.setSuccessful(true);
         return withdrawalResponse;
+    }
+
+    @Override
+    public CustomerTransferResponse transfer(CustomerTransferRequest transferRequest) {
+        Optional<Account> optionalSendersAccount = accountServices.findAccount(transferRequest.getSendersAccountNumber());
+        if (optionalSendersAccount.isEmpty()) throw new EaziBankExceptions("Account does not exist. Check you account number");
+        Optional<Account> optionalReceiversAccount = accountServices.findAccount(transferRequest.getReceiversAccountNumber());
+        if (optionalReceiversAccount.isEmpty()) throw new EaziBankExceptions("Wrong account number. Check the account number entered");
+        Account receiversAccount = optionalReceiversAccount.get();
+        Account sendersAccount = optionalSendersAccount.get();
+
+        CustomerWithdrawalResponse withdrawalResponse = withdraw(new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
+        if (!withdrawalResponse.isSuccessful()) throw new EaziBankExceptions("An error occured! Please try again");
+        CustomerDepositResponse depositResponse = deposit(new CustomerDepositRequest(transferRequest.getReceiversAccountNumber(), transferRequest.getAmount()));
+        if (!depositResponse.isSuccessful()) throw new EaziBankExceptions("An error occured! Please try again");
+
+        CustomerTransferResponse transferResponse = new CustomerTransferResponse();
+        transferResponse.setFirstName(depositResponse.getFirstName());
+        transferResponse.setLastName(depositResponse.getLastName());
+        transferResponse.setAmount(depositResponse.getAmount());
+        transferResponse.setSuccessful(true);
+        transferResponse.setAccountNumber(depositResponse.getAccountNumber());
+
+        transferResponse.setMessage(String.format("Transfer of %d to %s is successful", transferResponse.getAmount(), transferResponse.getAccountNumber()));
+        return transferResponse;
     }
 }

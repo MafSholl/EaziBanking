@@ -1,16 +1,19 @@
 package com.nibss.eazibank.dto.response;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.math.BigInteger;
 @Data
-public class CustomerDepositResponse {
+@NoArgsConstructor
+public class CustomerTransferResponse {
 
     private String firstName;
     private String lastName;
-    private String accountNumber;
     private BigInteger amount;
+    private String accountNumber;
     private boolean isSuccessful;
-
+    private String message;
 }
