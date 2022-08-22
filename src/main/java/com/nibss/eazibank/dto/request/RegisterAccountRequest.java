@@ -21,4 +21,6 @@ public class RegisterAccountRequest {
     private String email;
     @NonNull
     private String mothersMaidenName;
+    @NonNull
+    private String accountType;
 }

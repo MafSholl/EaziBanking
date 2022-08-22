@@ -1,12 +1,10 @@
 package com.nibss.eazibank.dto.request;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class CreateCustomerRequest {
 
@@ -22,4 +20,6 @@ public class CreateCustomerRequest {
     private String mothersMaidenName;
     @NonNull
     private String DOB;
+    @NonNull
+    private String accountType;
 }

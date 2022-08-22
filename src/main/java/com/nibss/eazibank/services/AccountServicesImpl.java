@@ -1,6 +1,7 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.data.models.AccountType;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
@@ -26,7 +27,15 @@ public class AccountServicesImpl implements AccountServices {
         account.setLastName(request.getLastName());
         account.setPhoneNumber(request.getPhoneNumber());
         account.setAccountNumber(accountNumberGenerator());
-        account.setBVN(NibssImpl.bvnGenerator());
+        account.setBVN(NibssInterfaceImpl.bvnGenerator());
+
+        if(request.getAccountType().equalsIgnoreCase("savings")) {
+            account.setAccountType(AccountType.SAVINGS);
+        } else if(request.getAccountType().equalsIgnoreCase("current")) {
+            account.setAccountType(AccountType.CURRENT);
+        } else if(request.getAccountType().equalsIgnoreCase("Domiciliary")) {
+            account.setAccountType(AccountType.DOMICILIARY);
+        }
 
         Account createdAccount = accountRepository.save(account);
 
@@ -42,8 +51,6 @@ public class AccountServicesImpl implements AccountServices {
     private String accountNumberGenerator() {
         StringBuilder generatedAccountNumber = new StringBuilder("0");
         generatedAccountNumber.append(this.accountNumber++);
-        System.out.println(this.accountNumber);
-
         generatedAccountNumber = accountNumberValidator(generatedAccountNumber);
         return generatedAccountNumber.toString();
     }
@@ -65,7 +72,7 @@ public class AccountServicesImpl implements AccountServices {
         if(accountInDatabase.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
 
         BigInteger balance = accountInDatabase.get().getBalance();
-        accountInDatabase.get().setBalance(accountInDatabase.get().getBalance().add(creditRequest.getAmount()));
+        accountInDatabase.get().setBalance(balance.add(creditRequest.getAmount()));
 
         Account creditedAccount = accountRepository.save(accountInDatabase.get());
         CreditAccountResponse creditResponse = new CreditAccountResponse();
@@ -123,6 +130,8 @@ public class AccountServicesImpl implements AccountServices {
 
     @Override
     public Optional<Account> findAccount(String accountNumber) {
-        return accountRepository.findByAccountNumber(accountNumber);
+        Optional<Account> account = accountRepository.findByAccountNumber(accountNumber);
+        if(account.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
+        return account;
     }
 }

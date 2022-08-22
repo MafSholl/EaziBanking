@@ -25,7 +25,7 @@ class AccountServicesImplTest {
     @Test
     public void accountCanBeCreatedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                                    "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                                    "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         request.setFirstName("Adeola");
         request.setLastName("Ololade");
         request.setPhoneNumber("08101234568");
@@ -39,13 +39,13 @@ class AccountServicesImplTest {
     @Test
     public void multipleAccountsCanBeCreatedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                                        "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                                        "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse account1 = accountServices.createAccount(request);
         assertEquals(1, accountRepository.count());
         assertEquals(account1.getAccountNumber(), accountRepository.findByAccountNumber(account1.getAccountNumber()).get().getAccountNumber());
 
         RegisterAccountRequest request1 = new RegisterAccountRequest("Kadijhat", "Osuolale",
-                                        "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                                        "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse account2 = accountServices.createAccount(request1);
         assertEquals(2, accountRepository.count());
         assertEquals(account2.getAccountNumber(), accountRepository.findByAccountNumber(account2.getAccountNumber()).get().getAccountNumber());
@@ -54,7 +54,7 @@ class AccountServicesImplTest {
     @Test
     public void accountBalanceCanBeCreditedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                                    "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                                    "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
 
         CreditAccountRequest creditRequest = new CreditAccountRequest(createdAccount.getAccountNumber(), BigInteger.valueOf(1000));
@@ -67,7 +67,7 @@ class AccountServicesImplTest {
     @Test
     public void accountBalanceCanBeDebitedTest() {
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
 
         CreditAccountRequest creditRequest = new CreditAccountRequest(createdAccount.getAccountNumber(), BigInteger.valueOf(1000));
@@ -84,7 +84,7 @@ class AccountServicesImplTest {
     @Test
     public void accountBalanceCanBeQueriedTest() {
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
 
         CreditAccountRequest creditRequest = new CreditAccountRequest(createdAccount.getAccountNumber(), BigInteger.valueOf(1000));
@@ -100,7 +100,7 @@ class AccountServicesImplTest {
     @Test
     public void incorrectAccountNumberThrowsException_WhenUsedInACreditTransactionTest() {
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
 
         CreditAccountRequest creditRequest = new CreditAccountRequest("1234567890", BigInteger.valueOf(1000));
@@ -110,7 +110,7 @@ class AccountServicesImplTest {
     @Test
     public void incorrectAccountNumberThrowsException_WhenUsedInADebitTransactionTest() {
         RegisterAccountRequest registerRequest = new RegisterAccountRequest("Adeola", "Ololade",
-                "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(registerRequest);
 
         DebitAccountRequest debitRequest = new DebitAccountRequest("1234567890", BigInteger.valueOf(1000));
@@ -123,11 +123,11 @@ class AccountServicesImplTest {
     @Test
     public void duplicateAccountWithSameAccountNumbers_IsPreventedTest(){
         RegisterAccountRequest registerRequest = new RegisterAccountRequest("Adeola", "Ololade",
-                "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(registerRequest);
 
         RegisterAccountRequest registerRequest1 = new RegisterAccountRequest("Olutola", "Osuolale",
-                "01-01-1991","08101234568", "Ayoola", "Afolabi");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount1 = accountServices.createAccount(registerRequest1);
 
         assertEquals(2, accountRepository.count());
