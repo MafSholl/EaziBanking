@@ -1,4 +1,4 @@
-package com.nibss.eazibank.dto.response;
+package com.nibss.eazibank.dto.request;
 
 import lombok.*;
 

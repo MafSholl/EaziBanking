@@ -1,6 +1,7 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.dto.request.AccountBalanceRequest;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;

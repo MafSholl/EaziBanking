@@ -1,50 +1,49 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.AccountType;
 import com.nibss.eazibank.data.repositories.AccountRepository;
+import com.nibss.eazibank.dto.request.AccountBalanceRequest;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.AccountDoesNotExistException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+
+import static com.nibss.eazibank.data.models.enums.AccountType.*;
 
 @Service
 public class AccountServicesImpl implements AccountServices {
-
     @Autowired
     private AccountRepository accountRepository;
     private int accountNumber = 100_000_000;
+    @Autowired
+    private ModelMapper modelMapper;
     @Override
     public RegisterAccountResponse createAccount(RegisterAccountRequest request) {
-        Account account = new Account();
-        account.setFirstName(request.getFirstName());
-        account.setLastName(request.getLastName());
-        account.setPhoneNumber(request.getPhoneNumber());
-        account.setAccountNumber(accountNumberGenerator());
-        account.setBVN(NibssInterfaceImpl.bvnGenerator());
-
+//        Account account = new Account();
+        Account account = Account.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .phoneNumber(request.getPhoneNumber())
+                .accountNumber(accountNumberGenerator())
+                .bankVerificationNumber(NibssInterfaceImpl.bvnGenerator())
+                .build();
         if(request.getAccountType().equalsIgnoreCase("savings")) {
-            account.setAccountType(AccountType.SAVINGS);
+            account.setAccountType(SAVINGS);
         } else if(request.getAccountType().equalsIgnoreCase("current")) {
-            account.setAccountType(AccountType.CURRENT);
+            account.setAccountType(CURRENT);
         } else if(request.getAccountType().equalsIgnoreCase("Domiciliary")) {
-            account.setAccountType(AccountType.DOMICILIARY);
+            account.setAccountType(DOMICILIARY);
         }
 
         Account createdAccount = accountRepository.save(account);
 
-        RegisterAccountResponse response = new RegisterAccountResponse();
-        response.setFirstName(createdAccount.getFirstName());
-        response.setLastName(createdAccount.getLastName());
-        response.setAccountNumber(createdAccount.getAccountNumber());
-        response.setBankVerificationNumber(createdAccount.getBVN());
-        response.setDateCreated(DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a").format(createdAccount.getAccountCreationDate()));
+        RegisterAccountResponse response = modelMapper.map(createdAccount, RegisterAccountResponse.class);
         return response;
     }
 
@@ -82,7 +81,7 @@ public class AccountServicesImpl implements AccountServices {
             creditResponse.setBalance(creditedAccount.getBalance());
             creditResponse.setFirstName(creditedAccount.getFirstName());
             creditResponse.setLastName(creditedAccount.getLastName());
-            creditResponse.setBankVerificationNumber(creditedAccount.getBVN());
+            creditResponse.setBankVerificationNumber(creditedAccount.getBankVerificationNumber());
         }
         return creditResponse;
     }

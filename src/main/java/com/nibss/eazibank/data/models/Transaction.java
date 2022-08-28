@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 //@RequiredArgsConstructor
+
 //@AllArgsConstructor
 public class Transaction {
         private BigInteger amount;

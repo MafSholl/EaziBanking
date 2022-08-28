@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,7 @@ public class Customer {
     @NonNull @Indexed(unique = true)
     private String phoneNumber;
     @Indexed(unique=true)
+    @Email
     private String email;
     private LocalDateTime DOB;
     private String mothersMaidenName;

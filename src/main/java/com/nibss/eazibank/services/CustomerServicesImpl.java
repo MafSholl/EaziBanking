@@ -13,9 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -28,6 +26,7 @@ public class CustomerServicesImpl implements CustomerServices{
 
     @Override
     public CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) {
+        validateCustomerExistence(createCustomerRequest);
         Customer customer = new Customer();
         customer.setFirstName(createCustomerRequest.getFirstName());
         customer.setLastName(createCustomerRequest.getLastName());
@@ -63,6 +62,22 @@ public class CustomerServicesImpl implements CustomerServices{
         return response;
     }
 
+    private void validateCustomerExistence(CreateCustomerRequest createCustomerRequest) {
+        Optional<Customer> optionalCustomer = customerRepository.findByMothersMaidenName(createCustomerRequest.getMothersMaidenName());
+        if(optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            if(customer.getMothersMaidenName().equals(createCustomerRequest.getMothersMaidenName())) {
+                Map<String, Account> accounts = customer.getCustomerAccounts();
+                List<Account> accountList = new ArrayList<>(accounts.values());
+                for(Account account : accountList) {
+                    if(account.getAccountType().toString().equals(createCustomerRequest.getAccountType())) {
+                        throw new CustomerAlreadyExistException("Customer already exist!");
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public CustomerDepositResponse deposit(CustomerDepositRequest depositRequest) {
         Optional<Account> repoAccount = accountServices.findAccount(depositRequest.getAccountNumber());
@@ -71,7 +86,7 @@ public class CustomerServicesImpl implements CustomerServices{
         Optional<Account> optionalCreditedAccount = accountServices.findAccount(creditResponse.getAccountNumber());
         Account creditedAccount = optionalCreditedAccount.get();
 
-        Optional<Customer> customerInRepository = customerRepository.findCustomerByBVN(creditedAccount.getBVN());
+        Optional<Customer> customerInRepository = customerRepository.findCustomerByBVN(creditedAccount.getBankVerificationNumber());
         Customer customer = customerInRepository.get();
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
         Account accountToBeUpdated = customersAccounts.get(creditedAccount.getAccountNumber());
@@ -98,7 +113,7 @@ public class CustomerServicesImpl implements CustomerServices{
         DebitAccountResponse debitResponse = accountServices.debitAccount(new DebitAccountRequest(
                 withdrawalRequest.getAccountNumber(), withdrawalRequest.getAmount()));
 
-        Optional<Customer> optionalCustomer = customerRepository.findCustomerByBVN(repoAccount.get().getBVN());
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByBVN(repoAccount.get().getBankVerificationNumber());
         Customer customer = optionalCustomer.get();
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
         Account account = accountServices.findAccount(withdrawalRequest.getAccountNumber()).get();
@@ -124,10 +139,9 @@ public class CustomerServicesImpl implements CustomerServices{
         catch (AccountDoesNotExistException e) {
             throw new InvalidRecipientException("Invalid recipient number");
         }
-        Account receiversAccount = optionalReceiversAccount.get();
+        optionalReceiversAccount.get();
         Account sendersAccount = optionalSendersAccount.get();
 
-        System.out.println(sendersAccount.getBalance().compareTo(transferRequest.getAmount()));
         if(sendersAccount.getBalance().subtract(transferRequest.getAmount()).compareTo(BigInteger.valueOf(23)) <= 0) throw new InsufficientBalanceException("Insufficient balance");
         CustomerWithdrawalResponse sendersAccountWithdrawalResponse = withdraw(new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
         if (!sendersAccountWithdrawalResponse.isSuccessful()) throw new EaziBankExceptions("An error occured! Please try again");

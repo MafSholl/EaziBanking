@@ -1,7 +1,7 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.AccountType;
+import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.models.Customer;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
@@ -14,6 +14,7 @@ import com.nibss.eazibank.dto.response.CustomerDepositResponse;
 import com.nibss.eazibank.dto.response.CustomerTransferResponse;
 import com.nibss.eazibank.dto.response.CustomerWithdrawalResponse;
 import com.nibss.eazibank.exception.AccountDoesNotExistException;
+import com.nibss.eazibank.exception.CustomerAlreadyExistException;
 import com.nibss.eazibank.exception.InsufficientBalanceException;
 import com.nibss.eazibank.exception.InvalidRecipientException;
 import org.junit.jupiter.api.Test;
@@ -56,6 +57,7 @@ class CustomerServicesImplTest {
         assertEquals(accountRepoAccount.getAccountNumber(), createdCustomer.getAccountNumber());
         //checking is what enters is what comes of
         assertEquals(createdCustomer.getAccountNumber(), customerRepoAccount.getAccountNumber());
+        assertEquals(accountRepoAccount.getAccountCreationDate(), customerRepoAccount.getAccountCreationDate());
     }
 
     @Test
@@ -73,6 +75,17 @@ class CustomerServicesImplTest {
 
         assertEquals(accountRepoAccount.getAccountNumber(), customerRepoAccount.getAccountNumber());
         assertEquals(AccountType.SAVINGS, customerRepoAccount.getAccountType());
+    }
+
+    @Test
+    public void testThatDuplicateAccount_ofSameAccountTypeCannotBeOpened() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "", "Abigail", "2000-01-20 00:00", "SAVINGS");
+        customerServices.createCustomer(createCustomerRequest);
+
+        CreateCustomerRequest createCustomerRequest1 = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "", "Abigail", "2000-01-20 00:00", "SAVINGS");
+        assertThrows(CustomerAlreadyExistException.class, ()->customerServices.createCustomer(createCustomerRequest1));
     }
 
     @Test

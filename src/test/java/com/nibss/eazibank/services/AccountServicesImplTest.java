@@ -2,6 +2,7 @@ package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
 import com.nibss.eazibank.data.repositories.AccountRepository;
+import com.nibss.eazibank.dto.request.AccountBalanceRequest;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;
@@ -26,14 +27,25 @@ class AccountServicesImplTest {
     public void accountCanBeCreatedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
                                     "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
-        request.setFirstName("Adeola");
-        request.setLastName("Ololade");
-        request.setPhoneNumber("08101234568");
-        request.setDOB("01-01-1991");
-        request.setMothersMaidenName("Ayoola");
 
         accountServices.createAccount(request);
+        accountRepository.findByFirstName("Adeola").get();
         assertEquals(1, accountRepository.count());
+    }
+
+    @Test
+    public void accountCreatedIsSavedTest(){
+        RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
+
+        RegisterAccountResponse response = accountServices.createAccount(request);
+        Account accountCreated = accountRepository.findByFirstName("Adeola").get();
+
+        assertEquals(accountCreated.getFirstName(), response.getFirstName());
+        assertEquals(accountCreated.getLastName(), response.getLastName());
+        assertEquals(accountCreated.getAccountNumber(), response.getAccountNumber());
+        assertEquals(accountCreated.getBankVerificationNumber(), response.getBankVerificationNumber());
+//        assertEquals(accountCreated.getDateCreation(), response.getAccountCreationDate());
     }
 
     @Test
@@ -47,8 +59,7 @@ class AccountServicesImplTest {
         RegisterAccountRequest request1 = new RegisterAccountRequest("Kadijhat", "Osuolale",
                                         "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse account2 = accountServices.createAccount(request1);
-        assertEquals(2, accountRepository.count());
-        assertEquals(account2.getAccountNumber(), accountRepository.findByAccountNumber(account2.getAccountNumber()).get().getAccountNumber());
+        assertEquals(account2.getAccountNumber(), accountRepository.findByAccountNumber(account2.getAccountNumber()).get().getAccountNumber());;
     }
 
     @Test
@@ -60,7 +71,9 @@ class AccountServicesImplTest {
         CreditAccountRequest creditRequest = new CreditAccountRequest(createdAccount.getAccountNumber(), BigInteger.valueOf(1000));
         CreditAccountResponse creditResponse = accountServices.creditAccount(creditRequest);
 
-        assertEquals(1, accountRepository.count());
+        Account creditedAccount = accountRepository.findByFirstName("Adeola").get();
+
+        assertEquals(new BigInteger("1000"), creditedAccount.getBalance());
         assertEquals(new BigInteger("1000"), creditResponse.getBalance());
     }
 
@@ -76,7 +89,9 @@ class AccountServicesImplTest {
         DebitAccountRequest debitRequest = new DebitAccountRequest(createdAccount.getAccountNumber(), BigInteger.valueOf(500));
         DebitAccountResponse debitResponse = accountServices.debitAccount(debitRequest);
 
-        assertEquals(1, accountRepository.count());
+        Account debitedAccount = accountRepository.findByFirstName("Adeola").get();
+
+        assertEquals(new BigInteger("500"), debitedAccount.getBalance());
         assertEquals(new BigInteger("500"), debitResponse.getDebitedAmount());
         assertEquals(new BigInteger("500"), debitResponse.getBalance());
     }
@@ -93,7 +108,6 @@ class AccountServicesImplTest {
         AccountBalanceRequest checkBalanceRequest = new AccountBalanceRequest(createdAccount.getAccountNumber());
         AccountBalanceResponse checkBalanceResponse = accountServices.getBalance(checkBalanceRequest);
 
-        assertEquals(1, accountRepository.count());
         assertEquals(new BigInteger("1000"), checkBalanceResponse.getBalance());
     }
 

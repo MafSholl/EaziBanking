@@ -1,18 +1,20 @@
 package com.nibss.eazibank.dto.response;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigInteger;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RegisterAccountResponse {
 
+    private String success;
     private String firstName;
     private String lastName;
     private String accountNumber;
     private BigInteger balance;
-    private String dateCreated;
+    private String accountCreationDate;
     private String bankVerificationNumber;
 }
