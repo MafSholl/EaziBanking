@@ -15,4 +15,5 @@ public class CreateCustomerResponse {
     @NonNull private String accountNumber;
     @NonNull private String accountType;
     @NonNull private BigInteger balance;
+    @NonNull private String BVN;
 }

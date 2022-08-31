@@ -14,8 +14,9 @@ public interface CustomerRepository extends MongoRepository<Customer, String>{
 //    Optional<Customer> findByCustomerAccounts(Map<String, Account> customerAccounts);
     Optional<Customer> findCustomerByBVN(String bvn);
 
-    Optional<Customer> findCustomerByCustomerAccountsContaining(String accountNumber);
-
     Optional<Customer> findByMothersMaidenName(String mothersMaidenName);
 
+    Optional<Customer> findCustomerByEmail(String email);
+
+    Optional<Customer> findCustomerByPhoneNumber(String phoneNumber);
 }

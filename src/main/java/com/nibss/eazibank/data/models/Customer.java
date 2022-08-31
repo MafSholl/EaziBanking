@@ -28,10 +28,13 @@ public class Customer {
     @Indexed(unique=true)
     @Email
     private String email;
+    private LocalDateTime dateJoined = LocalDateTime.now();
     private LocalDateTime DOB;
     private String mothersMaidenName;
     private Map<String, Account> customerAccounts;
     private List<Transaction> transactionHistory;
+    private String password;
+    private String confirmPassword;
 }
 
 

@@ -6,6 +6,7 @@ import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.dto.request.*;
 import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.*;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,9 @@ public class CustomerServicesImpl implements CustomerServices{
     private AccountServices accountServices = new AccountServicesImpl();
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) {
@@ -59,6 +63,7 @@ public class CustomerServicesImpl implements CustomerServices{
         response.setFirstName(createdCustomer.getFirstName());
         response.setLastName(createdCustomer.getLastName());
         response.setAccountNumber(createdCustomer.getCustomerAccounts().get(account.getAccountNumber()).getAccountNumber());
+        response.setBVN(createdCustomer.getBVN());
         return response;
     }
 
@@ -92,8 +97,6 @@ public class CustomerServicesImpl implements CustomerServices{
         Account accountToBeUpdated = customersAccounts.get(creditedAccount.getAccountNumber());
         customer.getCustomerAccounts().replace(accountToBeUpdated.getAccountNumber(), creditedAccount);
         Customer creditedCustomer = customerRepository.save(customer);
-
-//        Optional<Customer> customerRepo = customerRepository.findByCustomerAccounts();
 
         CustomerDepositResponse depositResponse = new CustomerDepositResponse();
         depositResponse.setFirstName(creditedCustomer.getFirstName());
@@ -157,4 +160,57 @@ public class CustomerServicesImpl implements CustomerServices{
         transferResponse.setMessage(String.format("Transfer of %d to %s is successful", transferResponse.getAmount(), transferResponse.getAccountNumber()));
         return transferResponse;
     }
+
+    @Override
+    public CreatePasswordResponse setCustomerPassword(CreatePasswordRequest createPasswordRequest) {
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(createPasswordRequest.getEmail());
+        Customer customer = optionalCustomer.get();
+        customer.setPassword(createPasswordRequest.getPassword());
+        customer.setConfirmPassword(createPasswordRequest.getConfirmPassword());
+        Customer savedCustomer = customerRepository.save(customer);
+
+        return CreatePasswordResponse.builder()
+                .firstName(savedCustomer.getFirstName())
+                .lastName(savedCustomer.getLastName())
+                .success(true)
+                .build();
+    }
+
+    @Override
+    public CustomerLoginResponse login(CustomerLoginRequest customerLoginRequest) {
+        Optional<Customer> optionalCustomer = Optional.empty();
+        if(customerLoginRequest.getPhoneNumber().equals("")) {
+            optionalCustomer = customerRepository.findCustomerByEmail(customerLoginRequest.getEmail());
+        }else if(customerLoginRequest.getEmail().equals("")){
+            optionalCustomer = customerRepository.findCustomerByPhoneNumber(customerLoginRequest.getPhoneNumber());
+        }
+        if (optionalCustomer.isEmpty()) throw new InvalidLoginDetailException("Invalid login details");
+        Customer customer = optionalCustomer.get();
+        if (!customer.getPassword().equals(customerLoginRequest.getPassword()))
+            throw new InvalidLoginDetailException("Invalid login details");
+        return CustomerLoginResponse.builder()
+                .firstName(customer.getFirstName())
+                .lastName(customer.getLastName())
+                .BVN(customer.getBVN())
+                .customerAccounts(customer.getCustomerAccounts())
+                .success(true)
+                .build();
+    }
+
+
+    @Override
+    public ViewProfileResponse viewCustomerProfile(ViewProfileRequest viewProfileRequest) {
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(viewProfileRequest.getEmail());
+        if(optionalCustomer.isEmpty()) throw new InvalidLoginDetailException("Customer does not exist exception");
+        Customer customer = optionalCustomer.get();
+        Map<String, Account> accounts = customer.getCustomerAccounts();
+        return ViewProfileResponse.builder()
+                .BVN(customer.getBVN())
+                .firstName(customer.getFirstName())
+                .lastName(customer.getLastName())
+                .phoneNumber(customer.getPhoneNumber())
+                .email(customer.getEmail())
+                .DOB(customer.getDOB())
+                .build();
+        }
 }

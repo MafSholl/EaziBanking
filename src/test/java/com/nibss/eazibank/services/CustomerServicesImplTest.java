@@ -5,18 +5,9 @@ import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.models.Customer;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
-import com.nibss.eazibank.dto.request.CreateCustomerRequest;
-import com.nibss.eazibank.dto.request.CustomerDepositRequest;
-import com.nibss.eazibank.dto.request.CustomerTransferRequest;
-import com.nibss.eazibank.dto.request.CustomerWithdrawalRequest;
-import com.nibss.eazibank.dto.response.CreateCustomerResponse;
-import com.nibss.eazibank.dto.response.CustomerDepositResponse;
-import com.nibss.eazibank.dto.response.CustomerTransferResponse;
-import com.nibss.eazibank.dto.response.CustomerWithdrawalResponse;
-import com.nibss.eazibank.exception.AccountDoesNotExistException;
-import com.nibss.eazibank.exception.CustomerAlreadyExistException;
-import com.nibss.eazibank.exception.InsufficientBalanceException;
-import com.nibss.eazibank.exception.InvalidRecipientException;
+import com.nibss.eazibank.dto.request.*;
+import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.exception.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -295,6 +286,140 @@ class CustomerServicesImplTest {
         CustomerTransferResponse transferResponse = customerServices.transfer(transferRequest1);
         assertTrue(transferResponse.isSuccessful());
     }
+    @Test
+    public void customerCanSetUpLoginPasswordTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        CreatePasswordResponse createPasswordResponse = customerServices.setCustomerPassword(createPasswordRequest);
+        assertTrue(createPasswordResponse.isSuccess());
+    }
+
+    @Test
+    public void customerCanLoginWithEmailIntoAccountTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginrequest = CustomerLoginRequest.builder()
+                .email("email@yahoo.com")
+                .phoneNumber("")
+                .password("password")
+                .build();
+        CustomerLoginResponse customerLoginResponse = customerServices.login(customerLoginrequest);
+        assertTrue(customerLoginResponse.isSuccess());
+    }
+
+    @Test
+    public void customerCanLoginWithPhoneNumberIntoAccountTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginrequest = CustomerLoginRequest.builder()
+                .phoneNumber("07048847840")
+                .email("")
+                .password("password")
+                .build();
+        CustomerLoginResponse customerLoginResponse = customerServices.login(customerLoginrequest);
+        assertTrue(customerLoginResponse.isSuccess());
+    }
+
+    @Test
+    public void customerLoginWithWrongEmail_ThrowsExceptionTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginrequest = CustomerLoginRequest.builder()
+                .email("el@yahoo.com")
+                .phoneNumber("")
+                .password("password")
+                .build();
+        assertThrows(InvalidLoginDetailException.class, ()->customerServices.login(customerLoginrequest));
+    }
+
+    @Test
+    public void customerLoginWithWrongPhoneNumber_ThrowsExceptionTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginrequest = CustomerLoginRequest.builder()
+                .email("")
+                .phoneNumber("0093")
+                .password("password")
+                .build();
+        assertThrows(InvalidLoginDetailException.class, ()->customerServices.login(customerLoginrequest));
+    }
+
+    @Test
+    public void customerLoginWithWrongPassword_ThrowsExceptionTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginrequest = CustomerLoginRequest.builder()
+                .email("email@yahoo.com")
+                .phoneNumber("")
+                .password("pass")
+                .build();
+        assertThrows(InvalidLoginDetailException.class, ()->customerServices.login(customerLoginrequest));
+    }
+
+
+    //customerCanLogoutTest
+
+    @Test
+    public void customerCanViewTheirProfileTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        CreateCustomerResponse createCustomerResponse = customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginRequest = CustomerLoginRequest.builder()
+                .phoneNumber("07048847840")
+                .email("")
+                .password("password")
+                .build();
+        customerServices.login(customerLoginRequest);
+
+        ViewProfileRequest viewProfileRequest = new ViewProfileRequest("email@yahoo.com", "password");
+        ViewProfileResponse viewProfileResponse = customerServices.viewCustomerProfile(viewProfileRequest);
+        assertEquals("Ayobaye", viewProfileResponse.getFirstName());
+        assertEquals("Ogundele", viewProfileResponse.getLastName());
+        assertEquals("07048847840", viewProfileResponse.getPhoneNumber());
+        assertEquals(createCustomerResponse.getBVN(), viewProfileResponse.getBVN());
+    }
+
+    //customerCanViewTransactionHistoryTest
+    //customerCanEditProfileTest
+
 
     //Test that successful withdrawal but unsuccessful deposit into recipients account  is reversed. **Advanced functionalities?
 //    @Test

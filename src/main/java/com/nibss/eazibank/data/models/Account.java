@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-//@RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
 @Document("Account")

@@ -36,7 +36,7 @@ class CustomerRepositoryTest {
 //        Customer customer2 = new Customer("toyin", "deleola", "9998876532");
 //        customerRepository.save(customer1);
 //        customerRepository.save(customer2);
-//        Query query = new Query().addCriteria(Criteria.where("name").is("John"));
+//        AtmQuery query = new AtmQuery().addCriteria(Criteria.where("name").is("John"));
 //        List<Customer> customers = mongoTemplate.find(query, Customer.class);
 //        assertEquals(String.valueOf(customers.size()), String.valueOf(customerRepository.count()));
 //    }

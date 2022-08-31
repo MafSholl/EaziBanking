@@ -1,5 +1,7 @@
 package com.nibss.eazibank.data.models;
 
+import com.nibss.eazibank.data.models.enums.Location.Location;
+
 import java.util.List;
 
 public class AtmMachine {

@@ -27,8 +27,4 @@ public enum Department {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        System.out.println(getSubDepartment("Customer_service"));
-    }
 }
