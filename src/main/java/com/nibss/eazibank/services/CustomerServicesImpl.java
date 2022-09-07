@@ -2,7 +2,10 @@ package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
 import com.nibss.eazibank.data.models.Customer;
+import com.nibss.eazibank.data.models.Transaction;
+import com.nibss.eazibank.data.models.enums.TransactionType;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
+import com.nibss.eazibank.data.repositories.TransactionRepository;
 import com.nibss.eazibank.dto.request.*;
 import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.*;
@@ -24,6 +27,9 @@ public class CustomerServicesImpl implements CustomerServices{
     private AccountServices accountServices = new AccountServicesImpl();
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -71,13 +77,11 @@ public class CustomerServicesImpl implements CustomerServices{
         Optional<Customer> optionalCustomer = customerRepository.findByMothersMaidenName(createCustomerRequest.getMothersMaidenName());
         if(optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            if(customer.getMothersMaidenName().equals(createCustomerRequest.getMothersMaidenName())) {
-                Map<String, Account> accounts = customer.getCustomerAccounts();
-                List<Account> accountList = new ArrayList<>(accounts.values());
-                for(Account account : accountList) {
-                    if(account.getAccountType().toString().equals(createCustomerRequest.getAccountType())) {
-                        throw new CustomerAlreadyExistException("Customer already exist!");
-                    }
+            Map<String, Account> accounts = customer.getCustomerAccounts();
+            List<Account> accountList = new ArrayList<>(accounts.values());
+            for(Account account : accountList) {
+                if(account.getAccountType().toString().equals(createCustomerRequest.getAccountType())) {
+                    throw new CustomerAlreadyExistException("Customer already exist!");
                 }
             }
         }
@@ -90,17 +94,30 @@ public class CustomerServicesImpl implements CustomerServices{
         CreditAccountResponse creditResponse = accountServices.creditAccount(new CreditAccountRequest(depositRequest.getAccountNumber(), depositRequest.getAmount()));
         Optional<Account> optionalCreditedAccount = accountServices.findAccount(creditResponse.getAccountNumber());
         Account creditedAccount = optionalCreditedAccount.get();
+        Transaction transaction = new Transaction();
+        transaction.setAmount(depositRequest.getAmount());
+        transaction.setDescription(depositRequest.getNarration());
+        transaction.setTransactionType(TransactionType.DEPOSIT);
+        transaction.setBeneficiaryAccountNumber(depositRequest.getAccountNumber());
+        transaction.setBeneficiaryName("Self");
+        transaction.setTransactionId("001");
+//        transactionRepository.save(transaction);
+
+
 
         Optional<Customer> customerInRepository = customerRepository.findCustomerByBVN(creditedAccount.getBankVerificationNumber());
         Customer customer = customerInRepository.get();
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
         Account accountToBeUpdated = customersAccounts.get(creditedAccount.getAccountNumber());
         customer.getCustomerAccounts().replace(accountToBeUpdated.getAccountNumber(), creditedAccount);
+
+        List<Transaction> transactionHistory = customer.getTransactionHistory();
+        transactionHistory.add(transaction);
+
+        customer.setTransactionHistory(transactionHistory);
         Customer creditedCustomer = customerRepository.save(customer);
 
-        CustomerDepositResponse depositResponse = new CustomerDepositResponse();
-        depositResponse.setFirstName(creditedCustomer.getFirstName());
-        depositResponse.setLastName(creditedCustomer.getLastName());
+        CustomerDepositResponse depositResponse = modelMapper.map(creditedCustomer, CustomerDepositResponse.class);
         depositResponse.setAmount(depositRequest.getAmount());
         depositResponse.setSuccessful(true);
         return depositResponse;
@@ -123,9 +140,7 @@ public class CustomerServicesImpl implements CustomerServices{
         customersAccounts.replace(withdrawalRequest.getAccountNumber(), account);
         Customer debitedCustomer = customerRepository.save(customer);
 
-        CustomerWithdrawalResponse withdrawalResponse = new CustomerWithdrawalResponse();
-        withdrawalResponse.setFirstName(debitedCustomer.getFirstName());
-        withdrawalResponse.setLastName(debitedCustomer.getLastName());
+        CustomerWithdrawalResponse withdrawalResponse = modelMapper.map(debitedCustomer, CustomerWithdrawalResponse.class);
         withdrawalResponse.setAmount(withdrawalRequest.getAmount());
         withdrawalResponse.setSuccessful(true);
         return withdrawalResponse;
@@ -203,7 +218,6 @@ public class CustomerServicesImpl implements CustomerServices{
         Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(viewProfileRequest.getEmail());
         if(optionalCustomer.isEmpty()) throw new InvalidLoginDetailException("Customer does not exist exception");
         Customer customer = optionalCustomer.get();
-        Map<String, Account> accounts = customer.getCustomerAccounts();
         return ViewProfileResponse.builder()
                 .BVN(customer.getBVN())
                 .firstName(customer.getFirstName())
@@ -213,4 +227,10 @@ public class CustomerServicesImpl implements CustomerServices{
                 .DOB(customer.getDOB())
                 .build();
         }
+
+    @Override
+    public ViewTransactionHistoryResponse viewTransactionHistory(ViewTransactionHistoryRequest viewTransactionHistoryRequest) {
+        customerRepository.findCustomerByEmail(viewTransactionHistoryRequest.getEmail());
+        return null;
+    }
 }

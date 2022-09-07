@@ -1,6 +1,7 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.data.models.Transaction;
 import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.models.Customer;
 import com.nibss.eazibank.data.repositories.AccountRepository;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigInteger;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -418,6 +420,38 @@ class CustomerServicesImplTest {
     }
 
     //customerCanViewTransactionHistoryTest
+    @Test
+    public void customerCanViewTheirTransactionHistoryTest() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "email@yahoo.com", "",
+                "2000-01-20 00:00", "SAVINGS");
+        CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
+
+        CreatePasswordRequest createPasswordRequest = new CreatePasswordRequest("password", "password", "email@yahoo.com");
+        customerServices.setCustomerPassword(createPasswordRequest);
+
+        CustomerLoginRequest customerLoginRequest = CustomerLoginRequest.builder()
+                .phoneNumber("07048847840")
+                .email("")
+                .password("password")
+                .build();
+        customerServices.login(customerLoginRequest);
+
+        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
+        customerServices.deposit(depositRequest);
+        CustomerWithdrawalRequest withdrawalRequest = new CustomerWithdrawalRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(150));
+        customerServices.withdraw(withdrawalRequest);
+
+        CustomerTransferRequest transferRequest = new CustomerTransferRequest(createdCustomer.getAccountNumber(), createdCustomer.getAccountNumber(), BigInteger.valueOf(50));
+        customerServices.withdraw(withdrawalRequest);
+
+        ViewTransactionHistoryRequest viewTransactionHistoryRequest = new ViewTransactionHistoryRequest("email@yahoo.com", "password");
+        ViewTransactionHistoryResponse viewTransactionHistoryResponse = customerServices.viewTransactionHistory(viewTransactionHistoryRequest);
+        List<Transaction> transactionList = viewTransactionHistoryResponse.getTransactionList();
+        System.out.println(transactionList);
+        assertNotNull(transactionList);
+
+    }
     //customerCanEditProfileTest
 
 
