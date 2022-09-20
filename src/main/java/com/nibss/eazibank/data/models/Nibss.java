@@ -1,9 +1,14 @@
 package com.nibss.eazibank.data.models;
 
-import java.util.List;
+import com.nibss.eazibank.data.repositories.BankRepository;
+import lombok.Data;
 
+import java.util.List;
+@Data
 public class Nibss {
 
-    private List<Bank> banks;
+    private BankRepository bankRepository;
+//    private BvnRepository bvnRepository;
+//    private
 
 }

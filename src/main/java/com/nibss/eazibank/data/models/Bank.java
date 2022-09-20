@@ -1,11 +1,14 @@
 package com.nibss.eazibank.data.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,14 +17,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Component
 @Document("Bank")
 public class Bank {
-    private String identityNumber;
+    @Id
+    @Indexed(unique = true)
+    private int id;
     private String name;
-    private String balance;
-//    private List<BoardOfDirectors> boardOfDirectors;
-//    private List<Shareholder> shareholders;
+    private BigDecimal balance;
+    private List<Director> boardOfDirectors;
+    private List<Shareholder> shareholders;
     private List<Staff> staffs = new ArrayList<>();
-    private HashMap<String, Customer> customers;
+    @DBRef
+    private HashMap<String, Customer> customers = new HashMap<>();
     private HashMap<String, AtmMachine> atmMachines;
+
+
 }

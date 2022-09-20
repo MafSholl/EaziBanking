@@ -20,7 +20,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
-@Transactional
 public class CustomerServicesImpl implements CustomerServices{
 
     @Autowired
@@ -34,22 +33,16 @@ public class CustomerServicesImpl implements CustomerServices{
     @Autowired
     private ModelMapper modelMapper;
 
+
+
     @Override
     public CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) {
         validateCustomerExistence(createCustomerRequest);
-        Customer customer = new Customer();
-        customer.setFirstName(createCustomerRequest.getFirstName());
-        customer.setLastName(createCustomerRequest.getLastName());
-        customer.setEmail(createCustomerRequest.getEmail());
-        customer.setMothersMaidenName(createCustomerRequest.getMothersMaidenName());
-        customer.setPhoneNumber(createCustomerRequest.getPhoneNumber());
+        Customer customer = modelMapper.map(createCustomerRequest, Customer.class);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         customer.setDOB(LocalDateTime.parse(createCustomerRequest.getDOB(), formatter));
 
-        RegisterAccountRequest request = new RegisterAccountRequest();
-        request.setFirstName(customer.getFirstName());
-        request.setLastName(customer.getLastName());
-        request.setPhoneNumber(customer.getPhoneNumber());
+        RegisterAccountRequest request = modelMapper.map(customer, RegisterAccountRequest.class);
         request.setAccountType(createCustomerRequest.getAccountType());
 
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
@@ -65,11 +58,9 @@ public class CustomerServicesImpl implements CustomerServices{
         customer.setCustomerAccounts(customerAccounts);
         Customer createdCustomer = customerRepository.save(customer);
 
-        CreateCustomerResponse response = new CreateCustomerResponse();
-        response.setFirstName(createdCustomer.getFirstName());
-        response.setLastName(createdCustomer.getLastName());
-        response.setAccountNumber(createdCustomer.getCustomerAccounts().get(account.getAccountNumber()).getAccountNumber());
-        response.setBVN(createdCustomer.getBVN());
+        CreateCustomerResponse response = modelMapper.map(createdCustomer, CreateCustomerResponse.class);
+        Account customerCreatedAccount = createdCustomer.getCustomerAccounts().get(account.getAccountNumber());
+        response.setAccountNumber(customerCreatedAccount.getAccountNumber());
         return response;
     }
 
@@ -94,27 +85,25 @@ public class CustomerServicesImpl implements CustomerServices{
         CreditAccountResponse creditResponse = accountServices.creditAccount(new CreditAccountRequest(depositRequest.getAccountNumber(), depositRequest.getAmount()));
         Optional<Account> optionalCreditedAccount = accountServices.findAccount(creditResponse.getAccountNumber());
         Account creditedAccount = optionalCreditedAccount.get();
-        Transaction transaction = new Transaction();
-        transaction.setAmount(depositRequest.getAmount());
-        transaction.setDescription(depositRequest.getNarration());
-        transaction.setTransactionType(TransactionType.DEPOSIT);
-        transaction.setBeneficiaryAccountNumber(depositRequest.getAccountNumber());
-        transaction.setBeneficiaryName("Self");
-        transaction.setTransactionId("001");
-//        transactionRepository.save(transaction);
-
-
+        Transaction transaction = Transaction.builder()
+                .accountNumber(depositRequest.getAccountNumber())
+                .amount(depositRequest.getAmount())
+                .description(depositRequest.getNarration())
+                .transactionType(TransactionType.DEPOSIT)
+                .recipientAccountNumber(depositRequest.getAccountNumber())
+                .recipientName("Self")
+                .transactionId("001")
+                .build();
+        transactionRepository.save(transaction);
 
         Optional<Customer> customerInRepository = customerRepository.findCustomerByBVN(creditedAccount.getBankVerificationNumber());
         Customer customer = customerInRepository.get();
+        List<Transaction> transactionHistory = customer.getTransactionHistory();
+        transactionHistory.add(transaction);
+        customer.setTransactionHistory(transactionHistory);
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
         Account accountToBeUpdated = customersAccounts.get(creditedAccount.getAccountNumber());
         customer.getCustomerAccounts().replace(accountToBeUpdated.getAccountNumber(), creditedAccount);
-
-        List<Transaction> transactionHistory = customer.getTransactionHistory();
-        transactionHistory.add(transaction);
-
-        customer.setTransactionHistory(transactionHistory);
         Customer creditedCustomer = customerRepository.save(customer);
 
         CustomerDepositResponse depositResponse = modelMapper.map(creditedCustomer, CustomerDepositResponse.class);
@@ -124,6 +113,7 @@ public class CustomerServicesImpl implements CustomerServices{
     }
 
     @Override
+    @Transactional
     public CustomerWithdrawalResponse withdraw(CustomerWithdrawalRequest withdrawalRequest) {
         Optional<Account> repoAccount = accountServices.findAccount(withdrawalRequest.getAccountNumber());
         if (repoAccount.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
@@ -132,9 +122,21 @@ public class CustomerServicesImpl implements CustomerServices{
         if (withdrawalRequest.getAmount().compareTo(currentBalance) >= 1) throw new InsufficientBalanceException("Inadequate balance");
         DebitAccountResponse debitResponse = accountServices.debitAccount(new DebitAccountRequest(
                 withdrawalRequest.getAccountNumber(), withdrawalRequest.getAmount()));
+        Transaction transaction = Transaction.builder()
+                .accountNumber(withdrawalRequest.getAccountNumber())
+                .amount(withdrawalRequest.getAmount())
+                .description(withdrawalRequest.getDescription())
+                .transactionType(TransactionType.DEPOSIT)
+                .recipientAccountNumber(withdrawalRequest.getAccountNumber())
+                .recipientName("Self")
+                .transactionId("002")
+                .build();
+        //This is wrong! A transaction service layer should create and save transaction
+        transactionRepository.save(transaction);
 
         Optional<Customer> optionalCustomer = customerRepository.findCustomerByBVN(repoAccount.get().getBankVerificationNumber());
         Customer customer = optionalCustomer.get();
+
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
         Account account = accountServices.findAccount(withdrawalRequest.getAccountNumber()).get();
         customersAccounts.replace(withdrawalRequest.getAccountNumber(), account);
@@ -150,28 +152,25 @@ public class CustomerServicesImpl implements CustomerServices{
     public CustomerTransferResponse transfer(CustomerTransferRequest transferRequest) {
         Optional<Account> optionalSendersAccount = accountServices.findAccount(transferRequest.getSendersAccountNumber());
         if (optionalSendersAccount.isEmpty()) throw new AccountDoesNotExistException("Account does not exist. Check you account number");
-        Optional<Account> optionalReceiversAccount;
+        Optional<Account> optionalRecipientAccount;
         try {
-            optionalReceiversAccount = accountServices.findAccount(transferRequest.getReceiversAccountNumber());
+            optionalRecipientAccount = accountServices.findAccount(transferRequest.getReceiversAccountNumber());
         }
         catch (AccountDoesNotExistException e) {
             throw new InvalidRecipientException("Invalid recipient number");
         }
-        optionalReceiversAccount.get();
+        optionalRecipientAccount.get();
         Account sendersAccount = optionalSendersAccount.get();
 
         if(sendersAccount.getBalance().subtract(transferRequest.getAmount()).compareTo(BigInteger.valueOf(23)) <= 0) throw new InsufficientBalanceException("Insufficient balance");
-        CustomerWithdrawalResponse sendersAccountWithdrawalResponse = withdraw(new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
-        if (!sendersAccountWithdrawalResponse.isSuccessful()) throw new EaziBankExceptions("An error occured! Please try again");
+        CustomerWithdrawalResponse sendersAccountWithdrawalResponse = withdraw(
+                new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
+        if (!sendersAccountWithdrawalResponse.isSuccessful()) throw new TransactionErrorException("An error occured! Please try again");
         CustomerDepositResponse receiversAccountDepositResponse = deposit(new CustomerDepositRequest(transferRequest.getReceiversAccountNumber(), transferRequest.getAmount()));
-        if (!receiversAccountDepositResponse.isSuccessful()) throw new EaziBankExceptions("An error occured! Please try again");
+        if (!receiversAccountDepositResponse.isSuccessful()) throw new TransactionErrorException("An error occured! Please try again");
 
-        CustomerTransferResponse transferResponse = new CustomerTransferResponse();
-        transferResponse.setFirstName(receiversAccountDepositResponse.getFirstName());
-        transferResponse.setLastName(receiversAccountDepositResponse.getLastName());
-        transferResponse.setAmount(receiversAccountDepositResponse.getAmount());
+        CustomerTransferResponse transferResponse = modelMapper.map(receiversAccountDepositResponse, CustomerTransferResponse.class);
         transferResponse.setSuccessful(true);
-        transferResponse.setAccountNumber(receiversAccountDepositResponse.getAccountNumber());
         transferResponse.setMessage(String.format("Transfer of %d to %s is successful", transferResponse.getAmount(), transferResponse.getAccountNumber()));
         return transferResponse;
     }
@@ -230,7 +229,17 @@ public class CustomerServicesImpl implements CustomerServices{
 
     @Override
     public ViewTransactionHistoryResponse viewTransactionHistory(ViewTransactionHistoryRequest viewTransactionHistoryRequest) {
-        customerRepository.findCustomerByEmail(viewTransactionHistoryRequest.getEmail());
-        return null;
+        //findByBvn is the appropriate method; it can easily be gotten by the frontend
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(viewTransactionHistoryRequest.getEmail());
+        if (optionalCustomer.isEmpty()) throw new EaziBankExceptions("Customer does not exist");
+        //This first method is not advisable as transaction history can grow endlessly. This way we can manage space by saving transactions in the db instead of the customer
+        Customer customer = optionalCustomer.get();
+        List<Transaction> transactionHistory = customer.getTransactionHistory();
+
+        //This second method is the best advisable as cust. doesn't need to be composed of history but history for an account can be gotten from the db instead
+        List<Transaction> transactionHistory2 = transactionRepository.findByAccountNumber(viewTransactionHistoryRequest.getAccountNumber());
+        ViewTransactionHistoryResponse transactionHistoryResponse = new ViewTransactionHistoryResponse();
+        transactionHistoryResponse.setTransactionHistory(transactionHistory2);
+        return transactionHistoryResponse;
     }
 }

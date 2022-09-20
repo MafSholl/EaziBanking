@@ -22,6 +22,8 @@ public class AccountServicesImpl implements AccountServices {
     private AccountRepository accountRepository;
     private int accountNumber = 100_000_000;
     @Autowired
+    private NibssInterface nibssInterface;
+    @Autowired
     private ModelMapper modelMapper;
     @Override
     public RegisterAccountResponse createAccount(RegisterAccountRequest request) {
@@ -31,7 +33,7 @@ public class AccountServicesImpl implements AccountServices {
                 .lastName(request.getLastName())
                 .phoneNumber(request.getPhoneNumber())
                 .accountNumber(accountNumberGenerator())
-                .bankVerificationNumber(NibssInterfaceImpl.bvnGenerator())
+                .bankVerificationNumber(nibssInterface.bvnGenerator()) //should be changed. this should hit the Nibss route instead
                 .build();
         if(request.getAccountType().equalsIgnoreCase("savings")) {
             account.setAccountType(SAVINGS);

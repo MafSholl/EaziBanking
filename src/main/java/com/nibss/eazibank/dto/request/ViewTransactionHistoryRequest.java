@@ -11,4 +11,5 @@ public class ViewTransactionHistoryRequest {
 
     private String email;
     private String password;
+    private String accountNumber;
 }

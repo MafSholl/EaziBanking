@@ -13,4 +13,5 @@ public class CustomerWithdrawalRequest {
     private String accountNumber;
     @NonNull
     private BigInteger amount;
+    private String description;
 }

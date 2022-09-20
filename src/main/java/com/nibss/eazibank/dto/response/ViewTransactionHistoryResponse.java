@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ViewTransactionHistoryResponse {
 
-    List<Transaction> transactionList;
+    List<Transaction> transactionHistory;
 
 }

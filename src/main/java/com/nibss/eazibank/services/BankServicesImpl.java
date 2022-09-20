@@ -1,0 +1,57 @@
+package com.nibss.eazibank.services;
+
+import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.data.models.Bank;
+import com.nibss.eazibank.data.models.Customer;
+import com.nibss.eazibank.data.models.Staff;
+import com.nibss.eazibank.data.repositories.StaffRepository;
+import com.nibss.eazibank.dto.request.CreateCustomerRequest;
+import com.nibss.eazibank.dto.request.CreateStaffRequest;
+import com.nibss.eazibank.dto.response.CreateCustomerResponse;
+import com.nibss.eazibank.dto.response.CreateStaffResponse;
+import com.nibss.eazibank.exception.BankDoesNotExistException;
+import lombok.Builder;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BankServicesImpl implements BankServices{
+
+    private Bank bank;
+    @Autowired
+    private StaffRepository staffRepository;
+    @Autowired
+    private ModelMapper modelMapper;
+    @Autowired
+    private CustomerServices customerServices;
+    @Autowired
+    private NibssInterface nibssInterface;
+
+
+    @Builder
+    public BankServicesImpl(Bank bank) {
+        this.bank = bank;
+    }
+
+    @Override
+    public CreateStaffResponse createStaff(CreateStaffRequest createStaffRequest) {
+        if (this.bank == null) throw new BankDoesNotExistException("Bank does not exist");
+        Staff newStaff = modelMapper.map(createStaffRequest, Staff.class);
+        Staff savedStaff = staffRepository.save(newStaff);
+
+        return modelMapper.map(savedStaff, CreateStaffResponse.class);
+    }
+
+    @Override
+    public CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) {
+        return customerServices.createCustomer(createCustomerRequest);
+    }
+
+    @Override
+    public boolean isNibssInterfaceAvailable() {
+        return nibssInterface.isNibssAvailable();
+    }
+
+
+}

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableTransactionManagement
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
-//    @Bean
+    @Bean
     public MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
         return new MongoTransactionManager(dbFactory);
     }

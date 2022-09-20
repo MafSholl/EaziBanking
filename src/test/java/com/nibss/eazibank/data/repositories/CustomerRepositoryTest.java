@@ -19,7 +19,7 @@ class CustomerRepositoryTest {
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-//    private MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
 
 
@@ -29,15 +29,15 @@ class CustomerRepositoryTest {
         customerRepository.save(customer);
         assertEquals(1, customerRepository.count());
     }
-//    @Test
-//    @Transactional("transactionManager")
-//    public void whenPerformMongoTransaction_thenSuccess() {
-//        Customer customer1 = new Customer("lade", "fiyin", "0091929233");
-//        Customer customer2 = new Customer("toyin", "deleola", "9998876532");
-//        customerRepository.save(customer1);
-//        customerRepository.save(customer2);
-//        AtmQuery query = new AtmQuery().addCriteria(Criteria.where("name").is("John"));
-//        List<Customer> customers = mongoTemplate.find(query, Customer.class);
-//        assertEquals(String.valueOf(customers.size()), String.valueOf(customerRepository.count()));
-//    }
+    @Test
+    @Transactional
+    public void whenPerformMongoTransaction_thenSuccess() {
+        Customer customer1 = new Customer("lade", "fiyin", "0091929233");
+        Customer customer2 = new Customer("toyin", "deleola", "9998876532");
+        customerRepository.save(customer1);
+        customerRepository.save(customer2);
+        Query query = new Query().addCriteria(Criteria.where("name").is("lade"));
+        List<Customer> customers = mongoTemplate.find(query, Customer.class);
+        assertEquals(String.valueOf(customers.size()), String.valueOf(customerRepository.count()));
+    }
 }
