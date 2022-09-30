@@ -1,12 +1,12 @@
 package com.nibss.eazibank.dto.response;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import java.math.BigInteger;
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
+@Builder
 public class CreateCustomerResponse {
     @NonNull
     private String firstName;

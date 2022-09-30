@@ -1,5 +1,6 @@
 package com.nibss.eazibank.dto.request;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Null;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Data
 public class CreateStaffRequest {
     @NonNull
     private String firstName;

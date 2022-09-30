@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Component
-@Document("Bank")
+//@Document("Bank")
 public class Bank {
     @Id
     @Indexed(unique = true)
@@ -31,6 +31,4 @@ public class Bank {
     @DBRef
     private HashMap<String, Customer> customers = new HashMap<>();
     private HashMap<String, AtmMachine> atmMachines;
-
-
 }

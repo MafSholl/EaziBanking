@@ -2,7 +2,6 @@ package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Bank;
 import com.nibss.eazibank.data.models.Customer;
-import com.nibss.eazibank.data.models.Staff;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.data.repositories.StaffRepository;
@@ -104,6 +103,7 @@ class BankServicesImplTest {
 
     @Test
     public void bankCanCallNibssInterfaceTest() {
+
         assertTrue(bankServices.isNibssInterfaceAvailable());
     }
 

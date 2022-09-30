@@ -5,19 +5,18 @@ import com.nibss.eazibank.data.models.enums.Location.Location;
 import com.nibss.eazibank.data.models.enums.OfficePosition;
 import com.nibss.eazibank.data.models.enums.SalaryLevel;
 import com.nibss.eazibank.data.models.enums.SubDepartment;
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Staff {
-    @Id
-    @Indexed(unique = true)
-    @Generated
+@Data
+public class StaffDto {
+
     private String staffId;
     private String firstName;
     private String lastName;

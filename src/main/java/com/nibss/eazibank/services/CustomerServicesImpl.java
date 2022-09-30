@@ -96,7 +96,7 @@ public class CustomerServicesImpl implements CustomerServices{
                 .build();
         transactionRepository.save(transaction);
 
-        Optional<Customer> customerInRepository = customerRepository.findCustomerByBVN(creditedAccount.getBankVerificationNumber());
+        Optional<Customer> customerInRepository = customerRepository.findCustomerByCustomerAccount(creditedAccount.getAccountNumber());
         Customer customer = customerInRepository.get();
         List<Transaction> transactionHistory = customer.getTransactionHistory();
         transactionHistory.add(transaction);
@@ -162,7 +162,7 @@ public class CustomerServicesImpl implements CustomerServices{
         optionalRecipientAccount.get();
         Account sendersAccount = optionalSendersAccount.get();
 
-        if(sendersAccount.getBalance().subtract(transferRequest.getAmount()).compareTo(BigInteger.valueOf(23)) <= 0) throw new InsufficientBalanceException("Insufficient balance");
+        if(isBalanceEnough(transferRequest, sendersAccount)) throw new InsufficientBalanceException("Insufficient balance");
         CustomerWithdrawalResponse sendersAccountWithdrawalResponse = withdraw(
                 new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
         if (!sendersAccountWithdrawalResponse.isSuccessful()) throw new TransactionErrorException("An error occured! Please try again");
@@ -173,6 +173,10 @@ public class CustomerServicesImpl implements CustomerServices{
         transferResponse.setSuccessful(true);
         transferResponse.setMessage(String.format("Transfer of %d to %s is successful", transferResponse.getAmount(), transferResponse.getAccountNumber()));
         return transferResponse;
+    }
+
+    private boolean isBalanceEnough(CustomerTransferRequest transferRequest, Account sendersAccount) {
+        return sendersAccount.getBalance().subtract(transferRequest.getAmount()).compareTo(BigInteger.valueOf(23)) <= 0;
     }
 
     @Override

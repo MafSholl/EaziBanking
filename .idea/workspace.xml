@@ -4,28 +4,212 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="" />
+    <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Director.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Shareholder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/enums/DirectorRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/StaffRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CreateStaffRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/response/CreateStaffResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/exception/BankDoesNotExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/exception/TransactionErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/BankServicesImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/BankServicesImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/BankVerificationNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/BankVerificationNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Nibss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Nibss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/BankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/BankRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CustomerWithdrawalRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CustomerWithdrawalRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/ViewTransactionHistoryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/ViewTransactionHistoryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/response/CreateCustomerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/response/CreateCustomerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/response/ViewTransactionHistoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/response/ViewTransactionHistoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/AccountServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/AccountServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/BankServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/BankServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/CustomerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/CustomerServicesImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterfaceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/utils/MongoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/utils/MongoConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/CustomerRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/CustomerRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/CustomerServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/CustomerServicesImplTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/CustomerServicesImplTest.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2BHZ8176lkE0CYYfFic9wlyk4kZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/3TL/IdeaProjects/EaziBanking/src/main/java/com/nibss/eazibank/services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/3TL/IdeaProjects/trueCaller&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor.code.editing&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;0f686462f44a22b491f620c37c20518c&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.nibss.eazibank.data.models.enums" />
+      <recent name="com.nibss.eazibank.data.models" />
+      <recent name="com.nibss.eazibank.exception" />
+      <recent name="com.nibss.eazibank.dto.response" />
+      <recent name="com.nibss.eazibank.data.repositories" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.nibss.eazibank.data.repositories" />
+      <recent name="com.nibss.eazibank.services" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.nibss.eazibank.services" />
+      <recent name="com.nibss.eazibank.data.repositories" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BankServicesImplTest.bankCanCallNibssInterfaceTest">
+    <configuration name="BankServicesImplTest.bankCanCallNibssInterfaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.BankServicesImplTest" />
+      <option name="METHOD_NAME" value="bankCanCallNibssInterfaceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankServicesImplTest.bankMustExistBeforeStaffIsCreatedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.BankServicesImplTest" />
+      <option name="METHOD_NAME" value="bankMustExistBeforeStaffIsCreatedTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankServicesImplTest.staffCanCreateACustomerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.BankServicesImplTest" />
+      <option name="METHOD_NAME" value="staffCanCreateACustomerTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankServicesImplTest.staffCreatedIsWhatIsReturnedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.BankServicesImplTest" />
+      <option name="METHOD_NAME" value="staffCreatedIsWhatIsReturnedTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerServicesImplTest.customerCanBeCreatedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.CustomerServicesImplTest" />
+      <option name="METHOD_NAME" value="customerCanBeCreatedTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BankServicesImplTest.bankCanCallNibssInterfaceTest" />
+        <item itemvalue="JUnit.BankServicesImplTest.staffCreatedIsWhatIsReturnedTest" />
+        <item itemvalue="JUnit.BankServicesImplTest.staffCanCreateACustomerTest" />
+        <item itemvalue="JUnit.CustomerServicesImplTest.customerCanBeCreatedTest" />
+        <item itemvalue="JUnit.BankServicesImplTest.bankMustExistBeforeStaffIsCreatedTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,8 +218,49 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656564811399</updated>
-      <workItem from="1656564812667" duration="2000" />
+      <workItem from="1656564812667" duration="17224000" />
+      <workItem from="1657975096949" duration="33535000" />
+      <workItem from="1658316681398" duration="8055000" />
+      <workItem from="1658348060366" duration="55833000" />
+      <workItem from="1658574107826" duration="19766000" />
+      <workItem from="1658738422353" duration="29194000" />
+      <workItem from="1658912274212" duration="41579000" />
+      <workItem from="1659279045616" duration="54649000" />
+      <workItem from="1660059827972" duration="7260000" />
+      <workItem from="1660129161251" duration="590000" />
+      <workItem from="1660178854517" duration="7467000" />
+      <workItem from="1660242687777" duration="22864000" />
+      <workItem from="1660451544315" duration="22414000" />
+      <workItem from="1660640424750" duration="9662000" />
+      <workItem from="1660694619171" duration="27961000" />
+      <workItem from="1660903047036" duration="3670000" />
+      <workItem from="1661084820055" duration="35393000" />
+      <workItem from="1661288143379" duration="10371000" />
+      <workItem from="1661383087488" duration="81341000" />
+      <workItem from="1661959650612" duration="7962000" />
+      <workItem from="1662054933134" duration="299000" />
+      <workItem from="1662106295281" duration="29182000" />
+      <workItem from="1662324976420" duration="3898000" />
+      <workItem from="1662451011646" duration="22915000" />
+      <workItem from="1662824085830" duration="2705000" />
+      <workItem from="1662935471103" duration="32599000" />
+      <workItem from="1663259824002" duration="8538000" />
+      <workItem from="1663316901598" duration="48678000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

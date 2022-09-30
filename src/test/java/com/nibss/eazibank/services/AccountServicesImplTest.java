@@ -26,7 +26,7 @@ class AccountServicesImplTest {
     @Test
     public void accountCanBeCreatedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                                    "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
 
         accountServices.createAccount(request);
         accountRepository.findByFirstName("Adeola").get();
@@ -51,7 +51,7 @@ class AccountServicesImplTest {
     @Test
     public void multipleAccountsCanBeCreatedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                                        "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse account1 = accountServices.createAccount(request);
         assertEquals(1, accountRepository.count());
         assertEquals(account1.getAccountNumber(), accountRepository.findByAccountNumber(account1.getAccountNumber()).get().getAccountNumber());
@@ -65,7 +65,7 @@ class AccountServicesImplTest {
     @Test
     public void accountBalanceCanBeCreditedTest(){
         RegisterAccountRequest request = new RegisterAccountRequest("Adeola", "Ololade",
-                                    "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
+                "01-01-1991","08101234568", "Ayoola", "Afolabi", "savings");
         RegisterAccountResponse createdAccount = accountServices.createAccount(request);
 
         CreditAccountRequest creditRequest = new CreditAccountRequest(createdAccount.getAccountNumber(), BigInteger.valueOf(1000));

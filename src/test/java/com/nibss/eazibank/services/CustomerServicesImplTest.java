@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -469,5 +470,20 @@ class CustomerServicesImplTest {
         assertEquals(new BigInteger("0"), customer2Account.getBalance());
     }
 
-    //Test that minimum to open a current account is N5000?
+    @Test
+    public void canRetrieveCustomerByAccountNumber_orAccount_Test() {
+        CreateCustomerRequest createCustomerRequest = new  CreateCustomerRequest("Ayobaye", "Ogundele",
+                "07048847840", "", "",
+                "2000-01-20 00:00", "SAVINGS");
+        CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
+        assertEquals(1, accountRepository.count());
+        assertEquals(1, customerRepository.count());
+
+        Optional<Customer> customerRepositoryCustomer = customerRepository.findCustomerByCustomerAccount(createdCustomer.getAccountNumber());
+        assertTrue(customerRepositoryCustomer.isPresent());
+        Map<String, Account> customerAccounts = customerRepositoryCustomer.get().getCustomerAccounts();
+        Account customerRepoAccount = customerAccounts.get(createdCustomer.getAccountNumber());
+        assertEquals(createdCustomer.getAccountNumber(), customerRepoAccount.getAccountNumber());
+    }
+
 }
