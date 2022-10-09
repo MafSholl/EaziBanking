@@ -118,9 +118,9 @@ class CustomerServicesImplTest {
                                                       "2000-01-20 00:00", "SAVINGS");
         CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(100000000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(100000000));
         CustomerDepositResponse depositResponse = customerServices.deposit(depositRequest);
-        assertTrue(depositResponse.isSuccessful());
+        assertTrue(depositResponse.isSuccess());
         assertEquals(new BigInteger("100000000"), depositResponse.getAmount());
     }
 
@@ -131,7 +131,7 @@ class CustomerServicesImplTest {
                 "2000-01-20 00:00", "SAVINGS");
         CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest("1023456789", BigInteger.valueOf(100000000));
+        DepositRequest depositRequest = new DepositRequest("1023456789", BigInteger.valueOf(100000000));
         assertThrows(AccountDoesNotExistException.class, ()->customerServices.deposit(depositRequest));
     }
 
@@ -143,7 +143,7 @@ class CustomerServicesImplTest {
                 "2000-01-20 00:00", "SAVINGS");
         CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
         CustomerDepositResponse depositResponse = customerServices.deposit(depositRequest);
 
         CustomerWithdrawalRequest withdrawalRequest = new CustomerWithdrawalRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(150));
@@ -163,7 +163,7 @@ class CustomerServicesImplTest {
                 "2000-01-20 00:00", "SAVINGS");
         CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
         CustomerDepositResponse depositResponse = customerServices.deposit(depositRequest);
 
         CustomerWithdrawalRequest withdrawalRequest = new CustomerWithdrawalRequest("0112345678", BigInteger.valueOf(150));;
@@ -178,7 +178,7 @@ class CustomerServicesImplTest {
                 "2000-01-20 00:00", "SAVINGS");
         CreateCustomerResponse createdCustomer = customerServices.createCustomer(createCustomerRequest);
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
         customerServices.deposit(depositRequest);
 
         CustomerWithdrawalRequest withdrawalRequest = new CustomerWithdrawalRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1001));
@@ -198,7 +198,7 @@ class CustomerServicesImplTest {
         assertEquals(2, accountRepository.count());
         assertEquals(2, customerRepository.count());
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
         customerServices.deposit(depositRequest);
         CustomerTransferRequest transferRequest = new CustomerTransferRequest(createdCustomer2.getAccountNumber(), createdCustomer1.getAccountNumber(), BigInteger.valueOf(3000));
         CustomerTransferResponse transferResponse = customerServices.transfer(transferRequest);
@@ -227,7 +227,7 @@ class CustomerServicesImplTest {
         assertEquals(2, accountRepository.count());
         assertEquals(2, customerRepository.count());
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
         customerServices.deposit(depositRequest);
         CustomerTransferRequest transferRequest = new CustomerTransferRequest("1234567890", createdCustomer1.getAccountNumber(), BigInteger.valueOf(30000));
         assertThrows(InvalidRecipientException.class, ()-> customerServices.transfer(transferRequest));
@@ -246,7 +246,7 @@ class CustomerServicesImplTest {
         assertEquals(2, accountRepository.count());
         assertEquals(2, customerRepository.count());
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
         customerServices.deposit(depositRequest);
         CustomerTransferRequest transferRequest = new CustomerTransferRequest(createdCustomer1.getAccountNumber(), createdCustomer1.getAccountNumber(), BigInteger.valueOf(30000));
         assertThrows(InsufficientBalanceException.class, ()-> customerServices.transfer(transferRequest));
@@ -264,7 +264,7 @@ class CustomerServicesImplTest {
         assertEquals(2, accountRepository.count());
         assertEquals(2, customerRepository.count());
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10023));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10023));
         customerServices.deposit(depositRequest);
 
         CustomerTransferRequest transferRequest = new CustomerTransferRequest(createdCustomer2.getAccountNumber(), createdCustomer1.getAccountNumber(), BigInteger.valueOf(10023));
@@ -423,7 +423,7 @@ class CustomerServicesImplTest {
                 .build();
         customerServices.login(customerLoginRequest);
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(1000));
         customerServices.deposit(depositRequest);
         CustomerWithdrawalRequest withdrawalRequest = new CustomerWithdrawalRequest(createdCustomer.getAccountNumber(), BigInteger.valueOf(150));
         customerServices.withdraw(withdrawalRequest);
@@ -454,7 +454,7 @@ class CustomerServicesImplTest {
         assertEquals(2, accountRepository.count());
         assertEquals(2, customerRepository.count());
 
-        CustomerDepositRequest depositRequest = new CustomerDepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
+        DepositRequest depositRequest = new DepositRequest(createdCustomer1.getAccountNumber(), BigInteger.valueOf(10000));
         customerServices.deposit(depositRequest);
         CustomerTransferRequest transferRequest = new CustomerTransferRequest(createdCustomer2.getAccountNumber(), createdCustomer1.getAccountNumber(), BigInteger.valueOf(3000));
         CustomerTransferResponse transferResponse = customerServices.transfer(transferRequest);

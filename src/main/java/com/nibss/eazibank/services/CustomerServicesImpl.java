@@ -26,10 +26,8 @@ public class CustomerServicesImpl implements CustomerServices{
     private AccountServices accountServices = new AccountServicesImpl();
     @Autowired
     private CustomerRepository customerRepository;
-
     @Autowired
     private TransactionRepository transactionRepository;
-
     @Autowired
     private ModelMapper modelMapper;
 
@@ -79,7 +77,7 @@ public class CustomerServicesImpl implements CustomerServices{
     }
 
     @Override
-    public CustomerDepositResponse deposit(CustomerDepositRequest depositRequest) {
+    public CustomerDepositResponse deposit(DepositRequest depositRequest) {
         Optional<Account> repoAccount = accountServices.findAccount(depositRequest.getAccountNumber());
         if (repoAccount.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
         CreditAccountResponse creditResponse = accountServices.creditAccount(new CreditAccountRequest(depositRequest.getAccountNumber(), depositRequest.getAmount()));
@@ -108,7 +106,7 @@ public class CustomerServicesImpl implements CustomerServices{
 
         CustomerDepositResponse depositResponse = modelMapper.map(creditedCustomer, CustomerDepositResponse.class);
         depositResponse.setAmount(depositRequest.getAmount());
-        depositResponse.setSuccessful(true);
+        depositResponse.setSuccess(true);
         return depositResponse;
     }
 
@@ -166,8 +164,8 @@ public class CustomerServicesImpl implements CustomerServices{
         CustomerWithdrawalResponse sendersAccountWithdrawalResponse = withdraw(
                 new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
         if (!sendersAccountWithdrawalResponse.isSuccessful()) throw new TransactionErrorException("An error occured! Please try again");
-        CustomerDepositResponse receiversAccountDepositResponse = deposit(new CustomerDepositRequest(transferRequest.getReceiversAccountNumber(), transferRequest.getAmount()));
-        if (!receiversAccountDepositResponse.isSuccessful()) throw new TransactionErrorException("An error occured! Please try again");
+        CustomerDepositResponse receiversAccountDepositResponse = deposit(new DepositRequest(transferRequest.getReceiversAccountNumber(), transferRequest.getAmount()));
+        if (!receiversAccountDepositResponse.isSuccess()) throw new TransactionErrorException("An error occured! Please try again");
 
         CustomerTransferResponse transferResponse = modelMapper.map(receiversAccountDepositResponse, CustomerTransferResponse.class);
         transferResponse.setSuccessful(true);

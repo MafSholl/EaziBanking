@@ -7,7 +7,7 @@ public interface CustomerServices {
 
     CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest);
 
-    CustomerDepositResponse deposit(CustomerDepositRequest depositRequest);
+    CustomerDepositResponse deposit(DepositRequest depositRequest);
 
     CustomerWithdrawalResponse withdraw(CustomerWithdrawalRequest withdrawalRequest);
 
