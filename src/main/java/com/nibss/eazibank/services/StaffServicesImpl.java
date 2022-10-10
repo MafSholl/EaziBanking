@@ -12,6 +12,7 @@ import com.nibss.eazibank.dto.response.CreateCustomerResponse;
 import com.nibss.eazibank.dto.response.CustomerDepositResponse;
 import com.nibss.eazibank.dto.response.StaffDepositDto;
 import com.nibss.eazibank.exception.AccountDoesNotExistException;
+import com.nibss.eazibank.exception.EaziBankExceptions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -51,8 +52,8 @@ public class StaffServicesImpl implements StaffServices{
 
     @Override
     public StaffDepositDto customersAccountDeposit(DepositRequest depositRequest, String staffId) {
-        Optional<Customer> optionalCustomer = customerRepository.findCustomerByCustomerAccount(depositRequest.getAccountNumber());
-        if(optionalCustomer.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
+        Optional<Staff> staff = staffRepository.findById(staffId);
+        if (staff.isEmpty()) throw new EaziBankExceptions("Staff does ot exist");
         CustomerDepositResponse depositResponse = customerServices.deposit(depositRequest);
         StaffDepositDto staffDepositDto = modelMapper.map(depositResponse, StaffDepositDto.class);
         staffDepositDto.setStaffId(staffId);

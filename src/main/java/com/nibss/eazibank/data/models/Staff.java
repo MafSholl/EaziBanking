@@ -17,7 +17,6 @@ import java.math.BigInteger;
 public class Staff {
     @Id
     @Indexed(unique = true)
-    @Generated
     private String staffId;
     private String firstName;
     private String lastName;

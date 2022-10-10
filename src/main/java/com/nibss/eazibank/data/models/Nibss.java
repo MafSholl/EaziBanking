@@ -7,8 +7,4 @@ import java.util.List;
 @Data
 public class Nibss {
 
-    private BankRepository bankRepository;
-//    private BvnRepository bvnRepository;
-//    private
-
 }
