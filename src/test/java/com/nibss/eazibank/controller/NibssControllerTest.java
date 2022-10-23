@@ -2,18 +2,16 @@ package com.nibss.eazibank.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nibss.eazibank.data.models.Customer;
-import com.nibss.eazibank.data.repositories.NibssRepository;
+import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.services.NibssInterface;
-import com.nibss.eazibank.services.NibssInterfaceImpl;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -61,11 +59,33 @@ class NibssControllerTest {
     }
 
     @Test
-    void whenBvnGeneratorCalled_ContentIsCustomerTest() throws Exception {
+    void whenBvnGeneratorCalled_ParamsExpectedTest() throws Exception {
         Customer customer = new Customer("Eesuola", "Popoola", "09089796959");
+        CreateCustomerRequest request = CreateCustomerRequest.builder()
+                .firstName("Eesuola")
+                .lastName("Popoola")
+                .phoneNumber("09089796959")
+                .email("epops@example.com")
+                .mothersMaidenName("Agilinti")
+                .DOB("01-01-2001")
+                .accountType("savings")
+                .build();
         this.mockMvc.perform(get("/api/v1/nibss/bvn-generator")
-                .contentType("application.json")
-                .content(objectMapper.writeValueAsString(customer)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk());
     }
+    @Test
+    void whenBvnGeneratorCalled_ResponseTest() throws Exception {
+        Customer customer = new Customer("Eesuola", "Popoola", "09089796959");
+        this.mockMvc.perform(get("/api/v1/nibss/bvn-generator")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(customer)))
+//                .andExpect()
+                .andExpect(status().isOk());
+    }
+
+
 }

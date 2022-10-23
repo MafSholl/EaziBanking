@@ -1,11 +1,11 @@
 package com.nibss.eazibank.dto.request;
 
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
+@NoArgsConstructor
 @RequiredArgsConstructor
+@Builder
 public class CreateCustomerRequest {
 
     @NonNull
@@ -23,3 +23,6 @@ public class CreateCustomerRequest {
     @NonNull
     private String accountType;
 }
+
+
+

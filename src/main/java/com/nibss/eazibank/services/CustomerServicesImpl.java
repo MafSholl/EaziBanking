@@ -11,6 +11,7 @@ import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,18 +37,12 @@ public class CustomerServicesImpl implements CustomerServices{
     @Override
     public CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) {
         validateCustomerExistence(createCustomerRequest);
-        Customer customer = modelMapper.map(createCustomerRequest, Customer.class);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        customer.setDOB(LocalDateTime.parse(createCustomerRequest.getDOB(), formatter));
-
-        RegisterAccountRequest request = modelMapper.map(customer, RegisterAccountRequest.class);
-        request.setAccountType(createCustomerRequest.getAccountType());
-
-        RegisterAccountResponse createdAccount = accountServices.createAccount(request);
+        Customer customer = createCustomerFromRequest(createCustomerRequest);
+        RegisterAccountResponse createdAccount = createNewCustomerAccount(createCustomerRequest, customer);
         customer.setBVN(createdAccount.getBankVerificationNumber());
 
         Optional<Account> optionalAccount = accountServices.findAccount(createdAccount.getAccountNumber());
-        if(optionalAccount.isEmpty()) throw new EaziBankExceptions("Error finding account after saving");
+        if(optionalAccount.isEmpty()) throw new EaziBankExceptions("Error finding account after saving", HttpStatus.NOT_FOUND.value());
         Account account = optionalAccount.get();
 //        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a");
 //        account.setAccountCreationDate(LocalDateTime.parse(createdAccount.getDateCreated(), format));
@@ -56,10 +51,27 @@ public class CustomerServicesImpl implements CustomerServices{
         customer.setCustomerAccounts(customerAccounts);
         Customer createdCustomer = customerRepository.save(customer);
 
+        return convertCustomerToResponse(account, createdCustomer);
+    }
+
+    private CreateCustomerResponse convertCustomerToResponse(Account account, Customer createdCustomer) {
         CreateCustomerResponse response = modelMapper.map(createdCustomer, CreateCustomerResponse.class);
         Account customerCreatedAccount = createdCustomer.getCustomerAccounts().get(account.getAccountNumber());
         response.setAccountNumber(customerCreatedAccount.getAccountNumber());
         return response;
+    }
+
+    private RegisterAccountResponse createNewCustomerAccount(CreateCustomerRequest createCustomerRequest, Customer customer) {
+        RegisterAccountRequest request = modelMapper.map(customer, RegisterAccountRequest.class);
+        request.setAccountType(createCustomerRequest.getAccountType());
+        return accountServices.createAccount(request);
+    }
+
+    private Customer createCustomerFromRequest(CreateCustomerRequest createCustomerRequest) {
+        Customer customer = modelMapper.map(createCustomerRequest, Customer.class);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        customer.setDOB(LocalDateTime.parse(createCustomerRequest.getDOB(), formatter));
+        return customer;
     }
 
     private void validateCustomerExistence(CreateCustomerRequest createCustomerRequest) {
@@ -233,7 +245,7 @@ public class CustomerServicesImpl implements CustomerServices{
     public ViewTransactionHistoryResponse viewTransactionHistory(ViewTransactionHistoryRequest viewTransactionHistoryRequest) {
         //findByBvn is the appropriate method; it can easily be gotten by the frontend
         Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(viewTransactionHistoryRequest.getEmail());
-        if (optionalCustomer.isEmpty()) throw new EaziBankExceptions("Customer does not exist");
+        if (optionalCustomer.isEmpty()) throw new EaziBankExceptions("Customer does not exist", HttpStatus.NOT_FOUND.value());
         //This first method is not advisable as transaction history can grow endlessly. This way we can manage space by saving transactions in the db instead of the customer
         Customer customer = optionalCustomer.get();
         List<Transaction> transactionHistory = customer.getTransactionHistory();

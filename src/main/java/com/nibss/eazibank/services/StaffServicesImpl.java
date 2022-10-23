@@ -15,6 +15,7 @@ import com.nibss.eazibank.exception.AccountDoesNotExistException;
 import com.nibss.eazibank.exception.EaziBankExceptions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -53,7 +54,7 @@ public class StaffServicesImpl implements StaffServices{
     @Override
     public StaffDepositDto customersAccountDeposit(DepositRequest depositRequest, String staffId) {
         Optional<Staff> staff = staffRepository.findById(staffId);
-        if (staff.isEmpty()) throw new EaziBankExceptions("Staff does ot exist");
+        if (staff.isEmpty()) throw new EaziBankExceptions("Staff does ot exist", HttpStatus.NO_CONTENT.value());
         CustomerDepositResponse depositResponse = customerServices.deposit(depositRequest);
         StaffDepositDto staffDepositDto = modelMapper.map(depositResponse, StaffDepositDto.class);
         staffDepositDto.setStaffId(staffId);
