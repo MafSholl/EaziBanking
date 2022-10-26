@@ -27,7 +27,6 @@ public class AccountServicesImpl implements AccountServices {
     private ModelMapper modelMapper;
     @Override
     public RegisterAccountResponse createAccount(RegisterAccountRequest request) {
-//        Account account = new Account();
         Account account = Account.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -59,7 +58,6 @@ public class AccountServicesImpl implements AccountServices {
     private StringBuilder accountNumberValidator(StringBuilder generatedAccountNumber) {
         if(accountRepository.findByAccountNumber(generatedAccountNumber.toString()).isPresent())
             generatedAccountNumber = new StringBuilder(accountNumberGenerator());
-//        accountNumberValidator(generatedAccountNumber);
         return generatedAccountNumber;
     }
 

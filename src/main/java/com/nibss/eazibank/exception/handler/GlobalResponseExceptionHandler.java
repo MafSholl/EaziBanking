@@ -1,4 +1,4 @@
-package com.nibss.eazibank.utils;
+package com.nibss.eazibank.exception.handler;
 
 import com.nibss.eazibank.controller.response.ApiResponse;
 import com.nibss.eazibank.exception.EaziBankExceptions;

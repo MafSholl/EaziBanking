@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/nibss")
 public class NibssController {
@@ -16,11 +18,13 @@ public class NibssController {
     private NibssInterface nibssInterface;
     @GetMapping("/is-nibss")
     public ResponseEntity<?> isNibssAvailable() {
+        nibssInterface.isNibssAvailable();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/bvn-generator")
-    public ResponseEntity<?> bvnGenerator(@RequestBody CreateCustomerRequest request) {
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
+    public ResponseEntity<?> bvnGenerator(@Valid @RequestBody CreateCustomerRequest request) {
+        nibssInterface.isNibssAvailable();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
