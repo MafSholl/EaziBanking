@@ -1,6 +1,5 @@
 package com.nibss.eazibank.controller;
 
-import com.nibss.eazibank.data.models.Customer;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.services.NibssInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,8 @@ public class NibssController {
     private NibssInterface nibssInterface;
     @GetMapping("/is-nibss")
     public ResponseEntity<?> isNibssAvailable() {
-        nibssInterface.isNibssAvailable();
-        return new ResponseEntity<>(HttpStatus.OK);
+        if(nibssInterface.isNibssAvailable()) return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<> (HttpStatus.BAD_GATEWAY);
     }
 
     @GetMapping("/bvn-generator")

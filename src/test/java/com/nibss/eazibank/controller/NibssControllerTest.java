@@ -1,23 +1,19 @@
 package com.nibss.eazibank.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nibss.eazibank.data.models.Customer;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.services.NibssInterface;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -82,6 +78,17 @@ class NibssControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
         verify(nibssInterface, times(1)).isNibssAvailable();
+    }
+
+    @Test
+    void whenIsNibssAvailableCalled_IfNotAvailable_ResponseIsServerError() throws Exception {
+        boolean trueBoolean = false;
+        when(nibssInterface.isNibssAvailable()).thenReturn(trueBoolean);
+
+        this.mockMvc.perform(get("/api/v1/nibss/is-nibss")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is5xxServerError());
     }
 
     @Test
