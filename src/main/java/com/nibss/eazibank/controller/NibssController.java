@@ -1,7 +1,8 @@
 package com.nibss.eazibank.controller;
 
-import com.nibss.eazibank.dto.request.CreateCustomerRequest;
-import com.nibss.eazibank.services.NibssInterface;
+import com.nibss.eazibank.controller.response.ApiResponse;
+import com.nibss.eazibank.dto.CreateBvnDto;
+import com.nibss.eazibank.services.NibssInterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +15,22 @@ import javax.validation.Valid;
 public class NibssController {
 
     @Autowired
-    private NibssInterface nibssInterface;
+    private NibssInterfaceService nibssInterfaceService;
     @GetMapping("/is-nibss")
     public ResponseEntity<?> isNibssAvailable() {
-        if(nibssInterface.isNibssAvailable()) return new ResponseEntity<>(HttpStatus.OK);
+        if(nibssInterfaceService.isNibssAvailable()) return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<> (HttpStatus.BAD_GATEWAY);
     }
 
     @GetMapping("/bvn-generator")
-    public ResponseEntity<?> bvnGenerator(@Valid @RequestBody CreateCustomerRequest request) {
-        nibssInterface.isNibssAvailable();
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> bvnGenerator(@Valid @RequestBody CreateBvnDto request) {
+        nibssInterfaceService.isNibssAvailable();
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .message("BVN  created successfully")
+                .data(true)
+                .statusCode(HttpStatus.OK.value())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

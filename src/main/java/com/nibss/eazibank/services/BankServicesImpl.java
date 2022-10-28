@@ -5,7 +5,6 @@ import com.nibss.eazibank.data.repositories.StaffRepository;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.dto.request.CreateStaffRequest;
 import com.nibss.eazibank.dto.response.CreateCustomerResponse;
-import com.nibss.eazibank.dto.response.CreateStaffResponse;
 import com.nibss.eazibank.exception.BankDoesNotExistException;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
@@ -23,7 +22,7 @@ public class BankServicesImpl implements BankServices{
     @Autowired
     private CustomerServices customerServices;
     @Autowired
-    private NibssInterface nibssInterface;
+    private NibssInterfaceService nibssInterfaceService;
     private StaffServices staffServices;
 
 
@@ -55,7 +54,7 @@ public class BankServicesImpl implements BankServices{
 
     @Override
     public boolean isNibssInterfaceAvailable() {
-        return nibssInterface.isNibssAvailable();
+        return nibssInterfaceService.isNibssAvailable();
     }
 
 

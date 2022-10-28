@@ -2,6 +2,7 @@ package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
 import com.nibss.eazibank.data.repositories.AccountRepository;
+import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.request.AccountBalanceRequest;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
@@ -22,7 +23,7 @@ public class AccountServicesImpl implements AccountServices {
     private AccountRepository accountRepository;
     private int accountNumber = 100_000_000;
     @Autowired
-    private NibssInterface nibssInterface;
+    private NibssInterfaceService nibssInterfaceService;
     @Autowired
     private ModelMapper modelMapper;
     @Override
@@ -32,7 +33,7 @@ public class AccountServicesImpl implements AccountServices {
                 .lastName(request.getLastName())
                 .phoneNumber(request.getPhoneNumber())
                 .accountNumber(accountNumberGenerator())
-                .bankVerificationNumber(nibssInterface.bvnGenerator()) //should be changed. this should hit the Nibss route instead
+                .bankVerificationNumber(nibssInterfaceService.bvnGenerator(new CreateBvnDto(request)).getBvn()) //should be changed. this should hit the Nibss route instead
                 .build();
         if(request.getAccountType().equalsIgnoreCase("savings")) {
             account.setAccountType(SAVINGS);
