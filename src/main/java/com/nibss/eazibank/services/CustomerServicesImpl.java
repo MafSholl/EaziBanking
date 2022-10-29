@@ -39,7 +39,7 @@ public class CustomerServicesImpl implements CustomerServices{
         validateCustomerExistence(createCustomerRequest);
         Customer customer = createCustomerFromRequest(createCustomerRequest);
         RegisterAccountResponse createdAccount = createNewCustomerAccount(createCustomerRequest, customer);
-        customer.setBVN(createdAccount.getBankVerificationNumber());
+        customer.setBvn(createdAccount.getBvn());
 
         Optional<Account> optionalAccount = accountServices.findAccount(createdAccount.getAccountNumber());
         if(optionalAccount.isEmpty()) throw new EaziBankExceptions("Error finding account after saving", HttpStatus.NOT_FOUND.value());
@@ -62,9 +62,10 @@ public class CustomerServicesImpl implements CustomerServices{
     }
 
     private RegisterAccountResponse createNewCustomerAccount(CreateCustomerRequest createCustomerRequest, Customer customer) {
-        RegisterAccountRequest request = modelMapper.map(customer, RegisterAccountRequest.class);
+    RegisterAccountRequest request = modelMapper.map(customer, RegisterAccountRequest.class);
         request.setAccountType(createCustomerRequest.getAccountType());
-        return accountServices.createAccount(request);
+        RegisterAccountResponse response = accountServices.createAccount(request);
+        return response;
     }
 
     private Customer createCustomerFromRequest(CreateCustomerRequest createCustomerRequest) {
@@ -144,7 +145,7 @@ public class CustomerServicesImpl implements CustomerServices{
         //This is wrong! A transaction service layer should create and save transaction
         transactionRepository.save(transaction);
 
-        Optional<Customer> optionalCustomer = customerRepository.findCustomerByBVN(repoAccount.get().getBankVerificationNumber());
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByBvn(repoAccount.get().getBvn());
         Customer customer = optionalCustomer.get();
 
         Map<String, Account> customersAccounts = customer.getCustomerAccounts();
@@ -219,7 +220,7 @@ public class CustomerServicesImpl implements CustomerServices{
         return CustomerLoginResponse.builder()
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
-                .BVN(customer.getBVN())
+                .BVN(customer.getBvn())
                 .customerAccounts(customer.getCustomerAccounts())
                 .success(true)
                 .build();
@@ -232,7 +233,7 @@ public class CustomerServicesImpl implements CustomerServices{
         if(optionalCustomer.isEmpty()) throw new InvalidLoginDetailException("Customer does not exist exception");
         Customer customer = optionalCustomer.get();
         return ViewProfileResponse.builder()
-                .BVN(customer.getBVN())
+                .BVN(customer.getBvn())
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
                 .phoneNumber(customer.getPhoneNumber())

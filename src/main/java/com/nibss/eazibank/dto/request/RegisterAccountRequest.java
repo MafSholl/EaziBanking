@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigInteger;
+
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -23,4 +25,5 @@ public class RegisterAccountRequest {
     private String mothersMaidenName;
     @NonNull
     private String accountType;
+    private BigInteger openingAmount;
 }

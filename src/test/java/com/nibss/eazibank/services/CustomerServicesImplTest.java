@@ -434,7 +434,6 @@ class CustomerServicesImplTest {
         ViewTransactionHistoryRequest viewTransactionHistoryRequest = new ViewTransactionHistoryRequest("email@yahoo.com", "password", createdCustomer.getAccountNumber());
         ViewTransactionHistoryResponse viewTransactionHistoryResponse = customerServices.viewTransactionHistory(viewTransactionHistoryRequest);
         List<Transaction> transactionList = viewTransactionHistoryResponse.getTransactionHistory();
-        System.out.println(transactionList);
         assertNotNull(transactionList);
     }
     //customerCanEditProfileTest

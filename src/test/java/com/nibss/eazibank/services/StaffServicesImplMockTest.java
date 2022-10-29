@@ -109,14 +109,14 @@ class StaffServicesImplMockTest {
         account.setPhoneNumber(createCustomerRequest.getPhoneNumber());
         account.setAccountType(AccountType.SAVINGS);
         account.setAccountNumber("0123456789");
-        account.setBankVerificationNumber("2000100010");
+        account.setBvn("2000100010");
         Optional<Account> optionalAccount = Optional.of(account);
 
         RegisterAccountResponse registerAccountResponse = RegisterAccountResponse.builder()
                 .firstName(account.getFirstName())
                 .lastName(account.getLastName())
                 .accountNumber(account.getAccountNumber())
-                .bankVerificationNumber(account.getBankVerificationNumber())
+                .bvn(account.getBvn())
                 .balance(BigInteger.ZERO)
                 .success("true")
                 .build();
@@ -128,7 +128,7 @@ class StaffServicesImplMockTest {
         customer.setFirstName(createCustomerRequest.getFirstName());
         customer.setLastName(createCustomerRequest.getLastName());
         customer.setPhoneNumber(createCustomerRequest.getPhoneNumber());
-        customer.setBVN(account.getBankVerificationNumber());
+        customer.setBvn(account.getBvn());
         customer.setEmail("");
         customer.setCustomerAccounts(customerAccounts);
 
@@ -138,7 +138,7 @@ class StaffServicesImplMockTest {
         savedCustomer.setFirstName(createCustomerRequest.getFirstName());
         savedCustomer.setLastName(createCustomerRequest.getLastName());
         savedCustomer.setPhoneNumber(createCustomerRequest.getPhoneNumber());
-        savedCustomer.setBVN(account.getBankVerificationNumber());
+        savedCustomer.setBvn(account.getBvn());
         savedCustomer.setEmail("");
         savedCustomer.setCustomerAccounts(customerAccounts);
 
@@ -148,7 +148,7 @@ class StaffServicesImplMockTest {
                 .accountNumber(account.getAccountNumber())
                 .accountType(String.valueOf(account.getAccountType()))
                 .balance(BigInteger.ZERO)
-                .BVN(account.getBankVerificationNumber())
+                .BVN(account.getBvn())
                 .email(customer.getEmail())
                 .build();
 
@@ -165,7 +165,7 @@ class StaffServicesImplMockTest {
         verify(customerRepository).save(customer);
         verify(customerRepository, times(1)).save(customerArgumentCaptor.capture());
         Customer capturedCustomer = customerArgumentCaptor.getValue();
-        assertThat(capturedCustomer.getBVN()).isEqualTo(newCustomer.getBVN());
+        assertThat(capturedCustomer.getBvn()).isEqualTo(newCustomer.getBVN());
     }
 
     @Test
@@ -197,7 +197,7 @@ class StaffServicesImplMockTest {
         account.setPhoneNumber("07048847840");
         account.setAccountType(AccountType.SAVINGS);
         account.setAccountNumber("0123456789");
-        account.setBankVerificationNumber("2000100010");
+        account.setBvn("2000100010");
         Optional<Account> optionalAccount = Optional.of(account);
 
         DepositRequest depositRequest = new DepositRequest("0123456789", BigInteger.valueOf(100000));

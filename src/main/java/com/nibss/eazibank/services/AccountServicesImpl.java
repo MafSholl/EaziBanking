@@ -1,6 +1,7 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.request.AccountBalanceRequest;
@@ -8,11 +9,14 @@ import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.AccountDoesNotExistException;
+import com.nibss.eazibank.exception.EaziBankExceptions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static com.nibss.eazibank.data.models.enums.AccountType.*;
@@ -28,25 +32,44 @@ public class AccountServicesImpl implements AccountServices {
     private ModelMapper modelMapper;
     @Override
     public RegisterAccountResponse createAccount(RegisterAccountRequest request) {
+
         Account account = Account.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .phoneNumber(request.getPhoneNumber())
+                .email(request.getEmail())
                 .accountNumber(accountNumberGenerator())
-                .bankVerificationNumber(nibssInterfaceService.bvnGenerator(new CreateBvnDto(request)).getBvn()) //should be changed. this should hit the Nibss route instead
+                .balance(accountBalanceSetter(request))
+                .accountType(accountTypeSetter(request))
+                .accountCreationDate(LocalDateTime.now())
                 .build();
-        if(request.getAccountType().equalsIgnoreCase("savings")) {
-            account.setAccountType(SAVINGS);
-        } else if(request.getAccountType().equalsIgnoreCase("current")) {
-            account.setAccountType(CURRENT);
-        } else if(request.getAccountType().equalsIgnoreCase("Domiciliary")) {
-            account.setAccountType(DOMICILIARY);
-        }
+        CreateBvnDto createBvnDto = new CreateBvnDto(account);
+        createBvnDto.setBankId(1L);
+        account.setBvn(nibssInterfaceService.bvnGenerator(createBvnDto).getBvn()); //should be changed. this should call the Nibss api instead
 
         Account createdAccount = accountRepository.save(account);
 
         RegisterAccountResponse response = modelMapper.map(createdAccount, RegisterAccountResponse.class);
         return response;
+    }
+
+    private BigInteger accountBalanceSetter(RegisterAccountRequest request) {
+        if (request.getOpeningAmount() == null) {
+            return BigInteger.ZERO;
+        }else {
+            return request.getOpeningAmount();
+        }
+    }
+
+    private AccountType accountTypeSetter(RegisterAccountRequest request) {
+        if(request.getAccountType().equalsIgnoreCase("savings")) {
+            return SAVINGS;
+        } else if(request.getAccountType().equalsIgnoreCase("current")) {
+            return CURRENT;
+        } else if(request.getAccountType().equalsIgnoreCase("Domiciliary")) {
+            return DOMICILIARY;
+        }
+        throw new EaziBankExceptions("Valid account type isn't given", HttpStatus.BAD_REQUEST.value());
     }
 
     private String accountNumberGenerator() {
@@ -82,7 +105,7 @@ public class AccountServicesImpl implements AccountServices {
             creditResponse.setBalance(creditedAccount.getBalance());
             creditResponse.setFirstName(creditedAccount.getFirstName());
             creditResponse.setLastName(creditedAccount.getLastName());
-            creditResponse.setBankVerificationNumber(creditedAccount.getBankVerificationNumber());
+            creditResponse.setBankVerificationNumber(creditedAccount.getBvn());
         }
         return creditResponse;
     }

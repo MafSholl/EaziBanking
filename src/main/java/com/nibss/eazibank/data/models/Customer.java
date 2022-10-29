@@ -19,7 +19,7 @@ import java.util.Map;
 public class Customer {
     @Id
     @Indexed(unique = true)
-    private String BVN;
+    private String bvn;
     @NonNull
     private String firstName;
     @NonNull

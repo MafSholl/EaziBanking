@@ -3,9 +3,10 @@ package com.nibss.eazibank.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nibss.eazibank.controller.response.ApiResponse;
 import com.nibss.eazibank.dto.CreateBvnDto;
-import com.nibss.eazibank.dto.NibssCustomerDto;
+import com.nibss.eazibank.dto.NibssBankUserDto;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.services.NibssInterfaceService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,11 +27,23 @@ class NibssControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
     @MockBean
     private NibssInterfaceService nibssInterfaceService;
     @Autowired
     private ObjectMapper objectMapper;
+    private CreateBvnDto createBvnRequest;
+    @BeforeEach
+    void setUp() {
+        CreateBvnDto createBvnRequest = CreateBvnDto.builder()
+                .firstName("Eesuola")
+                .lastName("Popoola")
+                .phoneNumber("09089796959")
+                .email("epops@example.com")
+                .mothersMaidenName("Agilinti")
+                .accountType("savings")
+                .build();
+        this.createBvnRequest = createBvnRequest;
+    }
 
     @Test
     void nibssControllerExistTest() {
@@ -95,19 +108,10 @@ class NibssControllerTest {
 
     @Test
     void whenBvnGeneratorIsCalled_IsNibssAvailableLogicIsCalled() throws Exception {
-        CreateBvnDto request = CreateBvnDto.builder()
-                .firstName("Eesuola")
-                .lastName("Popoola")
-                .phoneNumber("09089796959")
-                .email("epops@example.com")
-                .mothersMaidenName("Agilinti")
-                .DOB("01-01-2001")
-                .accountType("savings")
-                .build();
         this.mockMvc.perform(get("/api/v1/nibss/bvn-generator")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(request)))
+                .content(objectMapper.writeValueAsString(this.createBvnRequest)))
                 .andExpect(status().isOk());
         verify(nibssInterfaceService, times(1)).isNibssAvailable();
     }
@@ -135,42 +139,32 @@ class NibssControllerTest {
 
     @Test
     void whenBvnGeneratorIsCalled_ValidDtoIsPassed_Returns200() throws Exception{
-        CreateBvnDto createBvnDto = new CreateBvnDto(
-                "07048847840", "", "",
-                "Ayobaye", "Ogundele",
-                "2000-01-20 00:00", "SAVINGS");
         this.mockMvc.perform(get("/api/v1/nibss/bvn-generator")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(createBvnDto)))
+                .content(objectMapper.writeValueAsString(this.createBvnRequest)))
                 .andExpect(status().isOk());
     }
 
     @Test
     void whenBvnGeneratorCalled_NibssReturnANewCustomer() throws Exception{
-        CreateBvnDto createBvnDto = new CreateBvnDto(
-                "07048847840", "", "",
-                "Ayobaye", "Ogundele",
-                "2000-01-20 00:00", "SAVINGS");
-        NibssCustomerDto returnedNibssCustomerDto = NibssCustomerDto.builder()
-                .bvn(String.valueOf(1234567890))
-                .firstName("Ayobaye")
-                .lastName("Ogundele")
-                .phoneNumber("07048847840")
-                .bankName("EaziBank")
-                .accountType("Savings")
+        NibssBankUserDto returnedNibssBankUserDto = NibssBankUserDto.builder()
+                .bvn(String.valueOf(1000000000))
+                .firstName("Eesuola")
+                .lastName("Popoola")
                 .build();
         ApiResponse expectedResponse = ApiResponse.builder()
                 .status("success")
                 .message("BVN created successfully")
-                .data(returnedNibssCustomerDto)
+                .data(returnedNibssBankUserDto)
                 .statusCode(HttpStatus.OK.value())
                 .build();
+        when(nibssInterfaceService.bvnGenerator(createBvnRequest)).thenReturn(returnedNibssBankUserDto);
 
         MvcResult result = this.mockMvc.perform(get("/api/v1/nibss/bvn-generator")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(createBvnDto)))
+                .content(objectMapper.writeValueAsString(this.createBvnRequest)))
                 .andExpect(status().isOk())
                 .andReturn();
         String actualResponse = result.getResponse().getContentAsString();

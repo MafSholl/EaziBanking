@@ -14,12 +14,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Builder
 @Document("Account")
 public class Account {
-    @Id
-    private String id;
-    @NonNull
+    @Id @NonNull
     @Indexed(unique = true)
     private String accountNumber;
     @NonNull
@@ -29,8 +28,9 @@ public class Account {
     @NonNull
     private String phoneNumber;
     private String email;
+    private String mothersMaidenName;
     private BigInteger balance = BigInteger.ZERO;
-    private String bankVerificationNumber;
+    private String bvn;
     private AccountType accountType;
     @DBRef
     private List<Transaction> transactionHistory;

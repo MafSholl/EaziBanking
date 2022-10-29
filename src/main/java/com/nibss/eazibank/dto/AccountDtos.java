@@ -18,7 +18,7 @@ public class AccountDtos {
     private String phoneNumber;
     private String email;
     private BigInteger balance = BigInteger.ZERO;
-    private String bankVerificationNumber;
+    private String bvn;
     private AccountType accountType;
     private LocalDateTime accountCreationDate = LocalDateTime.now();
 }

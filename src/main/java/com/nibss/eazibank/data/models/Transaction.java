@@ -1,5 +1,6 @@
 package com.nibss.eazibank.data.models;
 
+import com.nibss.eazibank.data.models.enums.Location.Location;
 import com.nibss.eazibank.data.models.enums.PaymentMethod;
 import com.nibss.eazibank.data.models.enums.TransactionType;
 import lombok.AllArgsConstructor;
@@ -7,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigInteger;
@@ -29,4 +29,5 @@ public class Transaction {
         private String recipientName;
         private PaymentMethod paymentMethod;
         private LocalDateTime transactionTime = LocalDateTime.now();
+        private Location location;
 }

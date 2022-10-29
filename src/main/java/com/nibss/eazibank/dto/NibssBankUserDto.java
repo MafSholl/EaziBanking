@@ -9,12 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NibssCustomerDto {
+public class NibssBankUserDto {
 
     private String bvn;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
-    private String bankName;
-    private String accountType;
 }

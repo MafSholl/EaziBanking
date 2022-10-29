@@ -1,10 +1,10 @@
 package com.nibss.eazibank.services;
 
 import com.nibss.eazibank.dto.CreateBvnDto;
-import com.nibss.eazibank.dto.NibssCustomerDto;
+import com.nibss.eazibank.dto.NibssBankUserDto;
 
 public interface NibssInterfaceService {
-     NibssCustomerDto bvnGenerator(CreateBvnDto createBvnDto);
+     NibssBankUserDto bvnGenerator(CreateBvnDto createBvnDto);
 
      boolean isNibssAvailable();
 }

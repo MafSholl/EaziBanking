@@ -1,6 +1,6 @@
 package com.nibss.eazibank.dto;
 
-import com.nibss.eazibank.dto.request.RegisterAccountRequest;
+import com.nibss.eazibank.data.models.Account;
 import lombok.*;
 
 @Data
@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 public class CreateBvnDto {
 
+    private Long bankId;
     @NonNull
     private String firstName;
     @NonNull
@@ -20,18 +21,16 @@ public class CreateBvnDto {
     @NonNull
     private String mothersMaidenName;
     @NonNull
-    private String DOB;
-    @NonNull
     private String accountType;
+    private String bvn;
 
     @Builder
-    public CreateBvnDto(RegisterAccountRequest request) {
-        this.firstName = request.getFirstName();
-        this.lastName = request.getLastName();
-        this.phoneNumber = request.getPhoneNumber();
-        this.email = request.getEmail();
-        this.mothersMaidenName = request.getMothersMaidenName();
-        this.DOB = request.getDOB();
-        this.accountType = request.getAccountType();
+    public CreateBvnDto(Account account) {
+        this.firstName = account.getFirstName();
+        this.lastName = account.getLastName();
+        this.phoneNumber = account.getPhoneNumber();
+        this.email = account.getEmail();
+        this.mothersMaidenName = account.getMothersMaidenName();
+        this.accountType = String.valueOf(account.getAccountType());
     }
 }

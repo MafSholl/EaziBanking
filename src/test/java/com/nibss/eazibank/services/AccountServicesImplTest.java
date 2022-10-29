@@ -44,7 +44,7 @@ class AccountServicesImplTest {
         assertEquals(accountCreated.getFirstName(), response.getFirstName());
         assertEquals(accountCreated.getLastName(), response.getLastName());
         assertEquals(accountCreated.getAccountNumber(), response.getAccountNumber());
-        assertEquals(accountCreated.getBankVerificationNumber(), response.getBankVerificationNumber());
+        assertEquals(accountCreated.getBvn(), response.getBvn());
 //        assertEquals(accountCreated.getDateCreation(), response.getAccountCreationDate());
     }
 

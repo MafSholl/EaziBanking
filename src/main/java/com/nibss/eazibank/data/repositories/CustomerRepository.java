@@ -12,7 +12,7 @@ public interface CustomerRepository extends MongoRepository<Customer, String>{
 
     Optional<Customer> findByFirstName(String firstName);
 //    Optional<Customer> findByCustomerAccounts(Map<String, Account> customerAccounts);
-    Optional<Customer> findCustomerByBVN(String bvn);
+    Optional<Customer> findCustomerByBvn(String bvn);
 
     Optional<Customer> findByMothersMaidenName(String mothersMaidenName);
 

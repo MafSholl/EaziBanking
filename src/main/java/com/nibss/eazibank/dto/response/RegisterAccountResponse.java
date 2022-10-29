@@ -3,6 +3,7 @@ package com.nibss.eazibank.dto.response;
 import lombok.*;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -15,6 +16,6 @@ public class RegisterAccountResponse {
     private String lastName;
     private String accountNumber;
     private BigInteger balance;
-    private String accountCreationDate;
-    private String bankVerificationNumber;
+    private LocalDateTime accountCreationDate;
+    private String bvn;
 }

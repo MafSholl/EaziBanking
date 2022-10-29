@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,7 +97,7 @@ class BankServicesImplTest {
     public void staffCreatedIsWhatIsReturnedTest() {
         CreateCustomerResponse createCustomerResponse = createStaffAndCustomer();
         Customer customerInRepository = customerRepository.findCustomerByEmail(createCustomerResponse.getEmail()).get();
-        assertEquals(createCustomerResponse.getBVN(), customerInRepository.getBVN());
+        assertEquals(createCustomerResponse.getBVN(), customerInRepository.getBvn());
     }
 
     @Test
