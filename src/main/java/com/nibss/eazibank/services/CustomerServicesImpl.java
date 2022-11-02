@@ -133,17 +133,7 @@ public class CustomerServicesImpl implements CustomerServices{
         if (withdrawalRequest.getAmount().compareTo(currentBalance) >= 1) throw new InsufficientBalanceException("Inadequate balance");
         DebitAccountResponse debitResponse = accountServices.debitAccount(new DebitAccountRequest(
                 withdrawalRequest.getAccountNumber(), withdrawalRequest.getAmount()));
-        Transaction transaction = Transaction.builder()
-                .accountNumber(withdrawalRequest.getAccountNumber())
-                .amount(withdrawalRequest.getAmount())
-                .description(withdrawalRequest.getDescription())
-                .transactionType(TransactionType.DEPOSIT)
-                .recipientAccountNumber(withdrawalRequest.getAccountNumber())
-                .recipientName("Self")
-                .transactionId("002")
-                .build();
-        //This is wrong! A transaction service layer should create and save transaction
-        transactionRepository.save(transaction);
+        createAndSaveTransaction(withdrawalRequest);
 
         Optional<Customer> optionalCustomer = customerRepository.findCustomerByBvn(repoAccount.get().getBvn());
         Customer customer = optionalCustomer.get();
@@ -157,6 +147,19 @@ public class CustomerServicesImpl implements CustomerServices{
         withdrawalResponse.setAmount(withdrawalRequest.getAmount());
         withdrawalResponse.setSuccessful(true);
         return withdrawalResponse;
+    }
+    private void createAndSaveTransaction(CustomerWithdrawalRequest withdrawalRequest) {
+        //This is wrong! A transaction service layer should create and save transaction
+        Transaction transaction = Transaction.builder()
+                .accountNumber(withdrawalRequest.getAccountNumber())
+                .amount(withdrawalRequest.getAmount())
+                .description(withdrawalRequest.getDescription())
+                .transactionType(TransactionType.DEPOSIT)
+                .recipientAccountNumber(withdrawalRequest.getAccountNumber())
+                .recipientName("Self")
+                .transactionId("002")
+                .build();
+        transactionRepository.save(transaction);
     }
 
     @Override

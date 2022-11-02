@@ -5,6 +5,7 @@ import com.nibss.eazibank.data.models.NibssBankUser;
 import com.nibss.eazibank.data.repositories.NibssRepository;
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.NibssBankUserDto;
+import com.nibss.eazibank.dto.NibssInterbankDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,9 @@ public class NibssInterfaceServiceImpl implements NibssInterfaceService {
 
     public boolean isNibssAvailable() {
         return true;
+    }
+
+    public NibssBankUserDto nibssInterbankDeposit(NibssInterbankDto nibssInterbankRequest) {
+        return null;
     }
 }
