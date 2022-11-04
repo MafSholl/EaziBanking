@@ -9,5 +9,5 @@ public interface NibssInterfaceService {
 
      boolean isNibssAvailable();
 
-     Object nibssInterbankDeposit(NibssInterbankDto nibssDepositRequest);
+     NibssBankUserDto nibssInterbankDeposit(NibssInterbankDto nibssDepositRequest);
 }

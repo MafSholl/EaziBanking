@@ -15,7 +15,7 @@ import java.util.Map;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder
-@Document("Nibss Customer")
+@Document("Nibss Bank User")
 public class NibssBankUser {
     @Id
     @Indexed(unique = true)
@@ -24,6 +24,6 @@ public class NibssBankUser {
     private String firstName;
     @NonNull
     private String lastName;
-    private Map<String, List<Account>> bankerInformation = new HashMap<>();
+    private Map<String, List<Account>> userBankInformation = new HashMap<>();
 
 }

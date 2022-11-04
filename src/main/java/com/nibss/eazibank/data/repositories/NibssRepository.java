@@ -3,6 +3,11 @@ package com.nibss.eazibank.data.repositories;
 import com.nibss.eazibank.data.models.NibssBankUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
 @Repository
 public interface NibssRepository extends MongoRepository<NibssBankUser, Integer> {
+
+    Optional<NibssBankUser> findByBvn(String bvn);
 }

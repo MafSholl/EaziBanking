@@ -36,7 +36,7 @@ public class NibssInterfaceServiceImpl implements NibssInterfaceService {
                 .bvn(String.valueOf(bvnNumber))
                 .firstName(createBvnRequest.getFirstName())
                 .lastName(createBvnRequest.getLastName())
-                .bankerInformation(bankerInformation)
+                .userBankInformation(bankerInformation)
                 .build();
         nibssRepository.save(nibssBankUser);
         bvnNumber = bvnNumber.add(BigInteger.valueOf(1));
@@ -48,6 +48,6 @@ public class NibssInterfaceServiceImpl implements NibssInterfaceService {
     }
 
     public NibssBankUserDto nibssInterbankDeposit(NibssInterbankDto nibssInterbankRequest) {
-        return null;
+        return new NibssBankUserDto();
     }
 }

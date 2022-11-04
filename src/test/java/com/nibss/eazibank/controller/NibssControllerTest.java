@@ -205,12 +205,7 @@ class NibssControllerTest {
 
     @Test
     public void whenInterbankTransaction_NibssLinksBothBanksTogether() throws Exception{
-        NibssBankUserDto returnedNibssBankUserDto1 = NibssBankUserDto.builder()
-                .bvn(String.valueOf(1000000000))
-                .firstName("Eesuola")
-                .lastName("Popoola")
-                .build();
-        NibssBankUserDto returnedNibssBankUserDto2 = NibssBankUserDto.builder()
+        NibssBankUserDto returnedNibssBankUserDto = NibssBankUserDto.builder()
                 .bvn(String.valueOf(1000000001))
                 .firstName("Joshua")
                 .lastName("Kekere-ekun")
@@ -247,12 +242,12 @@ class NibssControllerTest {
                 .build();
 
 
-        when(nibssInterfaceService.nibssInterbankDeposit(nibssDepositRequest)).thenReturn(returnedNibssBankUserDto2);
+        when(nibssInterfaceService.nibssInterbankDeposit(nibssDepositRequest)).thenReturn(returnedNibssBankUserDto);
 
         ApiResponse expectedResponse = ApiResponse.builder()
                 .status("success")
-                .message("Transfer successfully")
-                .data(returnedNibssBankUserDto1)
+                .message("Transfer successful")
+                .data(returnedNibssBankUserDto)
                 .statusCode(HttpStatus.OK.value())
                 .build();
 
@@ -263,6 +258,8 @@ class NibssControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String actualResponseBody = result.getResponse().getContentAsString();
-        assertThat(actualResponseBody).isEqualToIgnoringWhitespace(objectMapper.writeValueAsString(expectedResponse.getData()));
+
+        verify(nibssInterfaceService).nibssInterbankDeposit(nibssDepositRequest);
+        assertThat(actualResponseBody).isEqualToIgnoringWhitespace(objectMapper.writeValueAsString(expectedResponse));
     }
 }

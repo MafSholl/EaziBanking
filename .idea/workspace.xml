@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="">
+    <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="Started nibss interbank deposit feature, added controller test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/NibssController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/NibssController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/NibssBankUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/models/NibssBankUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/NibssRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/NibssRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterfaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterfaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/services/NibssInterfaceServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/controller/NibssControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/controller/NibssControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/NibssInterfaceServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/NibssInterfaceServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -71,11 +79,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.nibss.eazibank.dto" />
+      <recent name="com.nibss.eazibank.data.models" />
       <recent name="com.nibss.eazibank.controller.response" />
       <recent name="com.nibss.eazibank.data.repositories" />
       <recent name="com.nibss.eazibank.dto.response" />
-      <recent name="com.nibss.eazibank.data.models" />
-      <recent name="com.nibss.eazibank.data.models.enums" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -85,13 +93,13 @@
       <recent name="com.nibss.eazibank.services" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.nibss.eazibank.controller" />
       <recent name="com.nibss.eazibank.services" />
+      <recent name="com.nibss.eazibank.controller" />
       <recent name="com.nibss.eazibank.data.repositories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NibssControllerTest.whenIsNibssAvailableCalled_IfNotAvailable_ResponseIsServerError">
-    <configuration name="CustomerServicesImplTest.canRetrieveCustomerByAccountNumber_orAccount_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.NibssInterfaceServiceImplTest.nibssCanPerformInterbankTransferTest">
+    <configuration name="CustomerServicesImplTest.customerCanViewTheirTransactionHistoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
@@ -101,13 +109,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
       <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.CustomerServicesImplTest" />
-      <option name="METHOD_NAME" value="canRetrieveCustomerByAccountNumber_orAccount_Test" />
+      <option name="METHOD_NAME" value="customerCanViewTheirTransactionHistoryTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NibssControllerTest.whenBvnGeneratorIsCalled_IsNibssAvailableLogicIsCalled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NibssControllerTest.whenBvnGeneratorCalled_NibssReturnANewCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
@@ -117,13 +125,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.nibss.eazibank.controller" />
       <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.controller.NibssControllerTest" />
-      <option name="METHOD_NAME" value="whenBvnGeneratorIsCalled_IsNibssAvailableLogicIsCalled" />
+      <option name="METHOD_NAME" value="whenBvnGeneratorCalled_NibssReturnANewCustomer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NibssControllerTest.whenIsNibssAvailableCalled_IfNotAvailable_ResponseIsServerError" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NibssControllerTest.whenInterbankTransaction_NibssLinksBothBanksTogether" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
@@ -133,39 +141,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.nibss.eazibank.controller" />
       <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.controller.NibssControllerTest" />
-      <option name="METHOD_NAME" value="whenIsNibssAvailableCalled_IfNotAvailable_ResponseIsServerError" />
+      <option name="METHOD_NAME" value="whenInterbankTransaction_NibssLinksBothBanksTogether" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NibssControllerTest.whenNibssIsAvailable_BusinessLogicIsCalledTestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NibssInterfaceServiceImplTest.nibssCanPerformInterbankTransferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.controller.*" />
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.nibss.eazibank.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.controller.NibssControllerTest" />
-      <option name="METHOD_NAME" value="whenNibssIsAvailable_BusinessLogicIsCalledTestTest" />
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.NibssInterfaceServiceImplTest" />
+      <option name="METHOD_NAME" value="nibssCanPerformInterbankTransferTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NibssControllerTest.whenRequestContentFieldNull_ThenReturns400Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StaffServicesImplMockTest.staffCanBeCreatedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.controller.*" />
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.nibss.eazibank.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.controller.NibssControllerTest" />
-      <option name="METHOD_NAME" value="whenRequestContentFieldNull_ThenReturns400Test" />
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.StaffServicesImplMockTest" />
+      <option name="METHOD_NAME" value="staffCanBeCreatedTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -173,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.NibssControllerTest.whenIsNibssAvailableCalled_IfNotAvailable_ResponseIsServerError" />
-        <item itemvalue="JUnit.NibssControllerTest.whenBvnGeneratorIsCalled_IsNibssAvailableLogicIsCalled" />
-        <item itemvalue="JUnit.NibssControllerTest.whenNibssIsAvailable_BusinessLogicIsCalledTestTest" />
-        <item itemvalue="JUnit.NibssControllerTest.whenRequestContentFieldNull_ThenReturns400Test" />
-        <item itemvalue="JUnit.CustomerServicesImplTest.canRetrieveCustomerByAccountNumber_orAccount_Test" />
+        <item itemvalue="JUnit.NibssInterfaceServiceImplTest.nibssCanPerformInterbankTransferTest" />
+        <item itemvalue="JUnit.NibssControllerTest.whenBvnGeneratorCalled_NibssReturnANewCustomer" />
+        <item itemvalue="JUnit.NibssControllerTest.whenInterbankTransaction_NibssLinksBothBanksTogether" />
+        <item itemvalue="JUnit.StaffServicesImplMockTest.staffCanBeCreatedTest" />
+        <item itemvalue="JUnit.CustomerServicesImplTest.customerCanViewTheirTransactionHistoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -236,8 +244,28 @@
       <workItem from="1666437732298" duration="8986000" />
       <workItem from="1666476986102" duration="22573000" />
       <workItem from="1666687340033" duration="11395000" />
-      <workItem from="1666784312594" duration="5576000" />
+      <workItem from="1666784312594" duration="11088000" />
+      <workItem from="1666866191427" duration="24207000" />
+      <workItem from="1666950820271" duration="41131000" />
+      <workItem from="1667145717319" duration="4737000" />
+      <workItem from="1667207722682" duration="4314000" />
+      <workItem from="1667343196808" duration="7213000" />
+      <workItem from="1667351433145" duration="508000" />
+      <workItem from="1667394366196" duration="2004000" />
+      <workItem from="1667477622749" duration="762000" />
+      <workItem from="1667496689979" duration="145000" />
+      <workItem from="1667498821618" duration="4979000" />
+      <workItem from="1667505778984" duration="1492000" />
+      <workItem from="1667514149423" duration="11703000" />
     </task>
+    <task id="LOCAL-00001" summary="Started nibss interbank deposit feature, added controller test">
+      <created>1667351666891</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667351666891</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,5 +281,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Started nibss interbank deposit feature, added controller test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started nibss interbank deposit feature, added controller test" />
   </component>
 </project>

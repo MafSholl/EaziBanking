@@ -3,6 +3,7 @@ package com.nibss.eazibank.controller;
 import com.nibss.eazibank.controller.response.ApiResponse;
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.NibssBankUserDto;
+import com.nibss.eazibank.dto.NibssInterbankDto;
 import com.nibss.eazibank.services.NibssInterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,9 +30,21 @@ public class NibssController {
         NibssBankUserDto newBankUser = nibssInterfaceService.bvnGenerator(createBvnRequest);
         ApiResponse response = ApiResponse.builder()
                 .status("success")
-                .message("BVN  created successfully")
+                .message("BVN created successfully")
                 .data(newBankUser)
                 .statusCode(HttpStatus.OK.value())
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PutMapping("/nibss-transfer")
+    public ResponseEntity<?> nibssInterbankDeposit(@Valid @RequestBody NibssInterbankDto interbankTransferRequest) {
+        NibssBankUserDto transferResponse = nibssInterfaceService.nibssInterbankDeposit(interbankTransferRequest);
+        ApiResponse response = ApiResponse.builder()
+                .status("success")
+                .message("Transfer successful")
+                .data(transferResponse)
+                .statusCode((HttpStatus.OK.value()))
                 .build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
