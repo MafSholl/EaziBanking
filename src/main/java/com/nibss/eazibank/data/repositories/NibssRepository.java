@@ -2,6 +2,7 @@ package com.nibss.eazibank.data.repositories;
 
 import com.nibss.eazibank.data.models.NibssBankUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -10,4 +11,7 @@ import java.util.Optional;
 public interface NibssRepository extends MongoRepository<NibssBankUser, Integer> {
 
     Optional<NibssBankUser> findByBvn(String bvn);
+
+    @Query(value = "{'userBankInformation.?.bankUserAccounts.account.accountNumber': ?0}")
+    Optional<NibssBankUser> findByBankUserAccountNumber(String accountNumber);
 }

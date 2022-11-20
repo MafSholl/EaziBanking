@@ -5,7 +5,7 @@ import com.nibss.eazibank.data.repositories.StaffRepository;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.dto.request.CreateStaffRequest;
 import com.nibss.eazibank.dto.response.CreateCustomerResponse;
-import com.nibss.eazibank.exception.BankDoesNotExistException;
+import com.nibss.eazibank.exception.exceptions.BankDoesNotExistException;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

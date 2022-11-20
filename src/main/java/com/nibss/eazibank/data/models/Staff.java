@@ -14,7 +14,8 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Staff {
+public class
+Staff {
     @Id
     @Indexed(unique = true)
     private String staffId;

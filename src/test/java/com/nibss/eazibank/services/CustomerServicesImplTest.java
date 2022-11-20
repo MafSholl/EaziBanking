@@ -8,7 +8,7 @@ import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.dto.request.*;
 import com.nibss.eazibank.dto.response.*;
-import com.nibss.eazibank.exception.*;
+import com.nibss.eazibank.exception.exceptions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

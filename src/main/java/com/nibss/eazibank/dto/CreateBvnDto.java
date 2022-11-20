@@ -22,6 +22,7 @@ public class CreateBvnDto {
     private String mothersMaidenName;
     @NonNull
     private String accountType;
+    private String accountNumber;
     private String bvn;
 
     @Builder
@@ -32,5 +33,6 @@ public class CreateBvnDto {
         this.email = account.getEmail();
         this.mothersMaidenName = account.getMothersMaidenName();
         this.accountType = String.valueOf(account.getAccountType());
+        this.accountNumber = account.getAccountNumber();
     }
 }

@@ -1,4 +1,4 @@
-package com.nibss.eazibank.exception;
+package com.nibss.eazibank.exception.exceptions;
 
 import org.springframework.http.HttpStatus;
 

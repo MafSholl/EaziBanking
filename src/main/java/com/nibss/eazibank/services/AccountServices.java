@@ -5,7 +5,7 @@ import com.nibss.eazibank.dto.request.AccountBalanceRequest;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;
-import com.nibss.eazibank.exception.AccountDoesNotExistException;
+import com.nibss.eazibank.exception.exceptions.AccountDoesNotExistException;
 
 import java.util.Optional;
 

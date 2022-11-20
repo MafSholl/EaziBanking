@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class NibssInterfaceServiceImpl implements NibssInterfaceService {
@@ -48,6 +45,9 @@ public class NibssInterfaceServiceImpl implements NibssInterfaceService {
     }
 
     public NibssBankUserDto nibssInterbankDeposit(NibssInterbankDto nibssInterbankRequest) {
+        //check if user exist
+        Optional<NibssBankUser> bankUser = nibssRepository.findByBankUserAccountNumber(nibssInterbankRequest.getAccountNumber());
+        //then call the second bank end point for a deposit
         return new NibssBankUserDto();
     }
 }

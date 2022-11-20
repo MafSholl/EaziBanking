@@ -99,16 +99,16 @@ class NibssInterfaceServiceImplTest {
         CreateBvnDto createBvnDto1 = new CreateBvnDto(account_1);
         createBvnDto1.setBankId(1L);
         CreateBvnDto createBvnDto2 = new CreateBvnDto(account_2);
-        createBvnDto1.setBankId(2L);
+        createBvnDto2.setBankId(2L);
         NibssBankUserDto bankUser1 = nibssInterfaceService.bvnGenerator(createBvnDto1);
         NibssBankUserDto bankUser2 = nibssInterfaceService.bvnGenerator(createBvnDto2);
 
         //Next I queried for the 2nd bank user that'll be credited, save the balance before credit alert
         NibssBankUser savedBankUser2 = nibssRepository.findByBvn(bankUser2.getBvn()).get();
-        Map<String, List<Account>> user2BankInformation = savedBankUser2.getUserBankInformation();
-        List<Account> userBankAccountList = user2BankInformation.get("1");
-        Account accountReceivingTransfer = userBankAccountList.get(1);
-        for (Account account : userBankAccountList) {
+        Map<String, List<Account>> user2BankerInformation = savedBankUser2.getUserBankInformation();
+        List<Account> bankUserAccounts = user2BankerInformation.get("2");
+        Account accountReceivingTransfer = bankUserAccounts.get(0);
+        for (Account account : bankUserAccounts) {
             if (account.getAccountNumber().equals(account_2.getAccountNumber())) {
                 accountReceivingTransfer = account;
             }
@@ -128,7 +128,7 @@ class NibssInterfaceServiceImplTest {
         //Then I queried for the same bank user, save the new balance before credit alert
         NibssBankUser creditedBankUser = nibssRepository.findByBvn(bankUser2.getBvn()).get();
         List<Account> accounts = creditedBankUser.getUserBankInformation().get("2");
-        Account accountThatReceivedTransfer = accounts.get(1);
+        Account accountThatReceivedTransfer = accounts.get(0);
         for (Account account : accounts) {
             if(account.getAccountNumber().equals(account_2.getAccountNumber())) {
                 accountThatReceivedTransfer = account;

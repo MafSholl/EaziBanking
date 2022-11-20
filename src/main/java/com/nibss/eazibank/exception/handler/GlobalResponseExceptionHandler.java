@@ -1,15 +1,17 @@
 package com.nibss.eazibank.exception.handler;
 
 import com.nibss.eazibank.controller.response.ApiResponse;
-import com.nibss.eazibank.exception.EaziBankExceptions;
+import com.nibss.eazibank.exception.exceptions.EaziBankExceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-//@ControllerAdvice
+@ControllerAdvice
 public class GlobalResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
-//    @ExceptionHandler
+    @ExceptionHandler
     public ResponseEntity<?> conflictHandler(EaziBankExceptions ex) {
         ApiResponse body = ApiResponse.builder()
                 .status("failure")
