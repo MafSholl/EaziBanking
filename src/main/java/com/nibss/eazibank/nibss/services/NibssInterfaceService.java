@@ -1,4 +1,4 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.nibss.services;
 
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.NibssBankUserDto;

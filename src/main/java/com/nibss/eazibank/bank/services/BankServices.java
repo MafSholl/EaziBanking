@@ -1,17 +1,16 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.bank.services;
 
-import com.nibss.eazibank.data.models.StaffDto;
+import com.nibss.eazibank.staff.models.StaffDto;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.dto.request.CreateStaffRequest;
-import com.nibss.eazibank.dto.request.DepositRequest;
 import com.nibss.eazibank.dto.response.CreateCustomerResponse;
-import com.nibss.eazibank.dto.response.StaffDepositDto;
 
-public interface StaffServices {
+
+public interface BankServices {
 
     StaffDto createStaff(CreateStaffRequest createStaffRequest);
 
     CreateCustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest);
 
-    StaffDepositDto customersAccountDeposit(DepositRequest depositRequest, String staffId);
+    boolean isNibssInterfaceAvailable();
 }

@@ -1,7 +1,8 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.staff.services;
 
-import com.nibss.eazibank.data.models.Staff;
-import com.nibss.eazibank.data.models.StaffDto;
+import com.nibss.eazibank.customer.services.CustomerServices;
+import com.nibss.eazibank.staff.models.Staff;
+import com.nibss.eazibank.staff.models.StaffDto;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.data.repositories.StaffRepository;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
@@ -20,7 +21,7 @@ import java.util.Optional;
 
 //@Service
 @Component
-public class StaffServicesImpl implements StaffServices{
+public class StaffServicesImpl implements StaffServices {
     @Autowired
     private StaffRepository staffRepository;
     @Autowired

@@ -1,9 +1,10 @@
 package com.nibss.eazibank.services;
 
-import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.Transaction;
+import com.nibss.eazibank.customer.services.CustomerServices;
+import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.transaction.models.Transaction;
 import com.nibss.eazibank.data.models.enums.AccountType;
-import com.nibss.eazibank.data.models.Customer;
+import com.nibss.eazibank.customer.customer.Customer;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.dto.request.*;

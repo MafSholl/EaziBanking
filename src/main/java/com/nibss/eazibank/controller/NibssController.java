@@ -4,7 +4,7 @@ import com.nibss.eazibank.controller.response.ApiResponse;
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.NibssBankUserDto;
 import com.nibss.eazibank.dto.NibssInterbankDto;
-import com.nibss.eazibank.services.NibssInterfaceService;
+import com.nibss.eazibank.nibss.services.NibssInterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.account.services;
 
-import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.account.models.Account;
 import com.nibss.eazibank.dto.request.AccountBalanceRequest;
 import com.nibss.eazibank.dto.request.CreditAccountRequest;
 import com.nibss.eazibank.dto.request.RegisterAccountRequest;

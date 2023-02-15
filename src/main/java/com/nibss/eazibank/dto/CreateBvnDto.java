@@ -1,6 +1,6 @@
 package com.nibss.eazibank.dto;
 
-import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.account.models.Account;
 import lombok.*;
 
 @Data

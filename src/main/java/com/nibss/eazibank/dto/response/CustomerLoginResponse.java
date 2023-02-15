@@ -1,6 +1,6 @@
 package com.nibss.eazibank.dto.response;
 
-import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.account.models.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,18 +1,23 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.bank.services;
 
-import com.nibss.eazibank.data.models.*;
+import com.nibss.eazibank.customer.services.CustomerServices;
+import com.nibss.eazibank.bank.models.Bank;
+import com.nibss.eazibank.staff.models.Staff;
+import com.nibss.eazibank.staff.models.StaffDto;
 import com.nibss.eazibank.data.repositories.StaffRepository;
 import com.nibss.eazibank.dto.request.CreateCustomerRequest;
 import com.nibss.eazibank.dto.request.CreateStaffRequest;
 import com.nibss.eazibank.dto.response.CreateCustomerResponse;
 import com.nibss.eazibank.exception.exceptions.BankDoesNotExistException;
+import com.nibss.eazibank.nibss.services.NibssInterfaceService;
+import com.nibss.eazibank.staff.services.StaffServices;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BankServicesImpl implements BankServices{
+public class BankServicesImpl implements BankServices {
 
     private Bank bank;
     @Autowired

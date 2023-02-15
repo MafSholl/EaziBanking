@@ -1,14 +1,14 @@
 package com.nibss.eazibank.services.MockTest;
 
-import com.nibss.eazibank.data.models.Bank;
-import com.nibss.eazibank.data.models.Staff;
-import com.nibss.eazibank.data.models.StaffDto;
+import com.nibss.eazibank.bank.models.Bank;
+import com.nibss.eazibank.staff.models.Staff;
+import com.nibss.eazibank.staff.models.StaffDto;
 import com.nibss.eazibank.data.repositories.BankRepository;
 import com.nibss.eazibank.data.repositories.StaffRepository;
 import com.nibss.eazibank.dto.request.CreateStaffRequest;
-import com.nibss.eazibank.services.BankServices;
-import com.nibss.eazibank.services.BankServicesImpl;
-import com.nibss.eazibank.services.StaffServices;
+import com.nibss.eazibank.bank.services.BankServices;
+import com.nibss.eazibank.bank.services.BankServicesImpl;
+import com.nibss.eazibank.staff.services.StaffServices;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

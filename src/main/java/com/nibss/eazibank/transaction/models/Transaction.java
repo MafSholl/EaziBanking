@@ -1,4 +1,4 @@
-package com.nibss.eazibank.data.models;
+package com.nibss.eazibank.transaction.models;
 
 import com.nibss.eazibank.data.models.enums.Location.Location;
 import com.nibss.eazibank.data.models.enums.PaymentMethod;

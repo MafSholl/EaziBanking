@@ -1,8 +1,10 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.customer.services;
 
-import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.Customer;
-import com.nibss.eazibank.data.models.Transaction;
+import com.nibss.eazibank.account.services.AccountServices;
+import com.nibss.eazibank.account.services.AccountServicesImpl;
+import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.customer.customer.Customer;
+import com.nibss.eazibank.transaction.models.Transaction;
 import com.nibss.eazibank.data.models.enums.TransactionType;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.data.repositories.TransactionRepository;
@@ -21,7 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
-public class CustomerServicesImpl implements CustomerServices{
+public class CustomerServicesImpl implements CustomerServices {
 
     @Autowired
     private AccountServices accountServices = new AccountServicesImpl();
@@ -91,8 +93,7 @@ public class CustomerServicesImpl implements CustomerServices{
 
     @Override
     public CustomerDepositResponse deposit(DepositRequest depositRequest) {
-        Optional<Account> repoAccount = accountServices.findAccount(depositRequest.getAccountNumber());
-        if (repoAccount.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
+        checkIfCustomerExist(depositRequest);
         CreditAccountResponse creditResponse = accountServices.creditAccount(new CreditAccountRequest(depositRequest.getAccountNumber(), depositRequest.getAmount()));
         Optional<Account> optionalCreditedAccount = accountServices.findAccount(creditResponse.getAccountNumber());
         Account creditedAccount = optionalCreditedAccount.get();
@@ -121,6 +122,11 @@ public class CustomerServicesImpl implements CustomerServices{
         depositResponse.setAmount(depositRequest.getAmount());
         depositResponse.setSuccess(true);
         return depositResponse;
+    }
+
+    private void checkIfCustomerExist(DepositRequest depositRequest) {
+        Optional<Account> repoAccount = accountServices.findAccount(depositRequest.getAccountNumber());
+        if (repoAccount.isEmpty()) throw new AccountDoesNotExistException("Account does not exist");
     }
 
     @Override
@@ -178,7 +184,8 @@ public class CustomerServicesImpl implements CustomerServices{
 
         if(isBalanceEnough(transferRequest, sendersAccount)) throw new InsufficientBalanceException("Insufficient balance");
         CustomerWithdrawalResponse sendersAccountWithdrawalResponse = withdraw(
-                new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount()));
+                new CustomerWithdrawalRequest(transferRequest.getSendersAccountNumber(), transferRequest.getAmount())
+        );
         if (!sendersAccountWithdrawalResponse.isSuccessful()) throw new TransactionErrorException("An error occured! Please try again");
         CustomerDepositResponse receiversAccountDepositResponse = deposit(new DepositRequest(transferRequest.getReceiversAccountNumber(), transferRequest.getAmount()));
         if (!receiversAccountDepositResponse.isSuccess()) throw new TransactionErrorException("An error occured! Please try again");

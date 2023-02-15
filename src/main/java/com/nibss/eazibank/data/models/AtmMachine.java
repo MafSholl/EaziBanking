@@ -1,6 +1,7 @@
 package com.nibss.eazibank.data.models;
 
 import com.nibss.eazibank.data.models.enums.Location.Location;
+import com.nibss.eazibank.transaction.models.Transaction;
 
 import java.util.List;
 

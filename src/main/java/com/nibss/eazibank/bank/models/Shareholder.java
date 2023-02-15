@@ -1,4 +1,4 @@
-package com.nibss.eazibank.data.models;
+package com.nibss.eazibank.bank.models;
 
 import lombok.Data;
 

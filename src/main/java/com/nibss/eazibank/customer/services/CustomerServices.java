@@ -1,4 +1,4 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.customer.services;
 
 import com.nibss.eazibank.dto.request.*;
 import com.nibss.eazibank.dto.response.*;

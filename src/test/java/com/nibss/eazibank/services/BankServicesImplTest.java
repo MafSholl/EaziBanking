@@ -1,7 +1,10 @@
 package com.nibss.eazibank.services;
 
-import com.nibss.eazibank.data.models.Bank;
-import com.nibss.eazibank.data.models.Customer;
+import com.nibss.eazibank.bank.services.BankServices;
+import com.nibss.eazibank.bank.services.BankServicesImpl;
+import com.nibss.eazibank.customer.services.CustomerServices;
+import com.nibss.eazibank.bank.models.Bank;
+import com.nibss.eazibank.customer.customer.Customer;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.data.repositories.StaffRepository;

@@ -1,6 +1,7 @@
 package com.nibss.eazibank.data.models.enums;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static com.nibss.eazibank.data.models.enums.SubDepartment.*;
 
@@ -25,6 +26,8 @@ public enum Department {
                 if (element.toString().equalsIgnoreCase(subDepartment)) return element;
             }
         }
+
+        List<SubDepartment> subdepartment = Arrays.stream(OPERATIONS.subDepartments).toList();
         return null;
     }
 }

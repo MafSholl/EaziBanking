@@ -1,9 +1,12 @@
 package com.nibss.eazibank.services;
 
-import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.Customer;
-import com.nibss.eazibank.data.models.Staff;
-import com.nibss.eazibank.data.models.StaffDto;
+import com.nibss.eazibank.account.services.AccountServices;
+import com.nibss.eazibank.customer.services.CustomerServices;
+import com.nibss.eazibank.customer.services.CustomerServicesImpl;
+import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.customer.customer.Customer;
+import com.nibss.eazibank.staff.models.Staff;
+import com.nibss.eazibank.staff.models.StaffDto;
 import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.repositories.CustomerRepository;
 import com.nibss.eazibank.data.repositories.StaffRepository;
@@ -15,6 +18,8 @@ import com.nibss.eazibank.dto.response.CreateCustomerResponse;
 import com.nibss.eazibank.dto.response.CustomerDepositResponse;
 import com.nibss.eazibank.dto.response.RegisterAccountResponse;
 import com.nibss.eazibank.dto.response.StaffDepositDto;
+import com.nibss.eazibank.staff.services.StaffServices;
+import com.nibss.eazibank.staff.services.StaffServicesImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,12 +1,14 @@
 package com.nibss.eazibank.services;
 
-import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.NibssBankUser;
+import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.nibss.models.NibssBankUser;
 import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.repositories.NibssRepository;
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.NibssBankUserDto;
 import com.nibss.eazibank.dto.NibssInterbankDto;
+import com.nibss.eazibank.nibss.services.NibssInterfaceService;
+import com.nibss.eazibank.nibss.services.NibssInterfaceServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

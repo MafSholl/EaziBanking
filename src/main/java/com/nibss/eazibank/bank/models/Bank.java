@@ -1,14 +1,18 @@
-package com.nibss.eazibank.data.models;
+package com.nibss.eazibank.bank.models;
 
-import lombok.*;
+import com.nibss.eazibank.customer.customer.Customer;
+import com.nibss.eazibank.data.models.*;
+import com.nibss.eazibank.staff.models.Staff;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

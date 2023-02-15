@@ -1,5 +1,6 @@
-package com.nibss.eazibank.data.models;
+package com.nibss.eazibank.account.models;
 
+import com.nibss.eazibank.transaction.models.Transaction;
 import com.nibss.eazibank.data.models.enums.AccountType;
 import lombok.*;
 import org.springframework.data.annotation.Id;

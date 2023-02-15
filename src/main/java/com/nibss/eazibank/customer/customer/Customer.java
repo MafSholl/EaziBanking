@@ -1,5 +1,7 @@
-package com.nibss.eazibank.data.models;
+package com.nibss.eazibank.customer.customer;
 
+import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.transaction.models.Transaction;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

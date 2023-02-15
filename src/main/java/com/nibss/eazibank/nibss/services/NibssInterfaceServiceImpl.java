@@ -1,7 +1,7 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.nibss.services;
 
-import com.nibss.eazibank.data.models.Account;
-import com.nibss.eazibank.data.models.NibssBankUser;
+import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.nibss.models.NibssBankUser;
 import com.nibss.eazibank.data.repositories.NibssRepository;
 import com.nibss.eazibank.dto.CreateBvnDto;
 import com.nibss.eazibank.dto.NibssBankUserDto;

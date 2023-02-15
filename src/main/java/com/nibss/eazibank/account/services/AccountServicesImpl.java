@@ -1,6 +1,6 @@
-package com.nibss.eazibank.services;
+package com.nibss.eazibank.account.services;
 
-import com.nibss.eazibank.data.models.Account;
+import com.nibss.eazibank.account.models.Account;
 import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.data.repositories.AccountRepository;
 import com.nibss.eazibank.dto.CreateBvnDto;
@@ -10,6 +10,7 @@ import com.nibss.eazibank.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.dto.response.*;
 import com.nibss.eazibank.exception.exceptions.AccountDoesNotExistException;
 import com.nibss.eazibank.exception.exceptions.EaziBankExceptions;
+import com.nibss.eazibank.nibss.services.NibssInterfaceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

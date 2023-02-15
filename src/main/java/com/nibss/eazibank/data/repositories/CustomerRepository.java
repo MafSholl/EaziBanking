@@ -1,6 +1,6 @@
 package com.nibss.eazibank.data.repositories;
 
-import com.nibss.eazibank.data.models.Customer;
+import com.nibss.eazibank.customer.customer.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
