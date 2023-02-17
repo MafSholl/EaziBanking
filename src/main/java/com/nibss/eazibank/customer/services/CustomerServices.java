@@ -1,7 +1,9 @@
 package com.nibss.eazibank.customer.services;
 
-import com.nibss.eazibank.dto.request.*;
-import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.customer.dto.request.*;
+import com.nibss.eazibank.customer.dto.response.*;
+import com.nibss.eazibank.staff.controller.requests.DepositRequest;
+import com.nibss.eazibank.transaction.dto.response.ViewTransactionHistoryResponse;
 
 public interface CustomerServices {
 

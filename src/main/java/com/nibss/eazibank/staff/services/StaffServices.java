@@ -1,11 +1,11 @@
 package com.nibss.eazibank.staff.services;
 
 import com.nibss.eazibank.staff.models.StaffDto;
-import com.nibss.eazibank.dto.request.CreateCustomerRequest;
-import com.nibss.eazibank.dto.request.CreateStaffRequest;
-import com.nibss.eazibank.dto.request.DepositRequest;
-import com.nibss.eazibank.dto.response.CreateCustomerResponse;
-import com.nibss.eazibank.dto.response.StaffDepositDto;
+import com.nibss.eazibank.customer.dto.request.CreateCustomerRequest;
+import com.nibss.eazibank.staff.controller.requests.CreateStaffRequest;
+import com.nibss.eazibank.staff.controller.requests.DepositRequest;
+import com.nibss.eazibank.customer.dto.response.CreateCustomerResponse;
+import com.nibss.eazibank.staff.dto.StaffDepositDto;
 
 public interface StaffServices {
 

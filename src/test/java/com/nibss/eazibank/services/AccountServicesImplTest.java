@@ -1,12 +1,16 @@
 package com.nibss.eazibank.services;
 
+import com.nibss.eazibank.account.dto.request.DebitAccountRequest;
+import com.nibss.eazibank.account.dto.response.AccountBalanceResponse;
+import com.nibss.eazibank.account.dto.response.CreditAccountResponse;
+import com.nibss.eazibank.account.dto.response.DebitAccountResponse;
+import com.nibss.eazibank.account.dto.response.RegisterAccountResponse;
 import com.nibss.eazibank.account.services.AccountServices;
 import com.nibss.eazibank.account.models.Account;
-import com.nibss.eazibank.data.repositories.AccountRepository;
-import com.nibss.eazibank.dto.request.AccountBalanceRequest;
-import com.nibss.eazibank.dto.request.CreditAccountRequest;
-import com.nibss.eazibank.dto.request.RegisterAccountRequest;
-import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.account.repository.AccountRepository;
+import com.nibss.eazibank.account.dto.request.AccountBalanceRequest;
+import com.nibss.eazibank.account.dto.request.CreditAccountRequest;
+import com.nibss.eazibank.account.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.exception.exceptions.AccountDoesNotExistException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

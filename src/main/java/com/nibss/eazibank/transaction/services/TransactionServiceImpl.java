@@ -1,10 +1,10 @@
 package com.nibss.eazibank.transaction.services;
 
 import com.nibss.eazibank.data.models.enums.TransactionType;
-import com.nibss.eazibank.data.repositories.TransactionRepository;
-import com.nibss.eazibank.dto.CreateTransactionDto;
-import com.nibss.eazibank.dto.request.ViewTransactionHistoryRequest;
-import com.nibss.eazibank.dto.response.ViewTransactionHistoryResponse;
+import com.nibss.eazibank.transaction.repository.TransactionRepository;
+import com.nibss.eazibank.transaction.dto.CreateTransactionDto;
+import com.nibss.eazibank.transaction.dto.request.ViewTransactionHistoryRequest;
+import com.nibss.eazibank.transaction.dto.response.ViewTransactionHistoryResponse;
 import com.nibss.eazibank.transaction.models.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

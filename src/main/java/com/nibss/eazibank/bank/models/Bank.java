@@ -1,6 +1,6 @@
 package com.nibss.eazibank.bank.models;
 
-import com.nibss.eazibank.customer.customer.Customer;
+import com.nibss.eazibank.customer.models.Customer;
 import com.nibss.eazibank.data.models.*;
 import com.nibss.eazibank.staff.models.Staff;
 import lombok.AllArgsConstructor;

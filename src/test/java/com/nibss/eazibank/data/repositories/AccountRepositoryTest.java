@@ -1,6 +1,7 @@
 package com.nibss.eazibank.data.repositories;
 
 import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.account.repository.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;

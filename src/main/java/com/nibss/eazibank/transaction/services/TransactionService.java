@@ -1,8 +1,8 @@
 package com.nibss.eazibank.transaction.services;
 
-import com.nibss.eazibank.dto.CreateTransactionDto;
-import com.nibss.eazibank.dto.request.ViewTransactionHistoryRequest;
-import com.nibss.eazibank.dto.response.ViewTransactionHistoryResponse;
+import com.nibss.eazibank.transaction.dto.CreateTransactionDto;
+import com.nibss.eazibank.transaction.dto.request.ViewTransactionHistoryRequest;
+import com.nibss.eazibank.transaction.dto.response.ViewTransactionHistoryResponse;
 
 public interface TransactionService {
 

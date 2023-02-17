@@ -1,6 +1,6 @@
 package com.nibss.eazibank.exception.handler;
 
-import com.nibss.eazibank.controller.response.ApiResponse;
+import com.nibss.eazibank.transaction.controller.response.ApiResponse;
 import com.nibss.eazibank.exception.exceptions.EaziBankExceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

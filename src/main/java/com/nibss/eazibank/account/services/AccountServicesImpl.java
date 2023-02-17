@@ -1,13 +1,17 @@
 package com.nibss.eazibank.account.services;
 
+import com.nibss.eazibank.account.dto.request.DebitAccountRequest;
+import com.nibss.eazibank.account.dto.response.AccountBalanceResponse;
+import com.nibss.eazibank.account.dto.response.CreditAccountResponse;
+import com.nibss.eazibank.account.dto.response.DebitAccountResponse;
+import com.nibss.eazibank.account.dto.response.RegisterAccountResponse;
 import com.nibss.eazibank.account.models.Account;
 import com.nibss.eazibank.data.models.enums.AccountType;
-import com.nibss.eazibank.data.repositories.AccountRepository;
-import com.nibss.eazibank.dto.CreateBvnDto;
-import com.nibss.eazibank.dto.request.AccountBalanceRequest;
-import com.nibss.eazibank.dto.request.CreditAccountRequest;
-import com.nibss.eazibank.dto.request.RegisterAccountRequest;
-import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.account.repository.AccountRepository;
+import com.nibss.eazibank.account.dto.response.CreateBvnDto;
+import com.nibss.eazibank.account.dto.request.AccountBalanceRequest;
+import com.nibss.eazibank.account.dto.request.CreditAccountRequest;
+import com.nibss.eazibank.account.dto.request.RegisterAccountRequest;
 import com.nibss.eazibank.exception.exceptions.AccountDoesNotExistException;
 import com.nibss.eazibank.exception.exceptions.EaziBankExceptions;
 import com.nibss.eazibank.nibss.services.NibssInterfaceService;

@@ -1,14 +1,16 @@
 package com.nibss.eazibank.services;
 
+import com.nibss.eazibank.customer.dto.request.*;
+import com.nibss.eazibank.customer.dto.response.*;
 import com.nibss.eazibank.customer.services.CustomerServices;
 import com.nibss.eazibank.account.models.Account;
+import com.nibss.eazibank.staff.controller.requests.DepositRequest;
+import com.nibss.eazibank.transaction.dto.response.ViewTransactionHistoryResponse;
 import com.nibss.eazibank.transaction.models.Transaction;
 import com.nibss.eazibank.data.models.enums.AccountType;
-import com.nibss.eazibank.customer.customer.Customer;
-import com.nibss.eazibank.data.repositories.AccountRepository;
-import com.nibss.eazibank.data.repositories.CustomerRepository;
-import com.nibss.eazibank.dto.request.*;
-import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.customer.models.Customer;
+import com.nibss.eazibank.account.repository.AccountRepository;
+import com.nibss.eazibank.customer.repository.CustomerRepository;
 import com.nibss.eazibank.exception.exceptions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +49,9 @@ class CustomerServicesImplTest {
         Optional<Customer> customerRepositoryCustomer = customerRepository.findByFirstName("Ayobaye");
         Account customerRepoAccount = customerRepositoryCustomer.get().getCustomerAccounts().get(createdCustomer.getAccountNumber());
 
-        // test that account saved in account repo is same customer has
+        // test that account saved in account repo is same models has
         assertEquals(accountRepoAccount.getAccountNumber(), customerRepoAccount.getAccountNumber());
-        // test that account saved in account repo is same customer services createCustomer method saved
+        // test that account saved in account repo is same models services createCustomer method saved
         assertEquals(accountRepoAccount.getAccountNumber(), createdCustomer.getAccountNumber());
         //checking is what enters is what comes of
         assertEquals(createdCustomer.getAccountNumber(), customerRepoAccount.getAccountNumber());

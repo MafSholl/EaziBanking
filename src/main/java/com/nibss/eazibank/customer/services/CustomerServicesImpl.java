@@ -1,15 +1,23 @@
 package com.nibss.eazibank.customer.services;
 
+import com.nibss.eazibank.account.dto.request.CreditAccountRequest;
+import com.nibss.eazibank.account.dto.request.DebitAccountRequest;
+import com.nibss.eazibank.account.dto.request.RegisterAccountRequest;
+import com.nibss.eazibank.account.dto.response.CreditAccountResponse;
+import com.nibss.eazibank.account.dto.response.DebitAccountResponse;
+import com.nibss.eazibank.account.dto.response.RegisterAccountResponse;
 import com.nibss.eazibank.account.services.AccountServices;
 import com.nibss.eazibank.account.services.AccountServicesImpl;
 import com.nibss.eazibank.account.models.Account;
-import com.nibss.eazibank.customer.customer.Customer;
+import com.nibss.eazibank.customer.dto.request.*;
+import com.nibss.eazibank.customer.dto.response.*;
+import com.nibss.eazibank.customer.models.Customer;
+import com.nibss.eazibank.staff.controller.requests.DepositRequest;
+import com.nibss.eazibank.transaction.dto.response.ViewTransactionHistoryResponse;
 import com.nibss.eazibank.transaction.models.Transaction;
 import com.nibss.eazibank.data.models.enums.TransactionType;
-import com.nibss.eazibank.data.repositories.CustomerRepository;
-import com.nibss.eazibank.data.repositories.TransactionRepository;
-import com.nibss.eazibank.dto.request.*;
-import com.nibss.eazibank.dto.response.*;
+import com.nibss.eazibank.customer.repository.CustomerRepository;
+import com.nibss.eazibank.transaction.repository.TransactionRepository;
 import com.nibss.eazibank.exception.exceptions.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -257,7 +265,7 @@ public class CustomerServicesImpl implements CustomerServices {
         //findByBvn is the appropriate method; it can easily be gotten by the frontend
         Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(viewTransactionHistoryRequest.getEmail());
         if (optionalCustomer.isEmpty()) throw new EaziBankExceptions("Customer does not exist", HttpStatus.NOT_FOUND.value());
-        //This first method is not advisable as transaction history can grow endlessly. This way we can manage space by saving transactions in the db instead of the customer
+        //This first method is not advisable as transaction history can grow endlessly. This way we can manage space by saving transactions in the db instead of the models
         Customer customer = optionalCustomer.get();
         List<Transaction> transactionHistory = customer.getTransactionHistory();
 
