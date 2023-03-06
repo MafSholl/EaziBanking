@@ -64,7 +64,6 @@ class NibssControllerTest {
                 .build();
         this.createBvnRequest1 = createBvnRequest1;
 
-
     }
 
     @Test
@@ -201,6 +200,7 @@ class NibssControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
         String actualResponse = result.getResponse().getContentAsString();
+        verify(nibssInterfaceService).bvnGenerator(createBvnRequest);
         assertThat(actualResponse).isEqualToIgnoringWhitespace(objectMapper.writeValueAsString(expectedResponse));
     }
 

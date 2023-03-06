@@ -31,7 +31,9 @@ public class Bank {
     private BigDecimal balance;
     private List<Director> boardOfDirectors;
     private List<Shareholder> shareholders;
+    @Builder.Default
     private List<Staff> staffs = new ArrayList<>();
+    @Builder.Default
     @DBRef
     private HashMap<String, Customer> customers = new HashMap<>();
     private HashMap<String, AtmMachine> atmMachines;

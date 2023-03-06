@@ -3,18 +3,15 @@ package com.nibss.eazibank.nibss.controller.models.enums;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.nibss.eazibank.data.models.enums.SubDepartment.*;
-
 public enum Department {
 
     INVESTMENT, HUMAN_RESOURCES,
-    OPERATIONS(CUSTOMER_SERVICE, CASH_AND_TELLER, FUNDS_TRANSFER, MARKETING),
+    OPERATIONS,
     SECRETARY,
     DISPATCH,
     SANITARY;
 
     private SubDepartment[] subDepartments;
-
     Department(SubDepartment... subDepartments) {
         this.subDepartments = subDepartments;
     }

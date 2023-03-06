@@ -5,78 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="Started nibss interbank deposit feature, added controller test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/response/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/response/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/controller/response/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/controller/response/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/response/AccountDtos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/AtmMachine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/AtmQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/BankVerificationNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/LogHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/AccountType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/DirectorRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Level.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Location/Lagos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Location/Location.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Location/Oyo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/OfficePosition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/PaymentMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/SalaryLevel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/SubDepartment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/TransactionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/controller/response/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/controller/response/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/dto/response/AccountDtos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/transaction/controller/response/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/transaction/controller/response/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/transaction/dto/response/AccountDtos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/services/AccountServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/services/AccountServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/services/AccountServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/services/AccountServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/services/BankServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/services/BankServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/services/BankServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/services/BankServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/NibssController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/NibssController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/response/ApiError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/controller/response/ApiError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/controller/response/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/controller/response/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/repository/AccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/BankRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/repository/BankRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/NibssRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/repository/NibssRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/StaffRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/repository/StaffRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/data/repositories/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/transaction/repository/TransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/AccountDtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/response/AccountDtos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/BankDtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/dto/response/BankDtos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/NibssBankUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/dto/response/NibssBankUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/NibssInterbankDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/dto/response/NibssInterbankDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/AccountBalanceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/request/AccountBalanceRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CreateCustomerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/request/CreateCustomerRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CreditAccountRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/request/CreditAccountRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CustomerLoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/request/CustomerLoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CustomerTransferRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/request/CustomerTransferRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/CustomerWithdrawalRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/request/CustomerWithdrawalRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/dto/request/RegisterAccountRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/request/RegisterAccountRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/response/AccountDtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/response/AccountDtos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/response/DebitAccountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/account/dto/response/DebitAccountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/models/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/bank/models/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/response/AccountDtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/dto/response/AccountDtos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/exception/handler/GlobalResponseExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/exception/handler/GlobalResponseExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/services/NibssInterfaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/services/NibssInterfaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/services/NibssInterfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/services/NibssInterfaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/services/StaffServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/services/StaffServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/services/StaffServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/staff/services/StaffServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/transaction/services/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/transaction/services/TransactionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/controller/AccountControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/controller/AccountControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/NibssController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/NibssController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/SalaryLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/nibss/controller/models/enums/SalaryLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/controller/NibssControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/controller/NibssControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/AccountRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/AccountRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/CustomerRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/CustomerRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/AccountServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/AccountServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/BankServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/BankServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/CustomerServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/CustomerServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/MockTest/BankServicesMockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/MockTest/BankServicesMockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/NibssInterfaceServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/NibssInterfaceServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/StaffServicesImplMockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/StaffServicesImplMockTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,33 +56,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_directory_selection": "C:/Users/3TL/IdeaProjects/EaziBanking/src/main/java/com/nibss/eazibank/services",
-    "last_opened_file_path": "C:/Users/3TL/IdeaProjects/EaziBanking/src/main/java/com/nibss/eazibank/transaction/dto",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "spring.configuration.checksum": "0f686462f44a22b491f620c37c20518c",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/3TL/IdeaProjects/EaziBanking/src/main/java/com/nibss/eazibank/services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/3TL/IdeaProjects/DockerDemo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;0f686462f44a22b491f620c37c20518c&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.nibss.eazibank.dto" />
@@ -171,83 +110,85 @@
       <recent name="com.nibss.eazibank.services" />
       <recent name="com.nibss.eazibank.data.repositories" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nibss.eazibank.customer.dto.request" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.NibssControllerTest.whenInterbankTransaction_NibssLinksBothBanksTogether">
-    <configuration name="CustomerServicesImplTest.customerCanViewTheirTransactionHistoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AccountServicesImplTest">
+    <configuration name="AccountServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.services.MockTest.*" />
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.CustomerServicesImplTest" />
-      <option name="METHOD_NAME" value="customerCanViewTheirTransactionHistoryTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.AccountServicesImplTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NibssControllerTest.whenBvnGeneratorCalled_NibssReturnANewCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountServicesImplTest.accountBalanceCanBeQueriedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.account.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.nibss.eazibank.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.controller.NibssControllerTest" />
-      <option name="METHOD_NAME" value="whenBvnGeneratorCalled_NibssReturnANewCustomer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NibssControllerTest.whenInterbankTransaction_NibssLinksBothBanksTogether" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EaziBanking" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.account.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.nibss.eazibank.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.controller.NibssControllerTest" />
-      <option name="METHOD_NAME" value="whenInterbankTransaction_NibssLinksBothBanksTogether" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NibssInterfaceServiceImplTest.nibssCanPerformInterbankTransferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EaziBanking" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.services.MockTest.*" />
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.NibssInterfaceServiceImplTest" />
-      <option name="METHOD_NAME" value="nibssCanPerformInterbankTransferTest" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.AccountServicesImplTest" />
+      <option name="METHOD_NAME" value="accountBalanceCanBeQueriedTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StaffServicesImplMockTest.staffCanBeCreatedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AccountServicesImplTest.duplicateAccountWithSameAccountNumbers_IsPreventedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EaziBanking" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nibss.eazibank.services.MockTest.*" />
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services.MockTest" />
-      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.MockTest.StaffServicesImplMockTest" />
-      <option name="METHOD_NAME" value="staffCanBeCreatedTest" />
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.AccountServicesImplTest" />
+      <option name="METHOD_NAME" value="duplicateAccountWithSameAccountNumbers_IsPreventedTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountServicesImplTest.incorrectAccountNumberThrowsException_WhenUsedInACreditTransactionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.AccountServicesImplTest" />
+      <option name="METHOD_NAME" value="incorrectAccountNumberThrowsException_WhenUsedInACreditTransactionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountServicesImplTest.incorrectAccountNumberThrowsException_WhenUsedInADebitTransactionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EaziBanking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nibss.eazibank.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nibss.eazibank.services" />
+      <option name="MAIN_CLASS_NAME" value="com.nibss.eazibank.services.AccountServicesImplTest" />
+      <option name="METHOD_NAME" value="incorrectAccountNumberThrowsException_WhenUsedInADebitTransactionTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -255,11 +196,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.NibssControllerTest.whenInterbankTransaction_NibssLinksBothBanksTogether" />
-        <item itemvalue="JUnit.NibssInterfaceServiceImplTest.nibssCanPerformInterbankTransferTest" />
-        <item itemvalue="JUnit.NibssControllerTest.whenBvnGeneratorCalled_NibssReturnANewCustomer" />
-        <item itemvalue="JUnit.StaffServicesImplMockTest.staffCanBeCreatedTest" />
-        <item itemvalue="JUnit.CustomerServicesImplTest.customerCanViewTheirTransactionHistoryTest" />
+        <item itemvalue="JUnit.AccountServicesImplTest" />
+        <item itemvalue="JUnit.AccountServicesImplTest.duplicateAccountWithSameAccountNumbers_IsPreventedTest" />
+        <item itemvalue="JUnit.AccountServicesImplTest.incorrectAccountNumberThrowsException_WhenUsedInADebitTransactionTest" />
+        <item itemvalue="JUnit.AccountServicesImplTest.incorrectAccountNumberThrowsException_WhenUsedInACreditTransactionTest" />
+        <item itemvalue="JUnit.AccountServicesImplTest.accountBalanceCanBeQueriedTest" />
       </list>
     </recent_temporary>
   </component>
@@ -359,7 +300,22 @@
       <workItem from="1675262031175" duration="2388000" />
       <workItem from="1675751416502" duration="590000" />
       <workItem from="1676422545605" duration="1303000" />
-      <workItem from="1676665083399" duration="2937000" />
+      <workItem from="1676665083399" duration="5102000" />
+      <workItem from="1676672475907" duration="1736000" />
+      <workItem from="1676888087454" duration="2216000" />
+      <workItem from="1676935839264" duration="3746000" />
+      <workItem from="1676994250987" duration="5333000" />
+      <workItem from="1677076386256" duration="6679000" />
+      <workItem from="1677087177202" duration="167000" />
+      <workItem from="1677087819997" duration="10826000" />
+      <workItem from="1677150655822" duration="2247000" />
+      <workItem from="1677267180487" duration="4486000" />
+      <workItem from="1677391515755" duration="1128000" />
+      <workItem from="1677477225435" duration="2304000" />
+      <workItem from="1677568517867" duration="966000" />
+      <workItem from="1677790133699" duration="58000" />
+      <workItem from="1678047005163" duration="1246000" />
+      <workItem from="1678110498688" duration="2503000" />
     </task>
     <task id="LOCAL-00001" summary="Started nibss interbank deposit feature, added controller test">
       <created>1667351666891</created>

@@ -19,4 +19,6 @@ public class GlobalResponseExceptionHandler extends ResponseEntityExceptionHandl
                 .build();
         return new ResponseEntity<>(body, HttpStatus.valueOf(ex.getStatusCode()));
     }
+
+
 }

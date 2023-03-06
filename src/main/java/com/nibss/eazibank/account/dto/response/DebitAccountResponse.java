@@ -12,7 +12,6 @@ import java.math.BigInteger;
 @RequiredArgsConstructor
 public class DebitAccountResponse {
 
-    @NonNull
     private boolean isSuccessful;
     @NonNull
     private String accountNumber;
