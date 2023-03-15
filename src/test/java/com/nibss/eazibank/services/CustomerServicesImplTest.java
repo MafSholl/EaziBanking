@@ -1,7 +1,5 @@
 package com.nibss.eazibank.services;
 
-import com.nibss.eazibank.customer.dto.request.*;
-import com.nibss.eazibank.customer.dto.response.*;
 import com.nibss.eazibank.customer.services.CustomerServices;
 import com.nibss.eazibank.account.models.Account;
 import com.nibss.eazibank.staff.controller.requests.DepositRequest;
@@ -11,7 +9,6 @@ import com.nibss.eazibank.data.models.enums.AccountType;
 import com.nibss.eazibank.customer.models.Customer;
 import com.nibss.eazibank.account.repository.AccountRepository;
 import com.nibss.eazibank.customer.repository.CustomerRepository;
-import com.nibss.eazibank.exception.exceptions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

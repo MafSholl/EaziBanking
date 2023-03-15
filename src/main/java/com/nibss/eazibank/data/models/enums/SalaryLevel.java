@@ -1,7 +1,5 @@
 package com.nibss.eazibank.data.models.enums;
 
-import static com.nibss.eazibank.data.models.enums.Level.*;
-
 public enum SalaryLevel {
     BEGINNER(I, II, III),
     MIDDLE(I, II, III),
