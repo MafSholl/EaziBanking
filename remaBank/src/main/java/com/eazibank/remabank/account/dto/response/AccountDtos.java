@@ -1,6 +1,6 @@
 package com.eazibank.remabank.account.dto.response;
 
-import com.eazibank.remabank.data.models.enums.AccountType;
+import com.eazibank.remabank.account.models.AccountType;
 import lombok.*;
 
 import java.math.BigInteger;

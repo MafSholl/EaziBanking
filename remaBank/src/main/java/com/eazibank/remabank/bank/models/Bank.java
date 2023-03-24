@@ -1,7 +1,7 @@
 package com.eazibank.remabank.bank.models;
 
 import com.eazibank.remabank.customer.models.Customer;
-import com.eazibank.remabank.data.models.AtmMachine;
+import com.eazibank.remabank.atm.models.AtmMachine;
 import com.eazibank.remabank.staff.models.Staff;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

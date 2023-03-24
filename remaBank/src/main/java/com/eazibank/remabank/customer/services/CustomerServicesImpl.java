@@ -13,7 +13,7 @@ import com.eazibank.remabank.customer.dto.request.*;
 import com.eazibank.remabank.customer.dto.response.*;
 import com.eazibank.remabank.customer.models.Customer;
 import com.eazibank.remabank.customer.repository.CustomerRepository;
-import com.eazibank.remabank.data.models.enums.TransactionType;
+import com.eazibank.remabank.transaction.models.TransactionType;
 import com.eazibank.remabank.exception.exceptions.*;
 import com.eazibank.remabank.staff.controller.requests.DepositRequest;
 import com.eazibank.remabank.transaction.dto.response.ViewTransactionHistoryResponse;

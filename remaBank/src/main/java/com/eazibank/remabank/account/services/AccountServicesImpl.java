@@ -9,7 +9,7 @@ import com.eazibank.remabank.account.dto.response.AccountBalanceResponse;
 import com.eazibank.remabank.account.dto.response.CreditAccountResponse;
 import com.eazibank.remabank.account.dto.response.DebitAccountResponse;
 import com.eazibank.remabank.account.dto.response.RegisterAccountResponse;
-import com.eazibank.remabank.data.models.enums.AccountType;
+import com.eazibank.remabank.account.models.AccountType;
 import com.eazibank.remabank.account.dto.response.CreateBvnDto;
 import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
 import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
@@ -24,7 +24,7 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static com.eazibank.remabank.data.models.enums.AccountType.*;
+import static com.eazibank.remabank.account.models.AccountType.*;
 
 @Service
 public class AccountServicesImpl implements AccountServices {

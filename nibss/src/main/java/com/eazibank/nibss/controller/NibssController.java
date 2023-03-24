@@ -1,10 +1,10 @@
 package com.eazibank.nibss.controller;
 
-import com.nibss.eazibank.account.dto.response.CreateBvnDto;
-import com.nibss.eazibank.nibss.dto.response.NibssBankUserDto;
-import com.nibss.eazibank.nibss.dto.response.NibssInterbankDto;
-import com.nibss.eazibank.nibss.services.NibssInterfaceService;
-import com.nibss.eazibank.transaction.controller.response.ApiResponse;
+import com.eazibank.nibss.controller.response.ApiResponse;
+import com.eazibank.nibss.dto.response.NibssBankUserDto;
+import com.eazibank.nibss.dto.response.NibssInterbankDto;
+import com.eazibank.nibss.models.CreateBvnDto;
+import com.eazibank.nibss.services.NibssInterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

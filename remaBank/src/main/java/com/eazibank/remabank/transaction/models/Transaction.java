@@ -1,8 +1,6 @@
 package com.eazibank.remabank.transaction.models;
 
-import com.eazibank.remabank.data.models.enums.Location.Location;
-import com.eazibank.remabank.data.models.enums.PaymentMethod;
-import com.eazibank.remabank.data.models.enums.TransactionType;
+import com.eazibank.remabank.atm.models.Location.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

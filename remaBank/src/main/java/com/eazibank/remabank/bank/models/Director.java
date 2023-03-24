@@ -1,6 +1,5 @@
 package com.eazibank.remabank.bank.models;
 
-import com.eazibank.remabank.data.models.enums.DirectorRole;
 import lombok.Data;
 
 import java.math.BigInteger;

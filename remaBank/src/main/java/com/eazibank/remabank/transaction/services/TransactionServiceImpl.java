@@ -1,6 +1,6 @@
 package com.eazibank.remabank.transaction.services;
 
-import com.eazibank.remabank.data.models.enums.TransactionType;
+import com.eazibank.remabank.transaction.models.TransactionType;
 import com.eazibank.remabank.transaction.dto.CreateTransactionDto;
 import com.eazibank.remabank.transaction.dto.request.ViewTransactionHistoryRequest;
 import com.eazibank.remabank.transaction.dto.response.ViewTransactionHistoryResponse;

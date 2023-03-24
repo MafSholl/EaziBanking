@@ -1,11 +1,7 @@
 package com.eazibank.remabank.staff.models;
 
 import com.eazibank.remabank.bank.models.Bank;
-import com.eazibank.remabank.data.models.enums.Department;
-import com.eazibank.remabank.data.models.enums.Location.Location;
-import com.eazibank.remabank.data.models.enums.OfficePosition;
-import com.eazibank.remabank.data.models.enums.SalaryLevel;
-import com.eazibank.remabank.data.models.enums.SubDepartment;
+import com.eazibank.remabank.atm.models.Location.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

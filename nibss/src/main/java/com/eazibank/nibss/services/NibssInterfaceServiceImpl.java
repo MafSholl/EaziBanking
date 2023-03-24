@@ -1,11 +1,11 @@
 package com.eazibank.nibss.services;
 
-import com.nibss.eazibank.account.models.Account;
-import com.nibss.eazibank.nibss.models.NibssBankUser;
-import com.nibss.eazibank.nibss.repository.NibssRepository;
-import com.nibss.eazibank.account.dto.response.CreateBvnDto;
-import com.nibss.eazibank.nibss.dto.response.NibssBankUserDto;
-import com.nibss.eazibank.nibss.dto.response.NibssInterbankDto;
+import com.eazibank.nibss.dto.response.NibssBankUserDto;
+import com.eazibank.nibss.dto.response.NibssInterbankDto;
+import com.eazibank.nibss.models.Account;
+import com.eazibank.nibss.models.CreateBvnDto;
+import com.eazibank.nibss.models.NibssBankUser;
+import com.eazibank.nibss.repository.NibssRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

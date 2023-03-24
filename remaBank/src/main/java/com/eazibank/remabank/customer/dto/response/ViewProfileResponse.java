@@ -1,6 +1,6 @@
 package com.eazibank.remabank.customer.dto.response;
 
-import com.eazibank.remabank.data.models.enums.AccountType;
+import com.eazibank.remabank.account.models.AccountType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

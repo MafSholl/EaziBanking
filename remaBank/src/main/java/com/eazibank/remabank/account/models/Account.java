@@ -1,7 +1,6 @@
 package com.eazibank.remabank.account.models;
 
 import com.eazibank.remabank.transaction.models.Transaction;
-import com.eazibank.remabank.data.models.enums.AccountType;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

@@ -1,6 +1,6 @@
 package com.eazibank.nibss.repository;
 
-import com.nibss.eazibank.nibss.models.NibssBankUser;
+import com.eazibank.nibss.models.NibssBankUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
