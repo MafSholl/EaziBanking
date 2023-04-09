@@ -1,20 +1,16 @@
 package com.eazibank.remabank.account.services;
 
+import com.eazibank.nibss.services.NibssInterfaceService;
+import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
+import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
+import com.eazibank.remabank.account.dto.request.DebitAccountRequest;
+import com.eazibank.remabank.account.dto.request.RegisterAccountRequest;
+import com.eazibank.remabank.account.dto.response.*;
 import com.eazibank.remabank.account.models.Account;
+import com.eazibank.remabank.account.models.AccountType;
 import com.eazibank.remabank.account.repository.AccountRepository;
 import com.eazibank.remabank.exception.exceptions.AccountDoesNotExistException;
 import com.eazibank.remabank.exception.exceptions.EaziBankExceptions;
-import com.eazibank.remabank.account.dto.request.DebitAccountRequest;
-import com.eazibank.remabank.account.dto.response.AccountBalanceResponse;
-import com.eazibank.remabank.account.dto.response.CreditAccountResponse;
-import com.eazibank.remabank.account.dto.response.DebitAccountResponse;
-import com.eazibank.remabank.account.dto.response.RegisterAccountResponse;
-import com.eazibank.remabank.account.models.AccountType;
-import com.eazibank.remabank.account.dto.response.CreateBvnDto;
-import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
-import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
-import com.eazibank.remabank.account.dto.request.RegisterAccountRequest;
-import com.eazibank.remabank.nibss.services.NibssInterfaceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +46,7 @@ public class AccountServicesImpl implements AccountServices {
                 .build();
         CreateBvnDto createBvnDto = new CreateBvnDto(account);
         createBvnDto.setBankId(1L);
-        account.setBvn(nibssInterfaceService.bvnGenerator(createBvnDto).getBvn()); //should be changed. this should call the Nibss api instead
+        account.setBvn(); //should be changed. this should call the Nibss api instead
 
         Account createdAccount = accountRepository.save(account);
 

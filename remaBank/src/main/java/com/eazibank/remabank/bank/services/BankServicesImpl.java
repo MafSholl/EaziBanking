@@ -1,16 +1,16 @@
 package com.eazibank.remabank.bank.services;
 
+import com.eazibank.nibss.services.NibssInterfaceService;
+import com.eazibank.remabank.bank.models.Bank;
 import com.eazibank.remabank.customer.dto.request.CreateCustomerRequest;
 import com.eazibank.remabank.customer.dto.response.CreateCustomerResponse;
 import com.eazibank.remabank.customer.services.CustomerServices;
 import com.eazibank.remabank.exception.exceptions.BankDoesNotExistException;
-import com.eazibank.remabank.nibss.services.NibssInterfaceService;
 import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
 import com.eazibank.remabank.staff.models.Staff;
 import com.eazibank.remabank.staff.models.StaffDto;
 import com.eazibank.remabank.staff.repository.StaffRepository;
 import com.eazibank.remabank.staff.services.StaffServices;
-import com.eazibank.remabank.bank.models.Bank;
 import lombok.Builder;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

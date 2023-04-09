@@ -5,95 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="Started nibss interbank deposit feature, added controller test">
-      <change afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/NibssModuleConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/controller/response/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/controller/response/ApiResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/dto/response/CreateCustomerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/models/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/models/CreateBvnDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/test/java/com/eazibanking/nibss/NibssModuleTestConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nibss/src/test/java/com/eazibanking/nibss/controller/NibssControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/account/controller/AccountControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/customer/controller/CustomerControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/account/controller/AccountControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/account/repository/AccountRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/account/services/AccountServicesImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/bank/services/BankServicesImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/bank/services/BankServicesMockTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/customer/repository/CustomerRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/customer/services/CustomerServicesImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/nibss/services/NibssInterfaceServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/staff/services/StaffServicesImplMockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/RemaBankModuleConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/controller/NibssController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/controller/NibssController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/models/NibssBankUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/models/NibssBankUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/repository/NibssRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/repository/NibssRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/services/NibssInterfaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/services/NibssInterfaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/services/NibssInterfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/services/NibssInterfaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/dto/response/AccountDtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/dto/response/AccountDtos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/egoBank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/egoBank/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nibss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remaBank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/services/AccountServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/services/AccountServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/models/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/models/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/models/Director.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/models/Director.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/dto/response/AccountDtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/dto/response/AccountDtos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/dto/response/ViewProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/dto/response/ViewProfileResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/services/CustomerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/services/CustomerServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/AtmMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/atm/models/AtmMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/AtmQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/atm/models/AtmQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/BankVerificationNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/models/BankVerificationNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/LogHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/atm/models/AtmLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/models/AccountType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/DirectorRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/models/DirectorRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/Location/Lagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/atm/models/Location/Lagos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/Location/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/atm/models/Location/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/Location/Oyo.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/atm/models/Location/Oyo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/OfficePosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/OfficePosition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/PaymentMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/models/PaymentMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/SalaryLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/SalaryLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/SubDepartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/SubDepartment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/data/models/enums/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/models/TransactionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/NibssController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/AtmMachine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/AtmQuery.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/BankVerificationNumber.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/LogHistory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/main/java/com/eazibank/nibss/models/AccountType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/Department.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/DirectorRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/Level.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/Location/Lagos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/Location/Location.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/Location/Oyo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/OfficePosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/PaymentMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/SalaryLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/SubDepartment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/controller/models/enums/TransactionType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/dto/response/NibssBankUserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/dto/response/NibssInterbankDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/models/Nibss.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/models/NibssBankUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/repository/NibssRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/services/NibssInterfaceService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/nibss/services/NibssInterfaceServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/dto/response/CreateStaffResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/dto/response/CreateStaffResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/Staff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/StaffDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/models/StaffDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/dto/CreateTransactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/dto/CreateTransactionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/services/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/transaction/services/TransactionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nibss/eazibank/customer/services/CustomerServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/AccountRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/account/repository/AccountRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/data/repositories/CustomerRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/customer/repository/CustomerRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/AccountServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/account/services/AccountServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/BankServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/bank/services/BankServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/CustomerServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/customer/services/CustomerServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/MockTest/BankServicesMockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/bank/services/BankServicesMockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/NibssInterfaceServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/src/test/java/com/eazibanking/nibss/services/NibssInterfaceServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nibss/eazibank/services/StaffServicesImplMockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/staff/services/StaffServicesImplMockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/services/BankServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/services/BankServicesImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,34 +57,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_directory_selection": "C:/Users/3TL/IdeaProjects/EaziBanking/src/main/java/com/nibss/eazibank/services",
-    "last_opened_file_path": "C:/Users/3TL/IdeaProjects/EaziBanking/nibss/src/main/java/com/eazibank/nibss/controller",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "spring.configuration.checksum": "2bb0959b5d1d9647408149e4430dfb49",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/3TL/IdeaProjects/EaziBanking/src/main/java/com/nibss/eazibank/services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/3TL/IdeaProjects/EaziBanking/nibss/src/main/java/com/eazibank/nibss/controller&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;2bb0959b5d1d9647408149e4430dfb49&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.nibss.eazibank.dto" />
@@ -427,7 +346,8 @@
       <workItem from="1678047005163" duration="1246000" />
       <workItem from="1678110498688" duration="8964000" />
       <workItem from="1678744212210" duration="10291000" />
-      <workItem from="1679619187903" duration="654000" />
+      <workItem from="1679619187903" duration="4016000" />
+      <workItem from="1681069034593" duration="1383000" />
     </task>
     <task id="LOCAL-00001" summary="Started nibss interbank deposit feature, added controller test">
       <created>1667351666891</created>
