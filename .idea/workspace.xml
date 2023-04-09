@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="Started nibss interbank deposit feature, added controller test">
-      <change afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/RemaBankModuleConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/egoBank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/egoBank/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nibss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/services/AccountServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/services/AccountServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/services/BankServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/bank/services/BankServicesImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +340,7 @@
       <workItem from="1678110498688" duration="8964000" />
       <workItem from="1678744212210" duration="10291000" />
       <workItem from="1679619187903" duration="4016000" />
-      <workItem from="1681069034593" duration="1383000" />
+      <workItem from="1681069034593" duration="2397000" />
     </task>
     <task id="LOCAL-00001" summary="Started nibss interbank deposit feature, added controller test">
       <created>1667351666891</created>

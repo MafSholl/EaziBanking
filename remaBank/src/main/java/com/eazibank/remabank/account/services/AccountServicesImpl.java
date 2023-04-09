@@ -46,7 +46,7 @@ public class AccountServicesImpl implements AccountServices {
                 .build();
         CreateBvnDto createBvnDto = new CreateBvnDto(account);
         createBvnDto.setBankId(1L);
-        account.setBvn(); //should be changed. this should call the Nibss api instead
+        account.setBvn(nibssInterfaceService.bvnGenerator(createBvnDto).getBvn()); //should be changed. this should call the Nibss api instead
 
         Account createdAccount = accountRepository.save(account);
 
