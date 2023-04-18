@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="Started nibss interbank deposit feature, added controller test">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -343,7 +344,7 @@
       <workItem from="1681069034593" duration="2397000" />
       <workItem from="1681072029496" duration="8290000" />
       <workItem from="1681414130337" duration="551000" />
-      <workItem from="1681729554953" duration="4296000" />
+      <workItem from="1681729554953" duration="5077000" />
     </task>
     <task id="LOCAL-00001" summary="Started nibss interbank deposit feature, added controller test">
       <created>1667351666891</created>
