@@ -17,10 +17,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 import static com.eazibank.remabank.account.models.AccountType.*;
+import static java.lang.System.getenv;
 
 @Service
 public class AccountServicesImpl implements AccountServices {
@@ -46,7 +53,20 @@ public class AccountServicesImpl implements AccountServices {
                 .build();
         CreateBvnDto createBvnDto = new CreateBvnDto(account);
         createBvnDto.setBankId(1L);
-        account.setBvn(nibssInterfaceService.bvnGenerator(createBvnDto).getBvn()); //should be changed. this should call the Nibss api instead
+
+        //Setting up a client and make request through the client
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpRequest bvnRequest = HttpRequest.newBuilder()
+                        .uri(new URI(getenv("NIBSS_BASE_URL")))
+                        .timeout(Duration.of(10, ChronoUnit.SECONDS))
+                        .POST(HttpRequest.BodyPublishers.ofString(request.toString()))
+                        .build();
+        HttpResponse<String> response = httpClient.send(bvnRequest, HttpResponse.BodyHandlers.ofString());
+
+
+        account.setBvn(
+
+        ); //should be changed. this should call the Nibss api instead
 
         Account createdAccount = accountRepository.save(account);
 
