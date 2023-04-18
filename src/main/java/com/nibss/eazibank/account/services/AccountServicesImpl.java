@@ -24,8 +24,6 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static com.nibss.eazibank.data.models.enums.AccountType.*;
-
 @Service
 public class AccountServicesImpl implements AccountServices {
     @Autowired

@@ -3,8 +3,6 @@ package com.nibss.eazibank.data.models.enums;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.nibss.eazibank.data.models.enums.SubDepartment.*;
-
 public enum Department {
 
     INVESTMENT, HUMAN_RESOURCES,
