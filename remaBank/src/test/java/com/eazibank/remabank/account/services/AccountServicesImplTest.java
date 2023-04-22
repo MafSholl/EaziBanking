@@ -1,16 +1,16 @@
 package com.eazibank.remabank.account.services;
 
-import com.nibss.eazibank.account.dto.request.AccountBalanceRequest;
-import com.nibss.eazibank.account.dto.request.CreditAccountRequest;
-import com.nibss.eazibank.account.dto.request.DebitAccountRequest;
-import com.nibss.eazibank.account.dto.request.RegisterAccountRequest;
-import com.nibss.eazibank.account.dto.response.AccountBalanceResponse;
-import com.nibss.eazibank.account.dto.response.CreditAccountResponse;
-import com.nibss.eazibank.account.dto.response.DebitAccountResponse;
-import com.nibss.eazibank.account.dto.response.RegisterAccountResponse;
-import com.nibss.eazibank.account.models.Account;
-import com.nibss.eazibank.account.repository.AccountRepository;
-import com.nibss.eazibank.exception.exceptions.AccountDoesNotExistException;
+import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
+import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
+import com.eazibank.remabank.account.dto.request.DebitAccountRequest;
+import com.eazibank.remabank.account.dto.request.RegisterAccountRequest;
+import com.eazibank.remabank.account.dto.response.AccountBalanceResponse;
+import com.eazibank.remabank.account.dto.response.CreditAccountResponse;
+import com.eazibank.remabank.account.dto.response.DebitAccountResponse;
+import com.eazibank.remabank.account.dto.response.RegisterAccountResponse;
+import com.eazibank.remabank.account.models.Account;
+import com.eazibank.remabank.account.repository.AccountRepository;
+import com.eazibank.remabank.exception.exceptions.AccountDoesNotExistException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,8 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigInteger;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AccountServicesImplTest {

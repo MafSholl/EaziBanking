@@ -4,7 +4,7 @@ import com.eazibank.nibss.NibssModuleConfig;
 import com.eazibank.nibss.dto.response.NibssBankUserDto;
 import com.eazibank.nibss.dto.response.NibssInterbankDto;
 import com.eazibank.nibss.models.Account;
-import com.eazibank.nibss.models.AccountType;
+import com.eazibank.nibss.models.enums.AccountType;
 import com.eazibank.nibss.models.CreateBvnDto;
 import com.eazibank.nibss.models.NibssBankUser;
 import com.eazibank.nibss.repository.NibssRepository;

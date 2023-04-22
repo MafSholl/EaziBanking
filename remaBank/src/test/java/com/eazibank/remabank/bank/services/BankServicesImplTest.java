@@ -1,24 +1,27 @@
 package com.eazibank.remabank.bank.services;
 
-import com.nibss.eazibank.account.repository.AccountRepository;
-import com.nibss.eazibank.bank.models.Bank;
-import com.nibss.eazibank.customer.dto.request.CreateCustomerRequest;
-import com.nibss.eazibank.customer.dto.response.CreateCustomerResponse;
-import com.nibss.eazibank.customer.models.Customer;
-import com.nibss.eazibank.customer.repository.CustomerRepository;
-import com.nibss.eazibank.customer.services.CustomerServices;
-import com.nibss.eazibank.exception.exceptions.BankDoesNotExistException;
-import com.nibss.eazibank.staff.controller.requests.CreateStaffRequest;
-import com.nibss.eazibank.staff.repository.StaffRepository;
+import com.eazibank.remabank.RemaBankModuleConfig;
+import com.eazibank.remabank.account.repository.AccountRepository;
+import com.eazibank.remabank.bank.models.Bank;
+import com.eazibank.remabank.customer.dto.request.CreateCustomerRequest;
+import com.eazibank.remabank.customer.dto.response.CreateCustomerResponse;
+import com.eazibank.remabank.customer.models.Customer;
+import com.eazibank.remabank.customer.repository.CustomerRepository;
+import com.eazibank.remabank.customer.services.CustomerServices;
+import com.eazibank.remabank.exception.exceptions.BankDoesNotExistException;
+import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
+import com.eazibank.remabank.staff.repository.StaffRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@ContextConfiguration(classes = RemaBankModuleConfig.class)
 class BankServicesImplTest {
     @Autowired
     private StaffRepository staffRepository;

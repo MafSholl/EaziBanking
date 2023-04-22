@@ -1,12 +1,14 @@
 package com.eazibank.remabank.customer.repository;
 
-import com.nibss.eazibank.customer.models.Customer;
+import com.eazibank.remabank.RemaBankModuleConfig;
+import com.eazibank.remabank.customer.models.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataMongoTest
+@ContextConfiguration(classes = RemaBankModuleConfig.class)
 class CustomerRepositoryTest {
     @Autowired
     private CustomerRepository customerRepository;

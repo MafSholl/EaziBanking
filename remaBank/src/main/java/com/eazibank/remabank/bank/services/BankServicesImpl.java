@@ -1,6 +1,5 @@
 package com.eazibank.remabank.bank.services;
 
-import com.eazibank.nibss.services.NibssInterfaceService;
 import com.eazibank.remabank.bank.models.Bank;
 import com.eazibank.remabank.customer.dto.request.CreateCustomerRequest;
 import com.eazibank.remabank.customer.dto.response.CreateCustomerResponse;
@@ -26,8 +25,8 @@ public class BankServicesImpl implements BankServices {
     private ModelMapper modelMapper;
     @Autowired
     private CustomerServices customerServices;
-    @Autowired
-    private NibssInterfaceService nibssInterfaceService;
+//    @Autowired
+//    private NibssInterfaceService nibssInterfaceService;
     private StaffServices staffServices;
 
 
@@ -59,7 +58,8 @@ public class BankServicesImpl implements BankServices {
 
     @Override
     public boolean isNibssInterfaceAvailable() {
-        return nibssInterfaceService.isNibssAvailable();
+//        return nibssInterfaceService.isNibssAvailable();
+        return true;
     }
 
 
