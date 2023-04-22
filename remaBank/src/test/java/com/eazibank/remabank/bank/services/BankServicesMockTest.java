@@ -1,12 +1,12 @@
 package com.eazibank.remabank.bank.services;
 
-import com.nibss.eazibank.bank.models.Bank;
-import com.nibss.eazibank.bank.repository.BankRepository;
-import com.nibss.eazibank.staff.controller.requests.CreateStaffRequest;
-import com.nibss.eazibank.staff.models.Staff;
-import com.nibss.eazibank.staff.models.StaffDto;
-import com.nibss.eazibank.staff.repository.StaffRepository;
-import com.nibss.eazibank.staff.services.StaffServices;
+import com.eazibank.remabank.bank.models.Bank;
+import com.eazibank.remabank.bank.repository.BankRepository;
+import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
+import com.eazibank.remabank.staff.models.Staff;
+import com.eazibank.remabank.staff.models.StaffDto;
+import com.eazibank.remabank.staff.repository.StaffRepository;
+import com.eazibank.remabank.staff.services.StaffServices;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +19,7 @@ import org.modelmapper.ModelMapper;
 
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 

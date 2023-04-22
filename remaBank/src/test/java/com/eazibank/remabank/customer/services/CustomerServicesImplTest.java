@@ -1,19 +1,21 @@
 package com.eazibank.remabank.customer.services;
 
-import com.nibss.eazibank.account.models.Account;
-import com.nibss.eazibank.account.repository.AccountRepository;
-import com.nibss.eazibank.customer.dto.request.*;
-import com.nibss.eazibank.customer.dto.response.*;
-import com.nibss.eazibank.customer.models.Customer;
-import com.nibss.eazibank.customer.repository.CustomerRepository;
-import com.nibss.eazibank.data.models.enums.AccountType;
-import com.nibss.eazibank.exception.exceptions.*;
-import com.nibss.eazibank.staff.controller.requests.DepositRequest;
-import com.nibss.eazibank.transaction.dto.response.ViewTransactionHistoryResponse;
-import com.nibss.eazibank.transaction.models.Transaction;
+import com.eazibank.remabank.RemaBankModuleConfig;
+import com.eazibank.remabank.account.models.Account;
+import com.eazibank.remabank.account.models.AccountType;
+import com.eazibank.remabank.account.repository.AccountRepository;
+import com.eazibank.remabank.customer.dto.request.*;
+import com.eazibank.remabank.customer.dto.response.*;
+import com.eazibank.remabank.customer.models.Customer;
+import com.eazibank.remabank.customer.repository.CustomerRepository;
+import com.eazibank.remabank.exception.exceptions.*;
+import com.eazibank.remabank.staff.controller.requests.DepositRequest;
+import com.eazibank.remabank.transaction.dto.response.ViewTransactionHistoryResponse;
+import com.eazibank.remabank.transaction.models.Transaction;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
@@ -24,6 +26,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@ContextConfiguration(classes = RemaBankModuleConfig.class)
 class CustomerServicesImplTest {
 
     @Autowired

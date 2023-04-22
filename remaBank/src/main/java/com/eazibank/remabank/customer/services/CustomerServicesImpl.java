@@ -8,16 +8,15 @@ import com.eazibank.remabank.account.dto.response.DebitAccountResponse;
 import com.eazibank.remabank.account.dto.response.RegisterAccountResponse;
 import com.eazibank.remabank.account.models.Account;
 import com.eazibank.remabank.account.services.AccountServices;
-import com.eazibank.remabank.account.services.AccountServicesImpl;
 import com.eazibank.remabank.customer.dto.request.*;
 import com.eazibank.remabank.customer.dto.response.*;
 import com.eazibank.remabank.customer.models.Customer;
 import com.eazibank.remabank.customer.repository.CustomerRepository;
-import com.eazibank.remabank.transaction.models.TransactionType;
 import com.eazibank.remabank.exception.exceptions.*;
 import com.eazibank.remabank.staff.controller.requests.DepositRequest;
 import com.eazibank.remabank.transaction.dto.response.ViewTransactionHistoryResponse;
 import com.eazibank.remabank.transaction.models.Transaction;
+import com.eazibank.remabank.transaction.models.TransactionType;
 import com.eazibank.remabank.transaction.repository.TransactionRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ import java.util.*;
 public class CustomerServicesImpl implements CustomerServices {
 
     @Autowired
-    private AccountServices accountServices = new AccountServicesImpl();
+    private AccountServices accountServices;
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired

@@ -5,7 +5,7 @@ import com.eazibank.nibss.controller.response.ApiResponse;
 import com.eazibank.nibss.dto.response.NibssBankUserDto;
 import com.eazibank.nibss.dto.response.NibssInterbankDto;
 import com.eazibank.nibss.models.Account;
-import com.eazibank.nibss.models.AccountType;
+import com.eazibank.nibss.models.enums.AccountType;
 import com.eazibank.nibss.models.CreateBvnDto;
 import com.eazibank.nibss.services.NibssInterfaceService;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,6 +1,5 @@
 package com.eazibank.remabank.account.services;
 
-import com.eazibank.nibss.services.NibssInterfaceService;
 import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
 import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
 import com.eazibank.remabank.account.dto.request.DebitAccountRequest;
@@ -16,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -33,14 +34,18 @@ import static java.lang.System.getenv;
 public class AccountServicesImpl implements AccountServices {
     @Autowired
     private AccountRepository accountRepository;
-    private int accountNumber = 100_000_000;
-    @Autowired
-    private NibssInterfaceService nibssInterfaceService;
+    private int accountNumber;
     @Autowired
     private ModelMapper modelMapper;
+
+    public AccountServicesImpl(AccountRepository accountRepository,
+                               ModelMapper modelMapper) {
+        this.accountRepository = accountRepository;
+        this.modelMapper = modelMapper;
+        this.accountNumber = 100_000_000;
+    }
     @Override
     public RegisterAccountResponse createAccount(RegisterAccountRequest request) {
-
         Account account = Account.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -56,16 +61,20 @@ public class AccountServicesImpl implements AccountServices {
 
         //Setting up a client and make request through the client
         HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest bvnRequest = HttpRequest.newBuilder()
-                        .uri(new URI(getenv("NIBSS_BASE_URL")))
-                        .timeout(Duration.of(10, ChronoUnit.SECONDS))
-                        .POST(HttpRequest.BodyPublishers.ofString(request.toString()))
-                        .build();
-        HttpResponse<String> response = httpClient.send(bvnRequest, HttpResponse.BodyHandlers.ofString());
-
-
+        HttpRequest bvnRequest = null;
+        HttpResponse<String> httpResponse;
+        try {
+            bvnRequest = HttpRequest.newBuilder()
+                            .uri(new URI(getenv("NIBSS_BASE_URL")))
+                            .timeout(Duration.of(10, ChronoUnit.SECONDS))
+                            .POST(HttpRequest.BodyPublishers.ofString(request.toString()))
+                            .build();
+            httpResponse = httpClient.send(bvnRequest, HttpResponse.BodyHandlers.ofString());
+        } catch (URISyntaxException | IOException | InterruptedException e)  {
+            throw new RuntimeException(e);
+        }
         account.setBvn(
-
+                httpResponse.body()
         ); //should be changed. this should call the Nibss api instead
 
         Account createdAccount = accountRepository.save(account);
@@ -153,7 +162,6 @@ public class AccountServicesImpl implements AccountServices {
             response.setDebitedAmount(debitRequest.getAmount());
             response.setBalance(debitedAccount.getBalance());
         }
-
         return response;
     }
 
