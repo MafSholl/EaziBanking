@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 @Document("Customer")
 public class Customer {

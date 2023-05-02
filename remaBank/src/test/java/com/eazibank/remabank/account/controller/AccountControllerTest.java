@@ -1,10 +1,11 @@
 package com.eazibank.remabank.account.controller;
 
-import com.eazibank.remabank.RemaBankModuleConfig;
+import com.eazibank.remabank.RemaBankModuleTestConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @WebMvcTest(AccountController.class)
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = RemaBankModuleConfig.class)
+@ContextConfiguration(classes = RemaBankModuleTestConfig.class)
+@ActiveProfiles("dev")
 public class AccountControllerTest {
 
     @Autowired

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BankServicesImpl implements BankServices {
-
+    @Autowired
     private Bank bank;
     @Autowired
     private StaffRepository staffRepository;
