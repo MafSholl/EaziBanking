@@ -9,9 +9,10 @@ import com.eazibank.remabank.account.models.Account;
 import com.eazibank.remabank.account.models.AccountType;
 import com.eazibank.remabank.account.repository.AccountRepository;
 import com.eazibank.remabank.exception.exceptions.AccountDoesNotExistException;
-import com.eazibank.remabank.exception.exceptions.EaziBankExceptions;
+import com.eazibank.remabank.exception.exceptions.EaziBankException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,12 @@ public class AccountServicesImpl implements AccountServices {
     @Autowired
     private ModelMapper modelMapper;
 
+//    @Value("${NIBSS_BASE_URL}")
+//    private String nibssBaseUrl;
+
+    @Autowired
+    private Environment environment;
+
     public AccountServicesImpl(AccountRepository accountRepository,
                                ModelMapper modelMapper) {
         this.accountRepository = accountRepository;
@@ -63,6 +70,8 @@ public class AccountServicesImpl implements AccountServices {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest bvnRequest = null;
         HttpResponse<String> httpResponse;
+//        System.out.println(nibssBaseUrl);
+        System.out.println(getenv("NIBSS_BASE_URL"));
         try {
             bvnRequest = HttpRequest.newBuilder()
                             .uri(new URI(getenv("NIBSS_BASE_URL")))
@@ -71,7 +80,7 @@ public class AccountServicesImpl implements AccountServices {
                             .build();
             httpResponse = httpClient.send(bvnRequest, HttpResponse.BodyHandlers.ofString());
         } catch (URISyntaxException | IOException | InterruptedException e)  {
-            throw new RuntimeException(e);
+            throw new EaziBankException("An error occurred");
         }
         account.setBvn(
                 httpResponse.body()
@@ -99,7 +108,7 @@ public class AccountServicesImpl implements AccountServices {
         } else if(request.getAccountType().equalsIgnoreCase("Domiciliary")) {
             return DOMICILIARY;
         }
-        throw new EaziBankExceptions("Valid account type isn't given", HttpStatus.BAD_REQUEST.value());
+        throw new EaziBankException("Valid account type isn't given", HttpStatus.BAD_REQUEST.value());
     }
 
     private String accountNumberGenerator() {

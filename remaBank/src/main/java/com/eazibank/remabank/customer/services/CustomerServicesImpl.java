@@ -51,7 +51,7 @@ public class CustomerServicesImpl implements CustomerServices {
         customer.setBvn(createdAccount.getBvn());
 
         Optional<Account> optionalAccount = accountServices.findAccount(createdAccount.getAccountNumber());
-        if(optionalAccount.isEmpty()) throw new EaziBankExceptions("Error finding account after saving", HttpStatus.NOT_FOUND.value());
+        if(optionalAccount.isEmpty()) throw new EaziBankException("Error finding account after saving", HttpStatus.NOT_FOUND.value());
         Account account = optionalAccount.get();
 //        DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE, dd/MM/yyy, hh:mm, a");
 //        account.setAccountCreationDate(LocalDateTime.parse(createdAccount.getDateCreated(), format));
@@ -263,7 +263,7 @@ public class CustomerServicesImpl implements CustomerServices {
     public ViewTransactionHistoryResponse viewTransactionHistory(ViewTransactionHistoryRequest viewTransactionHistoryRequest) {
         //findByBvn is the appropriate method; it can easily be gotten by the frontend
         Optional<Customer> optionalCustomer = customerRepository.findCustomerByEmail(viewTransactionHistoryRequest.getEmail());
-        if (optionalCustomer.isEmpty()) throw new EaziBankExceptions("Customer does not exist", HttpStatus.NOT_FOUND.value());
+        if (optionalCustomer.isEmpty()) throw new EaziBankException("Customer does not exist", HttpStatus.NOT_FOUND.value());
         //This first method is not advisable as transaction history can grow endlessly. This way we can manage space by saving transactions in the db instead of the models
         Customer customer = optionalCustomer.get();
         List<Transaction> transactionHistory = customer.getTransactionHistory();
