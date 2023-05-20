@@ -1,8 +1,8 @@
 package com.eazibank.remabank.staff.dto.response;
 
-import com.eazibank.remabank.staff.models.Department;
+import com.eazibank.remabank.staff.models.enums.Department;
 import com.eazibank.remabank.atm.models.Location.Location;
-import com.eazibank.remabank.staff.models.SubDepartment;
+import com.eazibank.remabank.staff.models.enums.SubDepartment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

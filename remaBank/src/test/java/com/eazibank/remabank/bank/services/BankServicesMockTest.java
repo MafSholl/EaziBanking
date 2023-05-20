@@ -4,7 +4,7 @@ import com.eazibank.remabank.bank.models.Bank;
 import com.eazibank.remabank.bank.repository.BankRepository;
 import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
 import com.eazibank.remabank.staff.models.Staff;
-import com.eazibank.remabank.staff.models.StaffDto;
+import com.eazibank.remabank.staff.dto.StaffDto;
 import com.eazibank.remabank.staff.repository.StaffRepository;
 import com.eazibank.remabank.staff.services.StaffServices;
 import lombok.extern.slf4j.Slf4j;

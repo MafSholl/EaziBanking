@@ -1,6 +1,6 @@
 package com.eazibank.remabank.account.services;
 
-import com.eazibank.remabank.RemaBankModuleConfig;
+import com.eazibank.remabank.RemaBankModuleTestConfig;
 import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
 import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
 import com.eazibank.remabank.account.dto.request.DebitAccountRequest;
@@ -15,6 +15,7 @@ import com.eazibank.remabank.exception.exceptions.AccountDoesNotExistException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.math.BigInteger;
@@ -23,8 +24,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ContextConfiguration(classes = RemaBankModuleConfig.class)
-//@ActiveProfiles("dev")
+@ContextConfiguration(classes = RemaBankModuleTestConfig.class)
+@ActiveProfiles("dev")
 class AccountServicesImplTest {
     @Autowired
     private AccountServices accountServices;

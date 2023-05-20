@@ -8,7 +8,7 @@ import com.eazibank.remabank.customer.services.CustomerServices;
 import com.eazibank.remabank.exception.exceptions.EaziBankException;
 import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
 import com.eazibank.remabank.staff.models.Staff;
-import com.eazibank.remabank.staff.models.StaffDto;
+import com.eazibank.remabank.staff.dto.StaffDto;
 import com.eazibank.remabank.staff.repository.StaffRepository;
 import com.eazibank.remabank.staff.controller.requests.DepositRequest;
 import com.eazibank.remabank.staff.dto.StaffDepositDto;
