@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dfb5fe92-d3ed-4b96-9ca9-a06a378aaaca" name="Changes" comment="Started nibss interbank deposit feature, added controller test">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/services/AccountServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/account/services/AccountServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/models/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/models/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/services/CustomerServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/customer/services/CustomerServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/AccountDoesNotExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/AccountDoesNotExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/BankDoesNotExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/BankDoesNotExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/CustomerAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/CustomerAlreadyExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/EaziBankExceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/EaziBankException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InadequateBalanceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InadequateBalanceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InsufficientBalanceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InsufficientBalanceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InvalidLoginDetailException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InvalidLoginDetailException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InvalidRecipientException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/InvalidRecipientException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/TransactionErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/exceptions/TransactionErrorException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/handler/GlobalResponseExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/exception/handler/GlobalResponseExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/services/StaffServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/java/com/eazibank/remabank/staff/services/StaffServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/RemaBankModuleTestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/RemaBankModuleTestConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/account/services/AccountServicesImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/account/services/AccountServicesImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/customer/repository/CustomerRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/remaBank/src/test/java/com/eazibank/remabank/customer/repository/CustomerRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nibss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nibss/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +77,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
     "spring.configuration.checksum": "bc1d93e5d5713bd7970dc2de69e71b70",
     "vue.rearranger.settings.migration": "true"
   }
@@ -149,19 +129,34 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AccountServicesImplTest.accountCanBeCreatedTest">
-    <configuration name="AccountControllerTest.accountControllerExistTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AccountRepositoryTest.accountRepositoryWorksTest">
+    <configuration name="AccountRepositoryTest.accountRepositoryWorksTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="remaBank" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.eazibank.remabank.account.controller.*" />
+          <option name="PATTERN" value="com.eazibank.remabank.account.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.eazibank.remabank.account.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.eazibank.remabank.account.controller.AccountControllerTest" />
-      <option name="METHOD_NAME" value="accountControllerExistTest" />
+      <option name="PACKAGE_NAME" value="com.eazibank.remabank.account.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.eazibank.remabank.account.repository.AccountRepositoryTest" />
+      <option name="METHOD_NAME" value="accountRepositoryWorksTest" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountServicesImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="remaBank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eazibank.remabank.account.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eazibank.remabank.account.services" />
+      <option name="MAIN_CLASS_NAME" value="com.eazibank.remabank.account.services.AccountServicesImplTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,22 +182,6 @@
       <option name="PACKAGE_NAME" value="com.eazibank.remabank.account.services" />
       <option name="MAIN_CLASS_NAME" value="com.eazibank.remabank.account.services.AccountServicesImplTest" />
       <option name="METHOD_NAME" value="accountCanBeCreatedTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerRepositoryTest.repositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="remaBank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.eazibank.remabank.customer.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.eazibank.remabank.customer.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.eazibank.remabank.customer.repository.CustomerRepositoryTest" />
-      <option name="METHOD_NAME" value="repositoryTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -240,6 +219,112 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="remaBank [compile] " type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/remaBank" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2" />
+    </configuration>
+    <configuration name="remaBank [compile] (1)" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="pomFileName" value="-X" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/remaBank" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2" />
+    </configuration>
+    <configuration name="remaBank [compile]" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="compile" />
+                <option value="pom.xml" />
+              </list>
+            </option>
+            <option name="pomFileName" value="-X" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/remaBank" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2" />
+    </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="remaBank" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.eazibank.remabank.Main" />
@@ -262,22 +347,25 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CustomerRepositoryTest.repositoryTest" />
+      <item itemvalue="JUnit.AccountRepositoryTest.accountRepositoryWorksTest" />
+      <item itemvalue="JUnit.AccountServicesImplTest" />
       <item itemvalue="JUnit.CustomerRepositoryTest.whenPerformMongoTransaction_thenSuccess" />
       <item itemvalue="JUnit.CustomerServicesImplTest.customerCanBeCreatedTest" />
-      <item itemvalue="JUnit.AccountControllerTest.accountControllerExistTest" />
       <item itemvalue="JUnit.AccountServicesImplTest.accountCanBeCreatedTest" />
+      <item itemvalue="Maven.remaBank [compile]" />
+      <item itemvalue="Maven.remaBank [compile] " />
+      <item itemvalue="Maven.remaBank [compile] (1)" />
       <item itemvalue="Spring Boot.Main" />
       <item itemvalue="Spring Boot.NibssApplication" />
       <item itemvalue="Spring Boot.OxladebankApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountRepositoryTest.accountRepositoryWorksTest" />
         <item itemvalue="JUnit.AccountServicesImplTest.accountCanBeCreatedTest" />
+        <item itemvalue="JUnit.AccountServicesImplTest" />
         <item itemvalue="JUnit.CustomerServicesImplTest.customerCanBeCreatedTest" />
         <item itemvalue="JUnit.CustomerRepositoryTest.whenPerformMongoTransaction_thenSuccess" />
-        <item itemvalue="JUnit.CustomerRepositoryTest.repositoryTest" />
-        <item itemvalue="JUnit.AccountControllerTest.accountControllerExistTest" />
       </list>
     </recent_temporary>
   </component>
@@ -408,6 +496,8 @@
       <workItem from="1683211733602" duration="494000" />
       <workItem from="1683415008645" duration="4194000" />
       <workItem from="1683628008919" duration="575000" />
+      <workItem from="1683963667164" duration="2517000" />
+      <workItem from="1684576556450" duration="8195000" />
     </task>
     <task id="LOCAL-00001" summary="Started nibss interbank deposit feature, added controller test">
       <created>1667351666891</created>
