@@ -1,6 +1,5 @@
 package com.eazibank.remabank.transaction.services;
 
-import com.eazibank.remabank.transaction.models.TransactionType;
 import com.eazibank.remabank.transaction.dto.CreateTransactionDto;
 import com.eazibank.remabank.transaction.dto.request.ViewTransactionHistoryRequest;
 import com.eazibank.remabank.transaction.dto.response.ViewTransactionHistoryResponse;
@@ -21,7 +20,7 @@ public class TransactionServiceImpl implements TransactionService {
                 .accountNumber(createTransactionDto.getAccountNumber())
                 .amount(createTransactionDto.getAmount())
                 .description(createTransactionDto.getDescription())
-                .transactionType(TransactionType.DEPOSIT)
+//                .transactionType(TransactionType.DEPOSIT)
                 .recipientAccountNumber(createTransactionDto.getAccountNumber())
                 .recipientName("Self")
                 .transactionId("002")

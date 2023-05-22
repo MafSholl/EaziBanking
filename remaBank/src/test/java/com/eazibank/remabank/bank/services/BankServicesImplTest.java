@@ -34,7 +34,7 @@ class BankServicesImplTest {
 
     private Bank bank = Bank.builder()
             .name("EaziBank")
-            .id(1)
+            .id("1")
             .balance(BigDecimal.valueOf(1000000000))
             .build();
     @Autowired

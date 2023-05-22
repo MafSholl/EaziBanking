@@ -5,9 +5,10 @@ import com.eazibank.nibss.controller.response.ApiResponse;
 import com.eazibank.nibss.dto.response.NibssBankUserDto;
 import com.eazibank.nibss.dto.response.NibssInterbankDto;
 import com.eazibank.nibss.models.Account;
-import com.eazibank.nibss.models.enums.AccountType;
 import com.eazibank.nibss.models.CreateBvnDto;
+import com.eazibank.nibss.models.enums.AccountType;
 import com.eazibank.nibss.services.NibssInterfaceService;
+import com.eazibanking.nibss.NibssModuleTestConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -30,6 +32,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(NibssController.class)
+//@SpringBootTest
+@ContextConfiguration(classes = NibssModuleTestConfig.class)
 class NibssControllerTest {
 
     @Autowired

@@ -16,7 +16,7 @@ import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
 import com.eazibank.remabank.staff.controller.requests.DepositRequest;
 import com.eazibank.remabank.staff.dto.StaffDepositDto;
 import com.eazibank.remabank.staff.models.Staff;
-import com.eazibank.remabank.staff.models.StaffDto;
+import com.eazibank.remabank.staff.dto.StaffDto;
 import com.eazibank.remabank.staff.repository.StaffRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

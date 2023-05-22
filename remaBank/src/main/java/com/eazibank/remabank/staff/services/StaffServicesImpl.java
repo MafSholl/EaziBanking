@@ -5,10 +5,10 @@ import com.eazibank.remabank.customer.dto.response.CreateCustomerResponse;
 import com.eazibank.remabank.customer.dto.response.CustomerDepositResponse;
 import com.eazibank.remabank.customer.repository.CustomerRepository;
 import com.eazibank.remabank.customer.services.CustomerServices;
-import com.eazibank.remabank.exception.exceptions.EaziBankExceptions;
+import com.eazibank.remabank.exception.exceptions.EaziBankException;
 import com.eazibank.remabank.staff.controller.requests.CreateStaffRequest;
 import com.eazibank.remabank.staff.models.Staff;
-import com.eazibank.remabank.staff.models.StaffDto;
+import com.eazibank.remabank.staff.dto.StaffDto;
 import com.eazibank.remabank.staff.repository.StaffRepository;
 import com.eazibank.remabank.staff.controller.requests.DepositRequest;
 import com.eazibank.remabank.staff.dto.StaffDepositDto;
@@ -53,7 +53,7 @@ public class StaffServicesImpl implements StaffServices {
     @Override
     public StaffDepositDto customersAccountDeposit(DepositRequest depositRequest, String staffId) {
         Optional<Staff> staff = staffRepository.findById(staffId);
-        if (staff.isEmpty()) throw new EaziBankExceptions("Staff does ot exist", HttpStatus.NO_CONTENT.value());
+        if (staff.isEmpty()) throw new EaziBankException("Staff does ot exist", HttpStatus.NO_CONTENT.value());
         CustomerDepositResponse depositResponse = customerServices.deposit(depositRequest);
         StaffDepositDto staffDepositDto = modelMapper.map(depositResponse, StaffDepositDto.class);
         staffDepositDto.setStaffId(staffId);

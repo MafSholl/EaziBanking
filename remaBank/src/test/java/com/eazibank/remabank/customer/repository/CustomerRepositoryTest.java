@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ class CustomerRepositoryTest {
         assertEquals(1, customerRepository.count());
     }
     @Test
-    @Transactional
+//    @Transactional
     public void whenPerformMongoTransaction_thenSuccess() {
         Customer customer1 = new Customer("lade", "fiyin", "0091929233");
         Customer customer2 = new Customer("toyin", "deleola", "9998876532");

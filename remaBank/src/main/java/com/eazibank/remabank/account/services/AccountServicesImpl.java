@@ -9,7 +9,9 @@ import com.eazibank.remabank.account.models.Account;
 import com.eazibank.remabank.account.models.AccountType;
 import com.eazibank.remabank.account.repository.AccountRepository;
 import com.eazibank.remabank.exception.exceptions.AccountDoesNotExistException;
-import com.eazibank.remabank.exception.exceptions.EaziBankExceptions;
+import com.eazibank.remabank.exception.exceptions.EaziBankException;
+import io.github.cdimascio.dotenv.Dotenv;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,21 +30,23 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 import static com.eazibank.remabank.account.models.AccountType.*;
-import static java.lang.System.getenv;
 
 @Service
+@Slf4j
 public class AccountServicesImpl implements AccountServices {
     @Autowired
     private AccountRepository accountRepository;
     private int accountNumber;
     @Autowired
     private ModelMapper modelMapper;
+    private Dotenv dotenv;
 
     public AccountServicesImpl(AccountRepository accountRepository,
                                ModelMapper modelMapper) {
         this.accountRepository = accountRepository;
         this.modelMapper = modelMapper;
         this.accountNumber = 100_000_000;
+        this.dotenv = Dotenv.load();
     }
     @Override
     public RegisterAccountResponse createAccount(RegisterAccountRequest request) {
@@ -65,13 +69,14 @@ public class AccountServicesImpl implements AccountServices {
         HttpResponse<String> httpResponse;
         try {
             bvnRequest = HttpRequest.newBuilder()
-                            .uri(new URI(getenv("NIBSS_BASE_URL")))
+                            .uri(new URI(dotenv.get("NIBSS_BASE_URL")))
                             .timeout(Duration.of(10, ChronoUnit.SECONDS))
                             .POST(HttpRequest.BodyPublishers.ofString(request.toString()))
                             .build();
             httpResponse = httpClient.send(bvnRequest, HttpResponse.BodyHandlers.ofString());
         } catch (URISyntaxException | IOException | InterruptedException e)  {
-            throw new RuntimeException(e);
+            log.info("Error while trying to create account", e);
+            throw new EaziBankException("An error occurred while trying to connect to nibss.Try again later");
         }
         account.setBvn(
                 httpResponse.body()
@@ -99,7 +104,7 @@ public class AccountServicesImpl implements AccountServices {
         } else if(request.getAccountType().equalsIgnoreCase("Domiciliary")) {
             return DOMICILIARY;
         }
-        throw new EaziBankExceptions("Valid account type isn't given", HttpStatus.BAD_REQUEST.value());
+        throw new EaziBankException("Valid account type isn't given", HttpStatus.BAD_REQUEST.value());
     }
 
     private String accountNumberGenerator() {

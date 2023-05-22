@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 @Document("Customer")
 public class Customer {
@@ -34,6 +34,7 @@ public class Customer {
     private LocalDateTime dateJoined = LocalDateTime.now();
     private LocalDateTime DOB;
     private String mothersMaidenName;
+    @DBRef
     private Map<String, Account> customerAccounts;
     @DBRef
     private List<Transaction> transactionHistory = new ArrayList<>();

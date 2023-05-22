@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @Configuration
 @ComponentScan(basePackages = "com.eazibank.remabank.**")
-@EnableMongoRepositories
+@EnableMongoRepositories(basePackages = "com.eazibank.remabank.**")
 public class RemaBankModuleConfig {
+
 }

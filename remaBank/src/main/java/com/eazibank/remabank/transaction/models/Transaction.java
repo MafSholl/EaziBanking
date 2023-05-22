@@ -1,6 +1,8 @@
 package com.eazibank.remabank.transaction.models;
 
 import com.eazibank.remabank.atm.models.Location.Location;
+import com.eazibank.remabank.transaction.models.enums.PaymentMethod;
+import com.eazibank.remabank.transaction.models.enums.TransactionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +12,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+
+
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @Builder
-@Document(collection = "Transactions")
+@Document(collection = "Transaction")
 public class Transaction {
         @Id
         private String transactionId;
@@ -22,10 +26,11 @@ public class Transaction {
         private String accountNumber;
         private BigInteger amount;
         private String description;
-        private TransactionType transactionType;
         private String recipientAccountNumber;
         private String recipientName;
-        private PaymentMethod paymentMethod;
+        private TransactionType transactionType;
+        @Builder.Default
         private LocalDateTime transactionTime = LocalDateTime.now();
+        private PaymentMethod paymentMethod;
         private Location location;
 }

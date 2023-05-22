@@ -1,5 +1,9 @@
-package com.eazibank.remabank.utils;
+package com.eazibank.nibss.utils;
 
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
@@ -20,13 +24,13 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         return "test";
     }
 
-//    @Override
-//    public MongoClient mongoClient() {
-//        final ConnectionString connectionString = new
-//                ConnectionString("mongodb://localhost:27017/test");
-//        final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
-//                .applyConnectionString(connectionString)
-//                .build();
-//        return MongoClients.create(mongoClientSettings);
-//    }
+    @Override
+    public MongoClient mongoClient() {
+        final ConnectionString connectionString = new
+                ConnectionString("mongodb://localhost:27017/test");
+        final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .build();
+        return MongoClients.create(mongoClientSettings);
+    }
 }
