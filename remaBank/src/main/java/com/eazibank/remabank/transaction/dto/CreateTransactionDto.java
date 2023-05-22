@@ -1,8 +1,8 @@
 package com.eazibank.remabank.transaction.dto;
 
 import com.eazibank.remabank.atm.models.Location.Location;
-import com.eazibank.remabank.transaction.models.PaymentMethod;
-import com.eazibank.remabank.transaction.models.TransactionType;
+import com.eazibank.remabank.transaction.models.enums.PaymentMethod;
+import com.eazibank.remabank.transaction.models.enums.TransactionType;
 import lombok.Data;
 
 import java.math.BigInteger;

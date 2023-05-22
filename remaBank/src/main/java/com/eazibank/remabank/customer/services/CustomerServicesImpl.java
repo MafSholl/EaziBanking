@@ -16,7 +16,7 @@ import com.eazibank.remabank.exception.exceptions.*;
 import com.eazibank.remabank.staff.controller.requests.DepositRequest;
 import com.eazibank.remabank.transaction.dto.response.ViewTransactionHistoryResponse;
 import com.eazibank.remabank.transaction.models.Transaction;
-import com.eazibank.remabank.transaction.models.TransactionType;
+import com.eazibank.remabank.transaction.models.enums.TransactionType;
 import com.eazibank.remabank.transaction.repository.TransactionRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

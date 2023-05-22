@@ -1,6 +1,6 @@
 package com.eazibank.remabank.account.services;
 
-import com.eazibank.remabank.RemaBankModuleTestConfig;
+import com.eazibank.remabank.RemaBankModuleConfig;
 import com.eazibank.remabank.account.dto.request.AccountBalanceRequest;
 import com.eazibank.remabank.account.dto.request.CreditAccountRequest;
 import com.eazibank.remabank.account.dto.request.DebitAccountRequest;
@@ -24,7 +24,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ContextConfiguration(classes = RemaBankModuleTestConfig.class)
+@ContextConfiguration(classes = RemaBankModuleConfig.class)
 @ActiveProfiles("dev")
 class AccountServicesImplTest {
     @Autowired
